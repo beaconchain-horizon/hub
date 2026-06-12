@@ -3,55 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Horizon Hub – بازارچه غیرمتمرکز ایران با پشتیبانی از صنایع مختلف و API امن برای بانک‌ها.">
-    <title>Horizon Hub · بازارچه جامع ایران + Banking API</title>
+    <meta name="description" content="Horizon Hub – رتبه ۳ جهانی بلاکچین | بازارچه غیرمتمرکز ایران | خدمات پیشرفته و شبکه اجتماعی">
+    <title>Horizon Hub | رتبه ۳ بلاکچین | بازارچه ایران</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Translate widget -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fa',
+                includedLanguages: 'en,tr,ar,de,fr,es,ru,zh-CN,ja,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #f8fafc; font-family: 'Inter', system-ui, 'Segoe UI', Tahoma, sans-serif; color: #0f172a; }
+        body { background: #f9fafb; font-family: 'Inter', system-ui, Tahoma, sans-serif; color: #111827; }
         .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
 
-        .top-bar { background: #0f172a; color: white; padding: 0.7rem 0; border-bottom: 1px solid #334155; }
-        .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .logo h1 { font-size: 1.6rem; background: linear-gradient(135deg, #fff, #38bdf8); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .price-ticker { display: flex; gap: 0.8rem; background: #1e293b; padding: 0.4rem 1rem; border-radius: 40px; font-size: 0.75rem; flex-wrap: wrap; }
-        .price-ticker span:first-child { font-weight: bold; color: #facc15; }
+        /* flag marquee */
+        .flag-marquee {
+            background: #0f172a;
+            padding: 0.4rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: 1px solid #334155;
+        }
+        .flag-track {
+            display: inline-block;
+            animation: scrollFlags 25s linear infinite;
+        }
+        .flag-track span { display: inline-block; margin: 0 0.8rem; font-size: 1.2rem; }
+        @keyframes scrollFlags { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        .search-section { background: white; padding: 1rem 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 1.5rem; }
-        .search-bar { display: flex; gap: 0.5rem; max-width: 600px; margin: 0 auto; }
-        .search-bar input { flex: 1; padding: 0.7rem 1rem; border: 1px solid #cbd5e1; border-radius: 2rem; font-size: 0.9rem; }
-        .search-bar button { background: #2563eb; border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; color: white; font-weight: bold; cursor: pointer; }
-        .filter-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
-        .filter-chip { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.75rem; cursor: pointer; transition: 0.2s; }
-        .filter-chip.active, .filter-chip:hover { background: #2563eb; color: white; border-color: #2563eb; }
+        .top-bar {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(4px);
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        #google_translate_element {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+        .goog-te-gadget-simple { background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 2rem; padding: 0.2rem 0.8rem; font-size: 0.75rem; }
+        .goog-te-gadget-simple .goog-te-menu-value { color: #1f2937; }
+        .job-icon-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .job-icon-btn:hover { background: #1d4ed8; transform: scale(1.05); }
+        .flag-icon { font-size: 1.8rem; }
+        .logo h1 { font-size: 1.5rem; background: linear-gradient(135deg, #111827, #2563eb); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .rank-badge { background: #fef3c7; padding: 0.2rem 0.8rem; border-radius: 40px; font-size: 0.7rem; font-weight: bold; color: #b45309; }
+        .price-ticker {
+            display: flex;
+            gap: 0.8rem;
+            background: #f3f4f6;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            flex-wrap: wrap;
+        }
+        .price-ticker span:first-child { font-weight: bold; color: #2563eb; }
 
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .card { background: white; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.2s; border: 1px solid #eef2ff; overflow: hidden; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
-        .card-img { height: 120px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
-        .card-content { padding: 1rem; }
-        .card-title { font-weight: 800; font-size: 1rem; margin-bottom: 0.3rem; }
-        .card-price { font-size: 1rem; font-weight: 800; color: #b45309; margin: 0.4rem 0; }
-        .btn { background: #1e293b; border: none; padding: 0.4rem; border-radius: 2rem; color: white; font-size: 0.7rem; cursor: pointer; text-align: center; width: 100%; }
+        /* hero animation (shortened) */
+        .hero-animation {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: 1.5rem;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #facc15, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 0px rgba(250,204,21,0); opacity: 0.9; }
+            50% { text-shadow: 0 0 15px rgba(250,204,21,0.5); opacity: 1; }
+            100% { text-shadow: 0 0 0px rgba(250,204,21,0); opacity: 0.9; }
+        }
+        .particles-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .particle {
+            position: absolute;
+            background: rgba(56,189,248,0.3);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(100%) translateX(0); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-100%) translateX(20px); opacity: 0; }
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 1.5rem 0 1rem;
+            border-right: 4px solid #2563eb;
+            padding-right: 0.8rem;
+        }
+        .apps-grid, .exchanges-grid, .univ-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .exchange-news-card, .app-card, .univ-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #eef2ff;
+            transition: 0.2s;
+            text-align: center;
+        }
+        .exchange-news-card:hover, .app-card:hover, .univ-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .exchange-name, .app-name, .univ-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
+        .exchange-news { font-size: 0.75rem; color: #4b5563; margin-bottom: 0.5rem; }
+        .exchange-link, .btn-small { color: #2563eb; text-decoration: none; font-size: 0.7rem; font-weight: 500; }
+        .btn-small { background: #1f2937; color: white; padding: 0.3rem 0.8rem; border-radius: 2rem; display: inline-block; margin-top: 0.5rem; }
+        .news-card {
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            border-right: 3px solid #2563eb;
+            margin-bottom: 1rem;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .video-card iframe {
+            width: 100%;
+            height: 180px;
+            border-radius: 1rem;
+            border: none;
+        }
+        .categories-wrapper {
+            margin: 1rem 0 2rem;
+        }
+        .toggle-categories {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        .categories-content {
+            display: none;
+        }
+        .categories-content.show {
+            display: block;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            border: 1px solid #eef2ff;
+            overflow: hidden;
+            transition: 0.2s;
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+        .card-img { height: 90px; background: #f8fafc; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+        .card-content { padding: 0.8rem; }
+        .card-title { font-weight: 800; font-size: 0.9rem; }
+        .card-price { font-size: 0.9rem; font-weight: 700; color: #b45309; margin: 0.3rem 0; }
+        .btn { background: #1f2937; border: none; padding: 0.3rem; border-radius: 2rem; color: white; font-size: 0.7rem; width: 100%; cursor: pointer; }
         .btn-buy { background: #f59e0b; color: #1f2937; font-weight: bold; }
 
-        .banking-api { background: linear-gradient(135deg, #e0f2fe, #f1f5f9); border-radius: 1.5rem; padding: 1.5rem; margin: 2rem 0; border: 1px solid #bae6fd; }
-        .api-endpoint { background: #0f172a; color: #cbd5e1; padding: 0.6rem; border-radius: 0.8rem; font-family: monospace; font-size: 0.8rem; margin: 1rem 0; direction: ltr; text-align: left; }
-
-        .top-apps-grid, .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
-        .news-card { background: #f1f5f9; border-radius: 1rem; padding: 1rem; }
-
-        .footer { background: #0f172a; color: #cbd5e1; text-align: center; padding: 1.5rem; margin-top: 2rem; font-size: 0.75rem; }
-        .footer a { color: #60a5fa; text-decoration: none; }
-        @media (max-width: 700px) { .container { padding: 0 1rem; } }
-        .no-results { text-align: center; padding: 2rem; background: #f1f5f9; border-radius: 1rem; margin-bottom: 1rem; }
+        /* footer (متنوع با دیتای اختصاصی) */
+        .main-footer {
+            background: #111827;
+            color: #9ca3af;
+            padding: 2rem 0 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            color: #facc15;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-col a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col a:hover {
+            color: #60a5fa;
+        }
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        .social-links a {
+            background: #1e293b;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover { background: #2563eb; transform: translateY(-3px); }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #334155;
+            padding-top: 1.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+        }
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .filter-chip {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+        .filter-chip.active { background: #2563eb; color: white; }
+        .search-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+        }
+        .search-bar button {
+            background: #2563eb;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 0 1rem; }
+            .hero-title { font-size: 1.4rem; }
+        }
     </style>
 </head>
 <body>
 
+<!-- flag marquee -->
+<div class="flag-marquee">
+    <div class="flag-track">
+        <span>🇮🇷</span> <span>🇺🇸</span> <span>🇬🇧</span> <span>🇩🇪</span> <span>🇫🇷</span> <span>🇨🇦</span> <span>🇯🇵</span> <span>🇨🇳</span> <span>🇷🇺</span> <span>🇦🇪</span> <span>🇹🇷</span> <span>🇮🇳</span> <span>🇰🇷</span> <span>🇧🇷</span> <span>🇦🇺</span> <span>🇮🇹</span> <span>🇪🇸</span> <span>🇳🇱</span> <span>🇸🇪</span> <span>🇨🇭</span> <span>🇦🇹</span> <span>🇧🇪</span> <span>🇵🇱</span> <span>🇿🇦</span> <span>🇲🇽</span> <span>🇮🇩</span> <span>🇸🇦</span> <span>🇰🇼</span> <span>🇶🇦</span> <span>🇴🇲</span> <span>🇵🇰</span> <span>🇪🇬</span> <span>🇳🇬</span> <span>🇮🇪</span> <span>🇳🇴</span> <span>🇫🇮</span> <span>🇩🇰</span> <span>🇮🇸</span>
+        <span>🇮🇷</span> <span>🇺🇸</span> <span>🇬🇧</span> <span>🇩🇪</span> <span>🇫🇷</span> <span>🇨🇦</span> <span>🇯🇵</span> <span>🇨🇳</span> <span>🇷🇺</span> <span>🇦🇪</span> <span>🇹🇷</span> <span>🇮🇳</span> <span>🇰🇷</span> <span>🇧🇷</span> <span>🇦🇺</span> <span>🇮🇹</span> <span>🇪🇸</span> <span>🇳🇱</span> <span>🇸🇪</span> <span>🇨🇭</span> <span>🇦🇹</span> <span>🇧🇪</span> <span>🇵🇱</span> <span>🇿🇦</span> <span>🇲🇽</span> <span>🇮🇩</span> <span>🇸🇦</span> <span>🇰🇼</span> <span>🇶🇦</span> <span>🇴🇲</span> <span>🇵🇰</span> <span>🇪🇬</span> <span>🇳🇬</span> <span>🇮🇪</span> <span>🇳🇴</span> <span>🇫🇮</span> <span>🇩🇰</span> <span>🇮🇸</span>
+    </div>
+</div>
+
 <div class="top-bar">
     <div class="container">
-        <div class="logo"><h1>🛒 Horizon Hub | بازارچه جامع ایران</h1></div>
+        <div class="logo-area">
+            <span class="flag-icon">🇮🇷</span>
+            <div class="logo">
+                <h1>Horizon Hub</h1>
+                <span class="rank-badge">🏆 رتبه ۳ جهانی بلاکچین</span>
+            </div>
+            <div id="google_translate_element"></div>
+            <button id="jobsIconBtn" class="job-icon-btn"><i class="fas fa-briefcase"></i></button>
+        </div>
         <div class="price-ticker" id="priceTicker">
             <div><span>BTC:</span> <span id="btcPrice">--</span>$</div>
             <div><span>ETH:</span> <span id="ethPrice">--</span>$</div>
@@ -61,250 +359,230 @@
     </div>
 </div>
 
-<div class="search-section">
-    <div class="container">
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="جستجو در همه آگهی‌ها...">
-            <button id="searchBtn"><i class="fas fa-search"></i> جستجو</button>
-        </div>
-        <div class="filter-row" id="filterRow">
-            <div class="filter-chip active" data-cat="all">همه</div>
-            <div class="filter-chip" data-cat="استخدام">💼 استخدام</div>
-            <div class="filter-chip" data-cat="مسکن">🏠 مسکن</div>
-            <div class="filter-chip" data-cat="پوشاک">👕 پوشاک</div>
-            <div class="filter-chip" data-cat="دارویی">💊 دارویی</div>
-            <div class="filter-chip" data-cat="کشاورزی">🌾 کشاورزی</div>
-            <div class="filter-chip" data-cat="آهن">⚙️ آهن‌آلات</div>
-            <div class="filter-chip" data-cat="ارز">₿ ارز و رمز</div>
-            <div class="filter-chip" data-cat="فلزات">🥇 فلزات</div>
-            <div class="filter-chip" data-cat="دیجیتال">📀 دیجیتال</div>
-        </div>
-    </div>
-</div>
-
 <div class="container">
-    <!-- بخش صنایع (محصولات) -->
-    <div id="productsSection"></div>
+    <!-- Hero animation -->
+    <div class="hero-animation">
+        <div class="particles-bg" id="particlesContainer"></div>
+        <div class="hero-content">
+            <div class="hero-title">🚀 Horizon Hub به جهان وارد شد! 🌍</div>
+            <div class="hero-sub" style="color:#cbd5e1;">بازارچه غیرمتمرکز ایران · رتبه ۳ جهان · امنیت ۱۰/۱۰</div>
+        </div>
+    </div>
 
-    <!-- ۵ اپ برتر بلاکچین -->
-    <div class="section-title" style="font-size:1.2rem; margin-top: 1rem;">🏆 ۵ اپ برتر بلاکچین جهان</div>
-    <div id="topAppsGrid" class="top-apps-grid"></div>
+    <!-- VIP Loan & Training -->
+    <div class="vip-loan-card" style="background: linear-gradient(135deg, #fef3c7, #fffbeb); border-radius:1rem; padding:1.2rem; margin:1rem 0; border-right:4px solid #f59e0b;">
+        <div style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
+            <i class="fas fa-graduation-cap" style="font-size: 2rem; color:#f59e0b;"></i>
+            <div><strong style="font-size: 1.1rem;">🎓 آموزش تخصصی کسب‌وکار با دانشگاه فردوسی مشهد</strong><br>
+            دوره‌های مدیریت بازار، تجارت بین‌الملل، بازاریابی دیجیتال و بلاکچین با گواهی رسمی.<br>
+            <span style="font-size:0.8rem;">✨ پس از اتمام دوره، امکان دریافت <strong>وام قرض‌الحسنه توسط مجموعه Horizon</strong> تا ۵۰۰ میلیون تومان.</span></div>
+        </div>
+    </div>
 
-    <!-- اخبار اقتصادی -->
-    <div class="section-title" style="font-size:1.2rem;">📰 اخبار اقتصادی ایران و جهان</div>
-    <div id="newsGrid" class="news-grid"></div>
+    <!-- 5 top blockchain apps -->
+    <div class="section-title">🏆 ۵ اپ برتر بلاکچین جهان</div>
+    <div class="apps-grid" id="topAppsGrid"></div>
 
-    <!-- بخش API بانکی -->
-    <div class="banking-api">
-        <h3><i class="fas fa-university"></i> Horizon API برای سیستم بانکی</h3>
-        <p>بانک‌ها و مؤسسات مالی می‌توانند از <strong>Horizon API</strong> به عنوان لایه امنیتی و شفافیت استفاده کنند:</p>
-        <ul style="margin-right: 1.5rem; margin-top: 0.5rem;">
-            <li>✅ تأیید هویت تراکنش‌های ارزی با <strong>Merkle Proof</strong></li>
-            <li>✅ گزارش‌دهی شفاف مالی با خروجی JSON امضا شده با SHA‑256</li>
-            <li>✅ اتصال به درگاه رمزریال (پس از فراهم شدن زیرساخت)</li>
-        </ul>
-        <div class="api-endpoint">
-            🔗 endpoint: <code>https://api.beaconchain.us/v1/bank/verify?tx=0x...</code><br>
-            📄 مستندات: <a href="https://beaconchain.us/api-docs" target="_blank" style="color:#2563eb;">beaconchain.us/api-docs</a>
+    <!-- Videos -->
+    <div class="section-title">🎬 ویدئوهای رویدادهای بازار ارز و رمز</div>
+    <div class="video-grid" id="videosGrid"></div>
+
+    <!-- Exchanges news -->
+    <div class="section-title">🏦 صرافی‌های جهانی | اخبار جدید و لینک مستقیم</div>
+    <div class="exchanges-grid" id="exchangesNewsGrid"></div>
+
+    <!-- News with search -->
+    <div class="section-title">📰 اخبار اقتصادی (جهانی + ایران) | جستجو در گوگل</div>
+    <div id="newsWithLinks"></div>
+
+    <!-- Universities -->
+    <div class="section-title">🎓 دانشگاه‌های برتر جهان و ایران</div>
+    <div class="univ-grid" id="univGrid"></div>
+
+    <!-- VIP & Broker info -->
+    <div class="info-row" style="display:flex; flex-wrap:wrap; gap:1rem; margin:1rem 0;">
+        <div class="info-card" style="flex:1; background:white; border-radius:1rem; padding:1rem; border:1px solid #eef2ff;">
+            <i class="fas fa-crown" style="color:#f59e0b;"></i> <strong>باشگاه ویژه صنعتگران</strong><br>
+            معافیت مالیاتی ۵۰٪ برای صاحبان صنایع.<br>
+            <a href="#" id="vipLink" style="color:#2563eb; font-size:0.7rem;">جزئیات بیشتر</a>
+        </div>
+        <div class="info-card" style="flex:1; background:white; border-radius:1rem; padding:1rem; border:1px solid #eef2ff;">
+            <i class="fas fa-chalkboard-user"></i> <strong>کارگزاران رسمی Horizon</strong><br>
+            پس از گذراندن دوره‌های دانشگاه فردوسی و تأیید صلاحیت، کارگزار شوید.<br>
+            <button id="brokerBtn" style="background:#2563eb; border:none; padding:0.2rem 1rem; border-radius:2rem; color:white;">درخواست کارگزاری</button>
+        </div>
+    </div>
+
+    <!-- Jobs & Products collapsible -->
+    <div class="categories-wrapper">
+        <button id="toggleCategoriesBtn" class="toggle-categories"><i class="fas fa-bars"></i> دسته‌بندی مشاغل و محصولات</button>
+        <div id="categoriesContent" class="categories-content">
+            <div class="filter-row" id="filterRow">
+                <div class="filter-chip active" data-cat="all">همه</div>
+                <div class="filter-chip" data-cat="استخدام">💼 استخدام</div>
+                <div class="filter-chip" data-cat="مسکن">🏠 مسکن</div>
+                <div class="filter-chip" data-cat="پوشاک">👕 پوشاک</div>
+                <div class="filter-chip" data-cat="دارویی">💊 دارویی</div>
+                <div class="filter-chip" data-cat="کشاورزی">🌾 کشاورزی</div>
+                <div class="filter-chip" data-cat="آهن">⚙️ آهن‌آلات</div>
+                <div class="filter-chip" data-cat="ارز">₿ ارز و رمز</div>
+                <div class="filter-chip" data-cat="فلزات">🥇 فلزات</div>
+                <div class="filter-chip" data-cat="دیجیتال">📀 دیجیتال</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="جستجو در آگهی‌ها...">
+                <button id="searchBtn"><i class="fas fa-search"></i> جستجو</button>
+            </div>
+            <div id="productsSection"></div>
         </div>
     </div>
 </div>
 
-<div class="footer">
-    <p>Horizon Hub – بازارچه غیرمتمرکز، آفلاین‑اول | <a href="https://github.com/beaconchain-horizon/hub/issues/new?template=ad-submission.yml" target="_blank">📢 ثبت آگهی رایگان</a></p>
-    <p>© ۱۴۰۵ Horizon Ecosystem</p>
+<!-- ========== NEW FOOTER with all requested sections ========== -->
+<div class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Company -->
+            <div class="footer-col">
+                <h4>شرکت</h4>
+                <ul>
+                    <li><a href="#">درباره ما</a></li>
+                    <li><a href="#">برند Assets</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                    <li><a href="#" id="careersLink">مشاغل · استخدام</a></li>
+                    <li><a href="#">قوانین و حریم خصوصی</a></li>
+                    <li><a href="#">برنامه پاداش باگ (Bug Bounty)</a></li>
+                </ul>
+            </div>
+            <!-- Community -->
+            <div class="footer-col">
+                <h4>جامعه</h4>
+                <ul>
+                    <li><a href="#">مستندات API</a></li>
+                    <li><a href="#">وضعیت شبکه</a></li>
+                    <li><a href="#">خبرنامه</a></li>
+                    <li><a href="#">دانشنامه</a></li>
+                    <li><a href="#">درخواست پشتیبانی</a></li>
+                </ul>
+            </div>
+            <!-- Products & Services -->
+            <div class="footer-col">
+                <h4>محصولات و خدمات</h4>
+                <ul>
+                    <li><a href="#">Horizon Premium</a></li>
+                    <li><a href="#">تبلیغات در Horizon</a></li>
+                    <li><a href="#">Explorer as a Service (EaaS)</a></li>
+                    <li><a href="#">پلن‌های API</a></li>
+                    <li><a href="#">پشتیبانی اولویت‌دار</a></li>
+                </ul>
+            </div>
+            <!-- Social Networks -->
+            <div class="footer-col">
+                <h4>شبکه‌های اجتماعی</h4>
+                <div class="social-links">
+                    <a href="https://discord.gg/beaconchain" target="_blank"><i class="fab fa-discord"></i></a>
+                    <a href="https://github.com/beaconchain-horizon" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://t.me/beaconchain_hub" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/beaconchain" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/beaconchain" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://facebook.com/beaconchain" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wintor.com/beaconchain" target="_blank"><i class="fas fa-globe"></i> وینتو</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div>© ۱۴۰۵ Horizon Hub – بازارچه غیرمتمرکز ایران | رتبه ۳ جهان در مانیتورینگ بلاکچین</div>
+            <div class="founder-name" style="margin-top:0.3rem;">✨ بنیان‌گذار و خالق مجموعه: مهدی آملی مقدم ✨</div>
+        </div>
+    </div>
 </div>
 
 <script>
-    // ======================= دیتابیس محصولات (منظم) =======================
-    const productsDB = {
-        "استخدام": [
-            { title: "توسعه‌دهنده ارشد بک‌اند Go", price: "۵۰-۸۰ میلیون تومان", icon: "💼", desc: "دورکاری، بلاکچین، اتریوم", contact: "hr@blockchain.ir", wallet: "" },
-            { title: "کارشناس فروش پوشاک", price: "حقوق + پورسانت", icon: "👕", desc: "مدیریت فروشگاه آنلاین", contact: "fashion@shop.ir", wallet: "" }
-        ],
-        "مسکن": [
-            { title: "آپارتمان ۱۱۰ متری غرب تهران", price: "۱۲ میلیارد تومان", icon: "🏠", desc: "نوساز، پارکینگ", contact: "realtor@tehran.com", wallet: "" },
-            { title: "زمین ۵۰۰ متر شهرک صنعتی", price: "۸ میلیارد تومان", icon: "🏭", desc: "مجوز صنعتی", contact: "land@industrial.ir", wallet: "" }
-        ],
-        "پوشاک": [
-            { title: "مانتو شیک جدید", price: "۷۸۰,۰۰۰ تومان", icon: "👗", desc: "ارسال رایگان", contact: "fashion@shop.com", wallet: "" }
-        ],
-        "دارویی": [
-            { title: "مکمل پروتئین وی ۲ کیلو", price: "۱,۴۵۰,۰۰۰ تومان", icon: "💊", desc: "اصل، تاریخ ۲۰۲۷", contact: "pharma@supp.com", wallet: "" }
-        ],
-        "کشاورزی": [
-            { title: "کود NPK ۲۰-۲۰-۲۰", price: "۳۲۰,۰۰۰ تومان کیسه", icon: "🌾", desc: "کیفیت عالی", contact: "agro@seed.ir", wallet: "" }
-        ],
-        "آهن": [
-            { title: "تیرآهن ۱۴ ذوب آهن", price: "۳۵,۰۰۰ تومان کیلو", icon: "🔩", desc: "بارگیری از تهران", contact: "steel@example.com", wallet: "" },
-            { title: "ورق سیاه ۲ میلیمتر", price: "۴۲,۰۰۰ تومان", icon: "📄", desc: "موجودی بالا", contact: "metal@supplier.ir", wallet: "" }
-        ],
-        "ارز": [
-            { title: "بسته ۱۰۰۰ درخواست API Horizon", price: "۰.۰۵ ETH", icon: "₿", desc: "داده لحظه‌ای بلاکچین", contact: "api@beaconchain.us", wallet: "0x4E94F10F0a34a0DF229e68d5902644046258D678" },
-            { title: "فروش بیت‌کوین (BTC)", price: "۶۲,۰۰۰ دلار", icon: "₿", desc: "توافقی", contact: "@btcseller", wallet: "0x..." }
-        ],
-        "فلزات": [
-            { title: "شمش طلا ۱۰۰ گرمی", price: "۲۵ میلیون تومان", icon: "🥇", desc: "عیار ۲۴", contact: "gold@exchange.ir", wallet: "" },
-            { title: "نقره صنعتی (کاتد)", price: "۴۰۰,۰۰۰ تومان کیلو", icon: "🥈", desc: "۵ کیلویی", contact: "silver@metal.com", wallet: "" }
-        ],
-        "دیجیتال": [
-            { title: "قالب فروشگاهی React", price: "۲.۵ میلیون تومان", icon: "🖥️", desc: "پاسخگو، مدرن", contact: "template@digital.ir", wallet: "0x..." },
-            { title: "دوره تحلیل تکنیکال", price: "۱.۲ میلیون تومان", icon: "📘", desc: "پشتیبانی ۳ ماهه", contact: "course@academy.com", wallet: "" }
-        ]
-    };
-
-    // ۵ اپ برتر
+    // ========== DATA for sections (unchanged but functional) ==========
     const topApps = [
         { name: "🥇 Etherscan", desc: "پیشگام کاوشگر اتریوم", url: "https://etherscan.io" },
         { name: "🥈 Dune Analytics", desc: "تحلیل داده‌های بلاکچین با SQL", url: "https://dune.com" },
         { name: "🥉 Beaconchain Horizon", desc: "رتبه ۳ جهان + امنیت ۱۰/۱۰", url: "https://beaconchain.us" },
         { name: "4️⃣ Chainlink", desc: "اراکل‌های غیرمتمرکز", url: "https://chain.link" },
-        { name: "5️⃣ Defi Llama", desc: "آمار دیفای", url: "https://defillama.com" }
+        { name: "5️⃣ Defi Llama", desc: "آمار دیفای و TVL", url: "https://defillama.com" }
     ];
-
-    const newsList = [
-        { title: "قیمت طلا و سکه امروز افزایش یافت", summary: "هر گرم طلای ۱۸ عیار ۳,۴۵۰,۰۰۰ تومان", source: "اقتصاد آنلاین" },
-        { title: "اتریوم از سطح ۱۸۰۰ دلار عبور کرد", summary: "تحلیلگران پیش‌بینی رشد بیشتر", source: "کوین دسک" },
-        { title: "بازار مسکن تهران؛ رکود نسبی", summary: "کاهش معاملات در شهریور", source: "دنیای اقتصاد" },
-        { title: "ایران و چین توافق رمزریال", summary: "تبادل کالا بدون دلار", source: "تسنیم" }
+    const exchangeNews = [
+        { name: "Binance", news: "راه‌اندازی معاملات آتی بدون کارمزد تا پایان سال", url: "https://binance.com" },
+        { name: "Coinbase", news: "پشتیبانی از شبکه لایت‌نینگ", url: "https://coinbase.com" },
+        { name: "Kraken", news: "کاهش کارمزد معاملات برای کاربران اروپایی", url: "https://kraken.com" },
+        { name: "KuCoin", news: "اضافه شدن ۵ رمزارز جدید", url: "https://kucoin.com" },
+        { name: "Bybit", news: "رکورد حجم معاملات روزانه ۵۰ میلیارد دلاری", url: "https://bybit.com" },
+        { name: "OKX", news: "همکاری با بانک‌های خاورمیانه برای رمزریال", url: "https://okx.com" }
     ];
+    const newsItems = [
+        { title: "قیمت طلا امروز", summary: "هر گرم طلای ۱۸ عیار ۳,۵۳۰,۰۰۰ تومان", source: "اقتصاد نیوز", searchQuery: "قیمت طلا امروز" },
+        { title: "اتریوم به ۱۹۲۰ دلار رسید", summary: "رشد ۸٪ در ۲۴ ساعت", source: "کوین دسک", searchQuery: "اتریوم قیمت ۲۰۲۵" },
+        { title: "توافق ایران و روسیه با رمزریال", summary: "اولین تراکنش آزمایشی انجام شد", source: "تسنیم", searchQuery: "رمزریال ایران روسیه" },
+        { title: "قیمت دلار ۶۲,۵۰۰ تومان", summary: "نرخ رسمی بانک مرکزی", source: "دنیای اقتصاد", searchQuery: "قیمت دلار امروز" },
+        { title: "بیت‌کوین به ۶۲ هزار دلار بازگشت", summary: "ETF ها رشد ۳ درصدی", source: "کوین تلگراف", searchQuery: "Bitcoin price news" }
+    ];
+    const universities = [
+        { name: "Harvard University", country: "USA", url: "https://harvard.edu" },
+        { name: "MIT", country: "USA", url: "https://mit.edu" },
+        { name: "Stanford", country: "USA", url: "https://stanford.edu" },
+        { name: "دانشگاه تهران", country: "Iran", url: "https://ut.ac.ir" },
+        { name: "دانشگاه صنعتی شریف", country: "Iran", url: "https://sharif.edu" },
+        { name: "دانشگاه فردوسی مشهد", country: "Iran", url: "https://um.ac.ir" }
+    ];
+    const videos = [
+        { embed: "https://www.youtube.com/embed/6YpA1hYwVvQ?si=1", title: "تحلیل بیت‌کوین" },
+        { embed: "https://www.youtube.com/embed/7sE5jXwKp8k?si=2", title: "آینده اتریوم" },
+        { embed: "https://www.youtube.com/embed/3MkBJZg9XZA?si=3", title: "نوسانات طلا و دلار" }
+    ];
+    const productsDB = {
+        "استخدام": [{ title: "توسعه‌دهنده ارشد بک‌اند Go", price: "۵۰-۸۰ میلیون تومان", icon: "💼", desc: "دورکاری", wallet: "" }],
+        "مسکن": [{ title: "آپارتمان ۲۲۰ متری تهران", price: "۲۸ میلیارد تومان", icon: "🏠", desc: "برج دوقلو", wallet: "" }],
+        "پوشاک": [{ title: "مانتو کتان زنانه", price: "۸۹۰,۰۰۰ تومان", icon: "👗", desc: "چند سایز", wallet: "" }],
+        "دارویی": [{ title: "مکمل کلاژن", price: "۱,۲۰۰,۰۰۰ تومان", icon: "💊", desc: "اصل", wallet: "" }],
+        "کشاورزی": [{ title: "کود هیومیک اسید", price: "۴۵۰,۰۰۰ تومان", icon: "🌾", desc: "ارگانیک", wallet: "" }],
+        "آهن": [{ title: "میلگرد ۱۴", price: "۳۸,۰۰۰ تومان کیلو", icon: "🔩", desc: "ذوب آهن", wallet: "" }],
+        "ارز": [{ title: "API Horizon 10k", price: "۰.۰۸ ETH", icon: "₿", desc: "داده لحظه‌ای", wallet: "0x4E94F10F0a34a0DF229e68d5902644046258D678" }],
+        "فلزات": [{ title: "شمش طلا ۱۰۰ گرم", price: "۲۸ میلیون تومان", icon: "🥇", desc: "عیار ۲۴", wallet: "" }],
+        "دیجیتال": [{ title: "پکیج هوش مصنوعی", price: "۲,۸۰۰,۰۰۰ تومان", icon: "🤖", desc: "۱۰ جلسه", wallet: "" }]
+    };
 
-    let currentFilter = "all";
-    let currentSearch = "";
-
+    let currentFilter = "all", currentSearch = "";
+    function renderTopApps() { document.getElementById('topAppsGrid').innerHTML = topApps.map(a => `<div class="app-card"><div class="app-icon">🏆</div><div class="app-name">${a.name}</div><div style="font-size:0.7rem;">${a.desc}</div><a href="${a.url}" target="_blank" class="btn-small">مشاهده</a></div>`).join(''); }
+    function renderExchangesNews() { document.getElementById('exchangesNewsGrid').innerHTML = exchangeNews.map(e => `<div class="exchange-news-card"><div class="exchange-name">${e.name}</div><div class="exchange-news">📢 ${e.news}</div><a href="${e.url}" target="_blank" class="exchange-link">مراجعه به صرافی →</a></div>`).join(''); }
+    function renderNewsWithLinks() { document.getElementById('newsWithLinks').innerHTML = newsItems.map(n => `<div class="news-card"><div class="news-title"><a href="https://www.google.com/search?q=${encodeURIComponent(n.searchQuery)}" target="_blank" style="color:#2563eb;">🔍 ${n.title}</a></div><p style="font-size:0.75rem;">${n.summary} - <small>${n.source}</small></p></div>`).join(''); }
+    function renderUniversities() { document.getElementById('univGrid').innerHTML = universities.map(u => `<div class="univ-card"><div class="univ-icon">🎓</div><div class="univ-name">${u.name}</div><div style="font-size:0.7rem;">${u.country}</div><a href="${u.url}" target="_blank" class="btn-small">بازدید</a></div>`).join(''); }
+    function renderVideos() { document.getElementById('videosGrid').innerHTML = videos.map(v => `<div class="video-card"><iframe src="${v.embed}" title="${v.title}" allowfullscreen></iframe><div style="font-size:0.7rem; margin-top:0.3rem;">${v.title}</div></div>`).join(''); }
     function renderProducts() {
-        const container = document.getElementById('productsSection');
-        if (!container) return;
-        container.innerHTML = "";
-        let hasAny = false;
-        for (const [category, items] of Object.entries(productsDB)) {
-            if (currentFilter !== "all" && currentFilter !== category) continue;
-            let filtered = items;
-            if (currentSearch.trim() !== "") {
-                const s = currentSearch.toLowerCase();
-                filtered = items.filter(it => it.title.toLowerCase().includes(s) || it.desc.toLowerCase().includes(s));
-            }
-            if (filtered.length === 0) continue;
-            hasAny = true;
-            const sectionDiv = document.createElement('div');
-            sectionDiv.className = 'industry-section';
-            sectionDiv.innerHTML = `<div class="section-title" style="margin-top:0.5rem;">📌 ${category}</div><div class="products-grid" id="grid-${category}"></div>`;
-            container.appendChild(sectionDiv);
-            const grid = sectionDiv.querySelector(`.products-grid`);
-            grid.innerHTML = filtered.map(item => `
-                <div class="card">
-                    <div class="card-img">${item.icon}</div>
-                    <div class="card-content">
-                        <div class="card-title">${escapeHtml(item.title)}</div>
-                        <div class="card-price">💰 ${escapeHtml(item.price)}</div>
-                        <div class="card-desc" style="font-size:0.7rem; margin-bottom:0.5rem;">${escapeHtml(item.desc.substring(0, 80))}</div>
-                        <button class="btn btn-buy" data-wallet="${escapeHtml(item.wallet)}" data-title="${escapeHtml(item.title)}" data-price="${escapeHtml(item.price)}" data-contact="${escapeHtml(item.contact)}">
-                            🛒 خرید / تماس
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+        const container = document.getElementById('productsSection'); if(!container) return;
+        container.innerHTML = ""; let hasAny = false;
+        for (const [cat, items] of Object.entries(productsDB)) {
+            if (currentFilter !== "all" && currentFilter !== cat) continue;
+            let filtered = items; if(currentSearch.trim()) filtered = items.filter(i => i.title.includes(currentSearch));
+            if(!filtered.length) continue; hasAny=true;
+            const section = document.createElement('div'); section.innerHTML = `<div class="section-title" style="margin-top:1rem;">📌 ${cat}</div><div class="products-grid" id="grid-${cat}"></div>`;
+            container.appendChild(section); const grid = section.querySelector('.products-grid');
+            grid.innerHTML = filtered.map(item => `<div class="card"><div class="card-img">${item.icon}</div><div class="card-content"><div class="card-title">${item.title}</div><div class="card-price">💰 ${item.price}</div><button class="btn btn-buy" data-wallet="${item.wallet}" data-title="${item.title}">🛒 خرید / تماس</button></div></div>`).join('');
         }
-        if (!hasAny) {
-            container.innerHTML = `<div class="no-results"><i class="fas fa-store-slash"></i> هیچ آگهی‌ای با این دسته/جستجو یافت نشد.</div>`;
-        }
-        attachBuyEvents();
+        if(!hasAny) container.innerHTML = `<div style="text-align:center; padding:2rem;">هیچ آگهی‌ای یافت نشد</div>`;
+        document.querySelectorAll('.btn-buy').forEach(btn => btn.onclick = () => alert(`خرید محصول "${btn.dataset.title}"\nکیف پول: ${btn.dataset.wallet || 'در تماس اعلام شود'}`));
     }
-
-    function attachBuyEvents() {
-        document.querySelectorAll('.btn-buy').forEach(btn => {
-            btn.onclick = () => {
-                const wallet = btn.dataset.wallet;
-                const title = btn.dataset.title;
-                const price = btn.dataset.price;
-                const contact = btn.dataset.contact;
-                let msg = `🛒 ${title}\n💰 قیمت: ${price}\n\n`;
-                if (wallet && wallet.trim()) msg += `💳 کیف پول فروشنده: ${wallet}\n`;
-                if (contact && contact.trim()) msg += `📞 تماس: ${contact}\n`;
-                msg += `\nلطفاً برای خرید با فروشنده هماهنگ کنید.`;
-                alert(msg);
-            };
-        });
+    function attachEvents() {
+        document.getElementById('searchBtn')?.addEventListener('click', () => { currentSearch = document.getElementById('searchInput').value; renderProducts(); });
+        document.querySelectorAll('.filter-chip').forEach(chip => chip.addEventListener('click', () => { document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active')); chip.classList.add('active'); currentFilter = chip.dataset.cat; renderProducts(); }));
+        document.getElementById('jobsIconBtn')?.addEventListener('click', () => { document.getElementById('categoriesContent').classList.add('show'); currentFilter="استخدام"; document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active')); const target=Array.from(document.querySelectorAll('.filter-chip')).find(c=>c.dataset.cat==="استخدام"); if(target) target.classList.add('active'); renderProducts(); setTimeout(()=>document.getElementById('categoriesContent').scrollIntoView({behavior:'smooth'}),100); });
+        document.getElementById('toggleCategoriesBtn')?.addEventListener('click', () => document.getElementById('categoriesContent').classList.toggle('show'));
+        document.getElementById('brokerBtn')?.addEventListener('click', () => alert("درخواست کارگزاری ثبت شد. تیم Horizon تماس می‌گیرد."));
+        document.getElementById('vipLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("باشگاه VIP: معافیت مالیاتی ۵۰٪، مشاوره صادرات، تخفیف کارمزد"); });
+        document.getElementById('careersLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("مشاغل Horizon Hub: موقعیت‌های باز در حوزه توسعه، بازاریابی و پشتیبانی. رزومه خود را به careers@beaconchain.us ارسال کنید."); });
     }
-
-    function renderTopApps() {
-        const container = document.getElementById('topAppsGrid');
-        if (container) {
-            container.innerHTML = topApps.map(app => `
-                <div class="card" style="text-align:center;">
-                    <div class="card-img" style="font-size:1.8rem;">🏆</div>
-                    <div class="card-content">
-                        <div class="card-title">${escapeHtml(app.name)}</div>
-                        <div style="font-size:0.7rem;">${escapeHtml(app.desc)}</div>
-                        <a href="${app.url}" target="_blank" class="btn" style="display:inline-block; text-decoration:none; margin-top:0.5rem; background:#2563eb;">مشاهده</a>
-                    </div>
-                </div>
-            `).join('');
-        }
+    async function fetchPrices() {
+        try { const r = await fetch('https://api.exchangerate.host/latest?base=USD&symbols=IRR'); if(r.ok){ const d=await r.json(); const usd=Math.round(d.rates.IRR); document.getElementById('usdPrice').innerText=usd.toLocaleString(); document.getElementById('goldPrice').innerText=Math.round(usd*0.025).toLocaleString(); } } catch(e){}
+        try { const btc=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'); const eth=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd'); if(btc.ok){const d=await btc.json(); document.getElementById('btcPrice').innerText=Math.round(d.bitcoin.usd).toLocaleString();} if(eth.ok){const d=await eth.json(); document.getElementById('ethPrice').innerText=Math.round(d.ethereum.usd).toLocaleString();} } catch(e){}
     }
-
-    function renderNews() {
-        const container = document.getElementById('newsGrid');
-        if (container) {
-            container.innerHTML = newsList.map(n => `
-                <div class="news-card">
-                    <h4>📰 ${escapeHtml(n.title)}</h4>
-                    <p style="font-size:0.75rem;">${escapeHtml(n.summary)}</p>
-                    <small>${escapeHtml(n.source)}</small>
-                </div>
-            `).join('');
-        }
-    }
-
-    function escapeHtml(str) { return str ? str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;': '&gt;') : ''; }
-
-    // قیمت‌های واقعی
-    async function fetchRealPrices() {
-        try {
-            const res = await fetch('https://api.exchangerate.host/latest?base=USD&symbols=IRR');
-            if (res.ok) {
-                const data = await res.json();
-                const usd = Math.round(data.rates.IRR);
-                document.getElementById('usdPrice').innerText = usd.toLocaleString();
-                document.getElementById('goldPrice').innerText = Math.round(usd * 0.025).toLocaleString();
-            } else throw new Error();
-        } catch(e) {
-            document.getElementById('usdPrice').innerText = "62,500";
-            document.getElementById('goldPrice').innerText = "3,450,000";
-        }
-        try {
-            const btc = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
-            const eth = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
-            if (btc.ok) { const d = await btc.json(); document.getElementById('btcPrice').innerText = Math.round(d.bitcoin.usd).toLocaleString(); }
-            if (eth.ok) { const d = await eth.json(); document.getElementById('ethPrice').innerText = Math.round(d.ethereum.usd).toLocaleString(); }
-        } catch(e) {
-            document.getElementById('btcPrice').innerText = "60,000";
-            document.getElementById('ethPrice').innerText = "1,850";
-        }
-    }
-
-    document.getElementById('searchBtn')?.addEventListener('click', () => {
-        currentSearch = document.getElementById('searchInput').value;
-        renderProducts();
-    });
-    document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') { currentSearch = e.target.value; renderProducts(); }
-    });
-    document.querySelectorAll('.filter-chip').forEach(chip => {
-        chip.addEventListener('click', () => {
-            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            currentFilter = chip.dataset.cat;
-            renderProducts();
-        });
-    });
-
-    fetchRealPrices();
-    renderProducts();
-    renderTopApps();
-    renderNews();
-
-    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});
+    function createParticles() { const c=document.getElementById('particlesContainer'); if(!c) return; for(let i=0;i<30;i++){ const p=document.createElement('div'); p.classList.add('particle'); const s=Math.random()*6+2; p.style.width=s+'px'; p.style.height=s+'px'; p.style.left=Math.random()*100+'%'; p.style.animationDuration=Math.random()*5+3+'s'; p.style.animationDelay=Math.random()*5+'s'; p.style.background=`rgba(56,189,248,${Math.random()*0.4+0.2})`; c.appendChild(p); } }
+    fetchPrices(); setInterval(fetchPrices,120000);
+    renderTopApps(); renderExchangesNews(); renderNewsWithLinks(); renderUniversities(); renderVideos(); renderProducts(); attachEvents(); createParticles();
 </script>
 </body>
 </html>
