@@ -1,0 +1,60 @@
+# GitHub Issue Template for Horizon Hub Ad Submission
+# Users fill out this form to submit a job, digital product, or freelance service.
+# After approval (label "ad-approved"), the GitHub Action will process it.
+
+name: 📢 Submit Ad to Horizon Hub
+description: Sellers – post your products, services, or job offers here. It will appear on the marketplace once approved.
+title: "[Ad] "
+labels: ["ad-pending"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Ad Title
+      placeholder: "e.g., Professional React Template | Backend Development Services"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Job / Hiring
+        - Digital Product
+        - Freelance Service
+    validations:
+      required: true
+
+  - type: input
+    id: price
+    attributes:
+      label: Price (USD / ETH / Negotiable)
+      placeholder: "e.g., 250,000 Toman | 0.05 ETH | Negotiable"
+    validations:
+      required: true
+
+  - type: input
+    id: seller_wallet
+    attributes:
+      label: Payment Wallet Address (ETH / USDC / BNB)
+      description: Buyers will send payment directly to this address. Use a wallet you control.
+      placeholder: "0x4E94F10F0a34a0DF229e68d5902644046258D678"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Full Description
+      description: Explain what you offer, delivery method, terms, and any other relevant details.
+      placeholder: "Describe your product or service clearly so buyers understand what they get."
+    validations:
+      required: true
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact (optional)
+      description: Email, Telegram, or other contact method (will be shown publicly).
+      placeholder: "email@example.com | @telegram_handle"
