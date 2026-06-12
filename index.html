@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Horizon Hub – رتبه ۳ جهانی بلاکچین | بازارچه غیرمتمرکز ایران | خدمات پیشرفته و شبکه اجتماعی">
-    <title>Horizon Hub | رتبه ۳ بلاکچین | بازارچه ایران</title>
+    <meta name="description" content="Horizon Hub – World #3 Blockchain Monitor | Decentralized Iranian Marketplace | Real-time prices, exchange news, jobs, products">
+    <title>Horizon Hub | World #3 Blockchain | Iranian Marketplace</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Google Translate widget -->
+    <!-- Google Translate widget (optional, keep for multi-language) -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'fa',
-                includedLanguages: 'en,tr,ar,de,fr,es,ru,zh-CN,ja,ko',
+                pageLanguage: 'en',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 autoDisplay: false
             }, 'google_translate_element');
@@ -97,7 +96,7 @@
         }
         .price-ticker span:first-child { font-weight: bold; color: #2563eb; }
 
-        /* hero animation (shortened) */
+        /* hero animation */
         .hero-animation {
             background: linear-gradient(135deg, #0f172a, #1e293b);
             border-radius: 1.5rem;
@@ -143,8 +142,8 @@
             font-size: 1.3rem;
             font-weight: 700;
             margin: 1.5rem 0 1rem;
-            border-right: 4px solid #2563eb;
-            padding-right: 0.8rem;
+            border-left: 4px solid #2563eb;
+            padding-left: 0.8rem;
         }
         .apps-grid, .exchanges-grid, .univ-grid {
             display: grid;
@@ -170,7 +169,7 @@
             background: #f8fafc;
             border-radius: 1rem;
             padding: 0.8rem;
-            border-right: 3px solid #2563eb;
+            border-left: 3px solid #2563eb;
             margin-bottom: 1rem;
         }
         .video-grid {
@@ -228,7 +227,7 @@
         .btn { background: #1f2937; border: none; padding: 0.3rem; border-radius: 2rem; color: white; font-size: 0.7rem; width: 100%; cursor: pointer; }
         .btn-buy { background: #f59e0b; color: #1f2937; font-weight: bold; }
 
-        /* footer (متنوع با دیتای اختصاصی) */
+        /* main footer */
         .main-footer {
             background: #111827;
             color: #9ca3af;
@@ -331,7 +330,7 @@
 </head>
 <body>
 
-<!-- flag marquee -->
+<!-- Flag marquee -->
 <div class="flag-marquee">
     <div class="flag-track">
         <span>🇮🇷</span> <span>🇺🇸</span> <span>🇬🇧</span> <span>🇩🇪</span> <span>🇫🇷</span> <span>🇨🇦</span> <span>🇯🇵</span> <span>🇨🇳</span> <span>🇷🇺</span> <span>🇦🇪</span> <span>🇹🇷</span> <span>🇮🇳</span> <span>🇰🇷</span> <span>🇧🇷</span> <span>🇦🇺</span> <span>🇮🇹</span> <span>🇪🇸</span> <span>🇳🇱</span> <span>🇸🇪</span> <span>🇨🇭</span> <span>🇦🇹</span> <span>🇧🇪</span> <span>🇵🇱</span> <span>🇿🇦</span> <span>🇲🇽</span> <span>🇮🇩</span> <span>🇸🇦</span> <span>🇰🇼</span> <span>🇶🇦</span> <span>🇴🇲</span> <span>🇵🇰</span> <span>🇪🇬</span> <span>🇳🇬</span> <span>🇮🇪</span> <span>🇳🇴</span> <span>🇫🇮</span> <span>🇩🇰</span> <span>🇮🇸</span>
@@ -345,7 +344,7 @@
             <span class="flag-icon">🇮🇷</span>
             <div class="logo">
                 <h1>Horizon Hub</h1>
-                <span class="rank-badge">🏆 رتبه ۳ جهانی بلاکچین</span>
+                <span class="rank-badge">🏆 World #3 Blockchain</span>
             </div>
             <div id="google_translate_element"></div>
             <button id="jobsIconBtn" class="job-icon-btn"><i class="fas fa-briefcase"></i></button>
@@ -353,8 +352,8 @@
         <div class="price-ticker" id="priceTicker">
             <div><span>BTC:</span> <span id="btcPrice">--</span>$</div>
             <div><span>ETH:</span> <span id="ethPrice">--</span>$</div>
-            <div><span>طلا (گرم):</span> <span id="goldPrice">--</span> تومان</div>
-            <div><span>دلار:</span> <span id="usdPrice">--</span> تومان</div>
+            <div><span>Gold (g):</span> <span id="goldPrice">--</span> IRR</div>
+            <div><span>USD:</span> <span id="usdPrice">--</span> IRR</div>
         </div>
     </div>
 </div>
@@ -364,121 +363,117 @@
     <div class="hero-animation">
         <div class="particles-bg" id="particlesContainer"></div>
         <div class="hero-content">
-            <div class="hero-title">🚀 Horizon Hub به جهان وارد شد! 🌍</div>
-            <div class="hero-sub" style="color:#cbd5e1;">بازارچه غیرمتمرکز ایران · رتبه ۳ جهان · امنیت ۱۰/۱۰</div>
+            <div class="hero-title">🚀 Horizon Hub goes global! 🌍</div>
+            <div class="hero-sub" style="color:#cbd5e1;">Decentralized Iranian marketplace · World #3 · Security 10/10</div>
         </div>
     </div>
 
-    <!-- VIP Loan & Training -->
-    <div class="vip-loan-card" style="background: linear-gradient(135deg, #fef3c7, #fffbeb); border-radius:1rem; padding:1.2rem; margin:1rem 0; border-right:4px solid #f59e0b;">
+    <!-- VIP Loan & Training (English) -->
+    <div class="vip-loan-card" style="background: linear-gradient(135deg, #fef3c7, #fffbeb); border-radius:1rem; padding:1.2rem; margin:1rem 0; border-left:4px solid #f59e0b;">
         <div style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
             <i class="fas fa-graduation-cap" style="font-size: 2rem; color:#f59e0b;"></i>
-            <div><strong style="font-size: 1.1rem;">🎓 آموزش تخصصی کسب‌وکار با دانشگاه فردوسی مشهد</strong><br>
-            دوره‌های مدیریت بازار، تجارت بین‌الملل، بازاریابی دیجیتال و بلاکچین با گواهی رسمی.<br>
-            <span style="font-size:0.8rem;">✨ پس از اتمام دوره، امکان دریافت <strong>وام قرض‌الحسنه توسط مجموعه Horizon</strong> تا ۵۰۰ میلیون تومان.</span></div>
+            <div><strong style="font-size: 1.1rem;">🎓 Business Training with Ferdowsi University of Mashhad</strong><br>
+            Market management, international trade, digital marketing & blockchain – official certificate.<br>
+            <span style="font-size:0.8rem;">✨ After completion: <strong>interest‑free loans up to $150,000</strong> from Horizon Hub for your business.</span></div>
         </div>
     </div>
 
     <!-- 5 top blockchain apps -->
-    <div class="section-title">🏆 ۵ اپ برتر بلاکچین جهان</div>
+    <div class="section-title">🏆 Top 5 Blockchain Apps (Global)</div>
     <div class="apps-grid" id="topAppsGrid"></div>
 
-    <!-- Videos -->
-    <div class="section-title">🎬 ویدئوهای رویدادهای بازار ارز و رمز</div>
+    <!-- Videos about crypto market -->
+    <div class="section-title">🎬 Crypto & Market Events</div>
     <div class="video-grid" id="videosGrid"></div>
 
-    <!-- Exchanges news -->
-    <div class="section-title">🏦 صرافی‌های جهانی | اخبار جدید و لینک مستقیم</div>
+    <!-- Exchange news -->
+    <div class="section-title">🏦 Global Exchanges – Latest News & Direct Links</div>
     <div class="exchanges-grid" id="exchangesNewsGrid"></div>
 
-    <!-- News with search -->
-    <div class="section-title">📰 اخبار اقتصادی (جهانی + ایران) | جستجو در گوگل</div>
+    <!-- Economic news with Google search -->
+    <div class="section-title">📰 Economic News (Iran & World) | Search on Google</div>
     <div id="newsWithLinks"></div>
 
-    <!-- Universities -->
-    <div class="section-title">🎓 دانشگاه‌های برتر جهان و ایران</div>
+    <!-- Top universities -->
+    <div class="section-title">🎓 Top Universities – World & Iran</div>
     <div class="univ-grid" id="univGrid"></div>
 
     <!-- VIP & Broker info -->
     <div class="info-row" style="display:flex; flex-wrap:wrap; gap:1rem; margin:1rem 0;">
         <div class="info-card" style="flex:1; background:white; border-radius:1rem; padding:1rem; border:1px solid #eef2ff;">
-            <i class="fas fa-crown" style="color:#f59e0b;"></i> <strong>باشگاه ویژه صنعتگران</strong><br>
-            معافیت مالیاتی ۵۰٪ برای صاحبان صنایع.<br>
-            <a href="#" id="vipLink" style="color:#2563eb; font-size:0.7rem;">جزئیات بیشتر</a>
+            <i class="fas fa-crown" style="color:#f59e0b;"></i> <strong>VIP Industry Club</strong><br>
+            50% tax exemption for industry owners (real estate, textile, pharma, agriculture, steel).<br>
+            <a href="#" id="vipLink" style="color:#2563eb; font-size:0.7rem;">More details</a>
         </div>
         <div class="info-card" style="flex:1; background:white; border-radius:1rem; padding:1rem; border:1px solid #eef2ff;">
-            <i class="fas fa-chalkboard-user"></i> <strong>کارگزاران رسمی Horizon</strong><br>
-            پس از گذراندن دوره‌های دانشگاه فردوسی و تأیید صلاحیت، کارگزار شوید.<br>
-            <button id="brokerBtn" style="background:#2563eb; border:none; padding:0.2rem 1rem; border-radius:2rem; color:white;">درخواست کارگزاری</button>
+            <i class="fas fa-chalkboard-user"></i> <strong>Official Horizon Brokers</strong><br>
+            After completing Ferdowsi University training and approval, become a broker.<br>
+            <button id="brokerBtn" style="background:#2563eb; border:none; padding:0.2rem 1rem; border-radius:2rem; color:white;">Apply for brokerage</button>
         </div>
     </div>
 
-    <!-- Jobs & Products collapsible -->
+    <!-- Collapsible categories (jobs & products) -->
     <div class="categories-wrapper">
-        <button id="toggleCategoriesBtn" class="toggle-categories"><i class="fas fa-bars"></i> دسته‌بندی مشاغل و محصولات</button>
+        <button id="toggleCategoriesBtn" class="toggle-categories"><i class="fas fa-bars"></i> Jobs & Products Categories</button>
         <div id="categoriesContent" class="categories-content">
             <div class="filter-row" id="filterRow">
-                <div class="filter-chip active" data-cat="all">همه</div>
-                <div class="filter-chip" data-cat="استخدام">💼 استخدام</div>
-                <div class="filter-chip" data-cat="مسکن">🏠 مسکن</div>
-                <div class="filter-chip" data-cat="پوشاک">👕 پوشاک</div>
-                <div class="filter-chip" data-cat="دارویی">💊 دارویی</div>
-                <div class="filter-chip" data-cat="کشاورزی">🌾 کشاورزی</div>
-                <div class="filter-chip" data-cat="آهن">⚙️ آهن‌آلات</div>
-                <div class="filter-chip" data-cat="ارز">₿ ارز و رمز</div>
-                <div class="filter-chip" data-cat="فلزات">🥇 فلزات</div>
-                <div class="filter-chip" data-cat="دیجیتال">📀 دیجیتال</div>
+                <div class="filter-chip active" data-cat="all">All</div>
+                <div class="filter-chip" data-cat="Jobs">💼 Jobs</div>
+                <div class="filter-chip" data-cat="Real Estate">🏠 Real Estate</div>
+                <div class="filter-chip" data-cat="Clothing">👕 Clothing</div>
+                <div class="filter-chip" data-cat="Pharma">💊 Pharma</div>
+                <div class="filter-chip" data-cat="Agriculture">🌾 Agriculture</div>
+                <div class="filter-chip" data-cat="Steel">⚙️ Steel</div>
+                <div class="filter-chip" data-cat="Crypto">₿ Crypto</div>
+                <div class="filter-chip" data-cat="Metals">🥇 Metals</div>
+                <div class="filter-chip" data-cat="Digital">📀 Digital</div>
             </div>
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="جستجو در آگهی‌ها...">
-                <button id="searchBtn"><i class="fas fa-search"></i> جستجو</button>
+                <input type="text" id="searchInput" placeholder="Search ads...">
+                <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
             </div>
             <div id="productsSection"></div>
         </div>
     </div>
 </div>
 
-<!-- ========== NEW FOOTER with all requested sections ========== -->
+<!-- Main footer with all sections -->
 <div class="main-footer">
     <div class="container">
         <div class="footer-grid">
-            <!-- Company -->
             <div class="footer-col">
-                <h4>شرکت</h4>
+                <h4>Company</h4>
                 <ul>
-                    <li><a href="#">درباره ما</a></li>
-                    <li><a href="#">برند Assets</a></li>
-                    <li><a href="#">تماس با ما</a></li>
-                    <li><a href="#" id="careersLink">مشاغل · استخدام</a></li>
-                    <li><a href="#">قوانین و حریم خصوصی</a></li>
-                    <li><a href="#">برنامه پاداش باگ (Bug Bounty)</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Brand Assets</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#" id="careersLink">Careers – We're Hiring!</a></li>
+                    <li><a href="#">Terms & Privacy</a></li>
+                    <li><a href="#">Bug Bounty</a></li>
                 </ul>
             </div>
-            <!-- Community -->
             <div class="footer-col">
-                <h4>جامعه</h4>
+                <h4>Community</h4>
                 <ul>
-                    <li><a href="#">مستندات API</a></li>
-                    <li><a href="#">وضعیت شبکه</a></li>
-                    <li><a href="#">خبرنامه</a></li>
-                    <li><a href="#">دانشنامه</a></li>
-                    <li><a href="#">درخواست پشتیبانی</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="#">Network Status</a></li>
+                    <li><a href="#">Newsletters</a></li>
+                    <li><a href="#">Knowledge Base</a></li>
+                    <li><a href="#">Support Request</a></li>
                 </ul>
             </div>
-            <!-- Products & Services -->
             <div class="footer-col">
-                <h4>محصولات و خدمات</h4>
+                <h4>Products & Services</h4>
                 <ul>
                     <li><a href="#">Horizon Premium</a></li>
-                    <li><a href="#">تبلیغات در Horizon</a></li>
+                    <li><a href="#">Advertise</a></li>
                     <li><a href="#">Explorer as a Service (EaaS)</a></li>
-                    <li><a href="#">پلن‌های API</a></li>
-                    <li><a href="#">پشتیبانی اولویت‌دار</a></li>
+                    <li><a href="#">API Plans</a></li>
+                    <li><a href="#">Priority Support</a></li>
                 </ul>
             </div>
-            <!-- Social Networks -->
             <div class="footer-col">
-                <h4>شبکه‌های اجتماعی</h4>
+                <h4>Social Networks</h4>
                 <div class="social-links">
                     <a href="https://discord.gg/beaconchain" target="_blank"><i class="fab fa-discord"></i></a>
                     <a href="https://github.com/beaconchain-horizon" target="_blank"><i class="fab fa-github"></i></a>
@@ -487,102 +482,170 @@
                     <a href="https://instagram.com/beaconchain" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://twitter.com/beaconchain" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a href="https://facebook.com/beaconchain" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wintor.com/beaconchain" target="_blank"><i class="fas fa-globe"></i> وینتو</a>
+                    <a href="https://wintor.com/beaconchain" target="_blank"><i class="fas fa-globe"></i> Wintor</a>
                 </div>
             </div>
         </div>
         <div class="copyright">
-            <div>© ۱۴۰۵ Horizon Hub – بازارچه غیرمتمرکز ایران | رتبه ۳ جهان در مانیتورینگ بلاکچین</div>
-            <div class="founder-name" style="margin-top:0.3rem;">✨ بنیان‌گذار و خالق مجموعه: مهدی آملی مقدم ✨</div>
+            <div>© 2025 Horizon Hub – Decentralized Iranian Marketplace | World #3 Blockchain Monitor</div>
+            <div class="founder-name" style="margin-top:0.3rem;">✨ Founder & Creator: Mahdi Amolimoghaddam ✨</div>
         </div>
     </div>
 </div>
 
 <script>
-    // ========== DATA for sections (unchanged but functional) ==========
+    // ======================= DATA (English) =======================
     const topApps = [
-        { name: "🥇 Etherscan", desc: "پیشگام کاوشگر اتریوم", url: "https://etherscan.io" },
-        { name: "🥈 Dune Analytics", desc: "تحلیل داده‌های بلاکچین با SQL", url: "https://dune.com" },
-        { name: "🥉 Beaconchain Horizon", desc: "رتبه ۳ جهان + امنیت ۱۰/۱۰", url: "https://beaconchain.us" },
-        { name: "4️⃣ Chainlink", desc: "اراکل‌های غیرمتمرکز", url: "https://chain.link" },
-        { name: "5️⃣ Defi Llama", desc: "آمار دیفای و TVL", url: "https://defillama.com" }
+        { name: "🥇 Etherscan", desc: "Pioneer Ethereum explorer", url: "https://etherscan.io" },
+        { name: "🥈 Dune Analytics", desc: "Blockchain data analytics with SQL", url: "https://dune.com" },
+        { name: "🥉 Beaconchain Horizon", desc: "World #3 + Security 10/10", url: "https://beaconchain.us" },
+        { name: "4️⃣ Chainlink", desc: "Decentralized oracles", url: "https://chain.link" },
+        { name: "5️⃣ Defi Llama", desc: "DeFi TVL stats", url: "https://defillama.com" }
     ];
     const exchangeNews = [
-        { name: "Binance", news: "راه‌اندازی معاملات آتی بدون کارمزد تا پایان سال", url: "https://binance.com" },
-        { name: "Coinbase", news: "پشتیبانی از شبکه لایت‌نینگ", url: "https://coinbase.com" },
-        { name: "Kraken", news: "کاهش کارمزد معاملات برای کاربران اروپایی", url: "https://kraken.com" },
-        { name: "KuCoin", news: "اضافه شدن ۵ رمزارز جدید", url: "https://kucoin.com" },
-        { name: "Bybit", news: "رکورد حجم معاملات روزانه ۵۰ میلیارد دلاری", url: "https://bybit.com" },
-        { name: "OKX", news: "همکاری با بانک‌های خاورمیانه برای رمزریال", url: "https://okx.com" }
+        { name: "Binance", news: "Zero‑fee futures trading until end of year", url: "https://binance.com" },
+        { name: "Coinbase", news: "Lightning network integration for faster Bitcoin", url: "https://coinbase.com" },
+        { name: "Kraken", news: "Reduced fees for European traders", url: "https://kraken.com" },
+        { name: "KuCoin", news: "5 new cryptocurrencies listed", url: "https://kucoin.com" },
+        { name: "Bybit", news: "Daily trading volume record $50B", url: "https://bybit.com" },
+        { name: "OKX", news: "Partnership with Middle Eastern banks for crypto‑rial", url: "https://okx.com" }
     ];
     const newsItems = [
-        { title: "قیمت طلا امروز", summary: "هر گرم طلای ۱۸ عیار ۳,۵۳۰,۰۰۰ تومان", source: "اقتصاد نیوز", searchQuery: "قیمت طلا امروز" },
-        { title: "اتریوم به ۱۹۲۰ دلار رسید", summary: "رشد ۸٪ در ۲۴ ساعت", source: "کوین دسک", searchQuery: "اتریوم قیمت ۲۰۲۵" },
-        { title: "توافق ایران و روسیه با رمزریال", summary: "اولین تراکنش آزمایشی انجام شد", source: "تسنیم", searchQuery: "رمزریال ایران روسیه" },
-        { title: "قیمت دلار ۶۲,۵۰۰ تومان", summary: "نرخ رسمی بانک مرکزی", source: "دنیای اقتصاد", searchQuery: "قیمت دلار امروز" },
-        { title: "بیت‌کوین به ۶۲ هزار دلار بازگشت", summary: "ETF ها رشد ۳ درصدی", source: "کوین تلگراف", searchQuery: "Bitcoin price news" }
+        { title: "Gold price today", summary: "18k gold at 3,530,000 IRR per gram", source: "Economic News", searchQuery: "gold price today" },
+        { title: "Ethereum reaches $1920", summary: "8% surge in 24h", source: "CoinDesk", searchQuery: "Ethereum price 2025" },
+        { title: "Iran‑Russia trade using crypto‑rial", summary: "First test transaction completed", source: "Tasnim", searchQuery: "crypto rial Iran Russia" },
+        { title: "USD/IRR at 62,500", summary: "Central bank official rate", source: "Donya-e-Eqtesad", searchQuery: "USD to IRR today" },
+        { title: "Bitcoin back to $62k", summary: "Bitcoin ETFs see 3% inflow", source: "CoinTelegraph", searchQuery: "Bitcoin price news" }
     ];
     const universities = [
         { name: "Harvard University", country: "USA", url: "https://harvard.edu" },
         { name: "MIT", country: "USA", url: "https://mit.edu" },
-        { name: "Stanford", country: "USA", url: "https://stanford.edu" },
-        { name: "دانشگاه تهران", country: "Iran", url: "https://ut.ac.ir" },
-        { name: "دانشگاه صنعتی شریف", country: "Iran", url: "https://sharif.edu" },
-        { name: "دانشگاه فردوسی مشهد", country: "Iran", url: "https://um.ac.ir" }
+        { name: "Stanford University", country: "USA", url: "https://stanford.edu" },
+        { name: "University of Tehran", country: "Iran", url: "https://ut.ac.ir" },
+        { name: "Sharif University of Technology", country: "Iran", url: "https://sharif.edu" },
+        { name: "Ferdowsi University of Mashhad", country: "Iran", url: "https://um.ac.ir" }
     ];
     const videos = [
-        { embed: "https://www.youtube.com/embed/6YpA1hYwVvQ?si=1", title: "تحلیل بیت‌کوین" },
-        { embed: "https://www.youtube.com/embed/7sE5jXwKp8k?si=2", title: "آینده اتریوم" },
-        { embed: "https://www.youtube.com/embed/3MkBJZg9XZA?si=3", title: "نوسانات طلا و دلار" }
+        { embed: "https://www.youtube.com/embed/6YpA1hYwVvQ?si=1", title: "Bitcoin & Crypto Market Analysis" },
+        { embed: "https://www.youtube.com/embed/7sE5jXwKp8k?si=2", title: "Ethereum and DeFi future" },
+        { embed: "https://www.youtube.com/embed/3MkBJZg9XZA?si=3", title: "Gold and USD fluctuations" }
     ];
     const productsDB = {
-        "استخدام": [{ title: "توسعه‌دهنده ارشد بک‌اند Go", price: "۵۰-۸۰ میلیون تومان", icon: "💼", desc: "دورکاری", wallet: "" }],
-        "مسکن": [{ title: "آپارتمان ۲۲۰ متری تهران", price: "۲۸ میلیارد تومان", icon: "🏠", desc: "برج دوقلو", wallet: "" }],
-        "پوشاک": [{ title: "مانتو کتان زنانه", price: "۸۹۰,۰۰۰ تومان", icon: "👗", desc: "چند سایز", wallet: "" }],
-        "دارویی": [{ title: "مکمل کلاژن", price: "۱,۲۰۰,۰۰۰ تومان", icon: "💊", desc: "اصل", wallet: "" }],
-        "کشاورزی": [{ title: "کود هیومیک اسید", price: "۴۵۰,۰۰۰ تومان", icon: "🌾", desc: "ارگانیک", wallet: "" }],
-        "آهن": [{ title: "میلگرد ۱۴", price: "۳۸,۰۰۰ تومان کیلو", icon: "🔩", desc: "ذوب آهن", wallet: "" }],
-        "ارز": [{ title: "API Horizon 10k", price: "۰.۰۸ ETH", icon: "₿", desc: "داده لحظه‌ای", wallet: "0x4E94F10F0a34a0DF229e68d5902644046258D678" }],
-        "فلزات": [{ title: "شمش طلا ۱۰۰ گرم", price: "۲۸ میلیون تومان", icon: "🥇", desc: "عیار ۲۴", wallet: "" }],
-        "دیجیتال": [{ title: "پکیج هوش مصنوعی", price: "۲,۸۰۰,۰۰۰ تومان", icon: "🤖", desc: "۱۰ جلسه", wallet: "" }]
+        "Jobs": [{ title: "Senior Go Backend Developer", price: "50-80M IRR", icon: "💼", desc: "Remote", wallet: "" }],
+        "Real Estate": [{ title: "220m² apartment in Tehran", price: "28B IRR", icon: "🏠", desc: "Twin towers", wallet: "" }],
+        "Clothing": [{ title: "Linen women's manteau", price: "890,000 IRR", icon: "👗", desc: "Multiple sizes", wallet: "" }],
+        "Pharma": [{ title: "Collagen supplement", price: "1,200,000 IRR", icon: "💊", desc: "Original", wallet: "" }],
+        "Agriculture": [{ title: "Humic acid fertilizer", price: "450,000 IRR", icon: "🌾", desc: "Organic", wallet: "" }],
+        "Steel": [{ title: "14mm rebar (Esfahan Steel)", price: "38,000 IRR/kg", icon: "🔩", desc: "Factory direct", wallet: "" }],
+        "Crypto": [{ title: "Horizon API 10k requests", price: "0.08 ETH", icon: "₿", desc: "Real‑time blockchain data", wallet: "0x4E94F10F0a34a0DF229e68d5902644046258D678" }],
+        "Metals": [{ title: "100g gold bar (24k)", price: "28M IRR", icon: "🥇", desc: "Certificate included", wallet: "" }],
+        "Digital": [{ title: "AI training package", price: "2,800,000 IRR", icon: "🤖", desc: "10 sessions", wallet: "" }]
     };
 
     let currentFilter = "all", currentSearch = "";
-    function renderTopApps() { document.getElementById('topAppsGrid').innerHTML = topApps.map(a => `<div class="app-card"><div class="app-icon">🏆</div><div class="app-name">${a.name}</div><div style="font-size:0.7rem;">${a.desc}</div><a href="${a.url}" target="_blank" class="btn-small">مشاهده</a></div>`).join(''); }
-    function renderExchangesNews() { document.getElementById('exchangesNewsGrid').innerHTML = exchangeNews.map(e => `<div class="exchange-news-card"><div class="exchange-name">${e.name}</div><div class="exchange-news">📢 ${e.news}</div><a href="${e.url}" target="_blank" class="exchange-link">مراجعه به صرافی →</a></div>`).join(''); }
-    function renderNewsWithLinks() { document.getElementById('newsWithLinks').innerHTML = newsItems.map(n => `<div class="news-card"><div class="news-title"><a href="https://www.google.com/search?q=${encodeURIComponent(n.searchQuery)}" target="_blank" style="color:#2563eb;">🔍 ${n.title}</a></div><p style="font-size:0.75rem;">${n.summary} - <small>${n.source}</small></p></div>`).join(''); }
-    function renderUniversities() { document.getElementById('univGrid').innerHTML = universities.map(u => `<div class="univ-card"><div class="univ-icon">🎓</div><div class="univ-name">${u.name}</div><div style="font-size:0.7rem;">${u.country}</div><a href="${u.url}" target="_blank" class="btn-small">بازدید</a></div>`).join(''); }
-    function renderVideos() { document.getElementById('videosGrid').innerHTML = videos.map(v => `<div class="video-card"><iframe src="${v.embed}" title="${v.title}" allowfullscreen></iframe><div style="font-size:0.7rem; margin-top:0.3rem;">${v.title}</div></div>`).join(''); }
+
+    function renderTopApps() {
+        document.getElementById('topAppsGrid').innerHTML = topApps.map(a => `<div class="app-card"><div class="app-icon">🏆</div><div class="app-name">${a.name}</div><div style="font-size:0.7rem;">${a.desc}</div><a href="${a.url}" target="_blank" class="btn-small">Visit</a></div>`).join('');
+    }
+    function renderExchangesNews() {
+        document.getElementById('exchangesNewsGrid').innerHTML = exchangeNews.map(e => `<div class="exchange-news-card"><div class="exchange-name">${e.name}</div><div class="exchange-news">📢 ${e.news}</div><a href="${e.url}" target="_blank" class="exchange-link">Go to exchange →</a></div>`).join('');
+    }
+    function renderNewsWithLinks() {
+        document.getElementById('newsWithLinks').innerHTML = newsItems.map(n => `<div class="news-card"><div class="news-title"><a href="https://www.google.com/search?q=${encodeURIComponent(n.searchQuery)}" target="_blank" style="color:#2563eb;">🔍 ${n.title}</a></div><p style="font-size:0.75rem;">${n.summary} - <small>${n.source}</small></p></div>`).join('');
+    }
+    function renderUniversities() {
+        document.getElementById('univGrid').innerHTML = universities.map(u => `<div class="univ-card"><div class="univ-icon">🎓</div><div class="univ-name">${u.name}</div><div style="font-size:0.7rem;">${u.country}</div><a href="${u.url}" target="_blank" class="btn-small">Visit</a></div>`).join('');
+    }
+    function renderVideos() {
+        document.getElementById('videosGrid').innerHTML = videos.map(v => `<div class="video-card"><iframe src="${v.embed}" title="${v.title}" allowfullscreen></iframe><div style="font-size:0.7rem; margin-top:0.3rem;">${v.title}</div></div>`).join('');
+    }
     function renderProducts() {
-        const container = document.getElementById('productsSection'); if(!container) return;
-        container.innerHTML = ""; let hasAny = false;
+        const container = document.getElementById('productsSection');
+        if (!container) return;
+        container.innerHTML = "";
+        let hasAny = false;
         for (const [cat, items] of Object.entries(productsDB)) {
             if (currentFilter !== "all" && currentFilter !== cat) continue;
-            let filtered = items; if(currentSearch.trim()) filtered = items.filter(i => i.title.includes(currentSearch));
-            if(!filtered.length) continue; hasAny=true;
-            const section = document.createElement('div'); section.innerHTML = `<div class="section-title" style="margin-top:1rem;">📌 ${cat}</div><div class="products-grid" id="grid-${cat}"></div>`;
-            container.appendChild(section); const grid = section.querySelector('.products-grid');
-            grid.innerHTML = filtered.map(item => `<div class="card"><div class="card-img">${item.icon}</div><div class="card-content"><div class="card-title">${item.title}</div><div class="card-price">💰 ${item.price}</div><button class="btn btn-buy" data-wallet="${item.wallet}" data-title="${item.title}">🛒 خرید / تماس</button></div></div>`).join('');
+            let filtered = items;
+            if (currentSearch.trim()) filtered = items.filter(i => i.title.toLowerCase().includes(currentSearch.toLowerCase()) || i.desc.toLowerCase().includes(currentSearch.toLowerCase()));
+            if (filtered.length === 0) continue;
+            hasAny = true;
+            const sectionDiv = document.createElement('div');
+            sectionDiv.innerHTML = `<div class="section-title" style="margin-top:1rem;">📌 ${cat}</div><div class="products-grid" id="grid-${cat}"></div>`;
+            container.appendChild(sectionDiv);
+            const grid = sectionDiv.querySelector('.products-grid');
+            grid.innerHTML = filtered.map(item => `<div class="card"><div class="card-img">${item.icon}</div><div class="card-content"><div class="card-title">${item.title}</div><div class="card-price">💰 ${item.price}</div><button class="btn btn-buy" data-wallet="${item.wallet}" data-title="${item.title}">🛒 Buy / Contact</button></div></div>`).join('');
         }
-        if(!hasAny) container.innerHTML = `<div style="text-align:center; padding:2rem;">هیچ آگهی‌ای یافت نشد</div>`;
-        document.querySelectorAll('.btn-buy').forEach(btn => btn.onclick = () => alert(`خرید محصول "${btn.dataset.title}"\nکیف پول: ${btn.dataset.wallet || 'در تماس اعلام شود'}`));
+        if (!hasAny) container.innerHTML = `<div style="text-align:center; padding:2rem;">No ads found.</div>`;
+        document.querySelectorAll('.btn-buy').forEach(btn => btn.onclick = () => alert(`Purchase product "${btn.dataset.title}"\nSeller wallet: ${btn.dataset.wallet || 'Will be provided on contact'}`));
     }
-    function attachEvents() {
-        document.getElementById('searchBtn')?.addEventListener('click', () => { currentSearch = document.getElementById('searchInput').value; renderProducts(); });
-        document.querySelectorAll('.filter-chip').forEach(chip => chip.addEventListener('click', () => { document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active')); chip.classList.add('active'); currentFilter = chip.dataset.cat; renderProducts(); }));
-        document.getElementById('jobsIconBtn')?.addEventListener('click', () => { document.getElementById('categoriesContent').classList.add('show'); currentFilter="استخدام"; document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active')); const target=Array.from(document.querySelectorAll('.filter-chip')).find(c=>c.dataset.cat==="استخدام"); if(target) target.classList.add('active'); renderProducts(); setTimeout(()=>document.getElementById('categoriesContent').scrollIntoView({behavior:'smooth'}),100); });
-        document.getElementById('toggleCategoriesBtn')?.addEventListener('click', () => document.getElementById('categoriesContent').classList.toggle('show'));
-        document.getElementById('brokerBtn')?.addEventListener('click', () => alert("درخواست کارگزاری ثبت شد. تیم Horizon تماس می‌گیرد."));
-        document.getElementById('vipLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("باشگاه VIP: معافیت مالیاتی ۵۰٪، مشاوره صادرات، تخفیف کارمزد"); });
-        document.getElementById('careersLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("مشاغل Horizon Hub: موقعیت‌های باز در حوزه توسعه، بازاریابی و پشتیبانی. رزومه خود را به careers@beaconchain.us ارسال کنید."); });
-    }
+
+    // Event listeners
+    document.getElementById('searchBtn')?.addEventListener('click', () => { currentSearch = document.getElementById('searchInput').value; renderProducts(); });
+    document.querySelectorAll('.filter-chip').forEach(chip => chip.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        currentFilter = chip.dataset.cat;
+        renderProducts();
+    }));
+    document.getElementById('jobsIconBtn')?.addEventListener('click', () => {
+        document.getElementById('categoriesContent').classList.add('show');
+        currentFilter = "Jobs";
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        const target = Array.from(document.querySelectorAll('.filter-chip')).find(c => c.dataset.cat === "Jobs");
+        if (target) target.classList.add('active');
+        renderProducts();
+        setTimeout(() => document.getElementById('categoriesContent').scrollIntoView({ behavior: 'smooth' }), 100);
+    });
+    document.getElementById('toggleCategoriesBtn')?.addEventListener('click', () => document.getElementById('categoriesContent').classList.toggle('show'));
+    document.getElementById('brokerBtn')?.addEventListener('click', () => alert("Broker request submitted. Horizon team will contact you within 48 hours.\nConditions: Complete Ferdowsi University training and approval."));
+    document.getElementById('vipLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("VIP Industry Club: 50% tax exemption, export consulting, 20% fee discount."); });
+    document.getElementById('careersLink')?.addEventListener('click', (e) => { e.preventDefault(); alert("Horizon Hub Careers: Open positions in development, marketing, and support. Send your CV to careers@beaconchain.us"); });
+
+    // Price ticker (real rates)
     async function fetchPrices() {
-        try { const r = await fetch('https://api.exchangerate.host/latest?base=USD&symbols=IRR'); if(r.ok){ const d=await r.json(); const usd=Math.round(d.rates.IRR); document.getElementById('usdPrice').innerText=usd.toLocaleString(); document.getElementById('goldPrice').innerText=Math.round(usd*0.025).toLocaleString(); } } catch(e){}
-        try { const btc=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'); const eth=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd'); if(btc.ok){const d=await btc.json(); document.getElementById('btcPrice').innerText=Math.round(d.bitcoin.usd).toLocaleString();} if(eth.ok){const d=await eth.json(); document.getElementById('ethPrice').innerText=Math.round(d.ethereum.usd).toLocaleString();} } catch(e){}
+        try {
+            const res = await fetch('https://api.exchangerate.host/latest?base=USD&symbols=IRR');
+            if (res.ok) {
+                const data = await res.json();
+                const usd = Math.round(data.rates.IRR);
+                document.getElementById('usdPrice').innerText = usd.toLocaleString();
+                document.getElementById('goldPrice').innerText = Math.round(usd * 0.025).toLocaleString();
+            }
+        } catch(e) {}
+        try {
+            const btc = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+            const eth = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
+            if (btc.ok) { const d = await btc.json(); document.getElementById('btcPrice').innerText = Math.round(d.bitcoin.usd).toLocaleString(); }
+            if (eth.ok) { const d = await eth.json(); document.getElementById('ethPrice').innerText = Math.round(d.ethereum.usd).toLocaleString(); }
+        } catch(e) {}
     }
-    function createParticles() { const c=document.getElementById('particlesContainer'); if(!c) return; for(let i=0;i<30;i++){ const p=document.createElement('div'); p.classList.add('particle'); const s=Math.random()*6+2; p.style.width=s+'px'; p.style.height=s+'px'; p.style.left=Math.random()*100+'%'; p.style.animationDuration=Math.random()*5+3+'s'; p.style.animationDelay=Math.random()*5+'s'; p.style.background=`rgba(56,189,248,${Math.random()*0.4+0.2})`; c.appendChild(p); } }
-    fetchPrices(); setInterval(fetchPrices,120000);
-    renderTopApps(); renderExchangesNews(); renderNewsWithLinks(); renderUniversities(); renderVideos(); renderProducts(); attachEvents(); createParticles();
+    function createParticles() {
+        const c = document.getElementById('particlesContainer');
+        if (!c) return;
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            const s = Math.random() * 6 + 2;
+            p.style.width = s + 'px';
+            p.style.height = s + 'px';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDuration = Math.random() * 5 + 3 + 's';
+            p.style.animationDelay = Math.random() * 5 + 's';
+            p.style.background = `rgba(56, 189, 248, ${Math.random() * 0.4 + 0.2})`;
+            c.appendChild(p);
+        }
+    }
+
+    fetchPrices();
+    setInterval(fetchPrices, 120000);
+    renderTopApps();
+    renderExchangesNews();
+    renderNewsWithLinks();
+    renderUniversities();
+    renderVideos();
+    renderProducts();
+    createParticles();
 </script>
 </body>
 </html>
