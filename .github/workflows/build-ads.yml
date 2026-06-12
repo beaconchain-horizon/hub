@@ -1,13 +1,12 @@
 # GitHub Actions workflow for Horizon Hub
-# This workflow runs whenever an issue is labeled/unlabeled, opened, or edited.
-# It fetches all issues with label "ad-approved" and generates ads.json.
+# Builds ads.json from approved issues and sends email notification using Google Apps Script
 
 name: Build ads.json from approved issues
 
 on:
   issues:
     types: [labeled, unlabeled, opened, edited]
-  workflow_dispatch:   # allow manual trigger
+  workflow_dispatch:
 
 jobs:
   generate:
@@ -33,7 +32,6 @@ jobs:
               body = issue['body']
               title = issue['title'].replace('[Ad] ', '').strip()
               
-              # Extract fields using regex (based on YAML template)
               category = re.search(r'### Category\s+(.+)', body)
               category = category.group(1).strip() if category else 'Other'
               
@@ -71,3 +69,16 @@ jobs:
           git add ads.json
           git commit -m "update ads.json" || echo "No changes to commit"
           git push
+
+      - name: Send email notification (test)
+        env:
+          EMAIL_API_URL: ${{ secrets.EMAIL_API_URL }}
+        run: |
+          if [ -n "$EMAIL_API_URL" ]; then
+            curl -X POST "$EMAIL_API_URL" \
+              -H "Content-Type: application/json" \
+              -d '{"to":"gamma.mahdii@gmail.com","subject":"Horizon Hub: New ads processed","htmlBody":"<p>ads.json has been updated. Check the marketplace for new listings.</p>"}' \
+              || echo "Email sending failed (but workflow continues)"
+          else
+            echo "EMAIL_API_URL secret not set. Skipping email."
+          fi
