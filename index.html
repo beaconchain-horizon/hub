@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Horizon Hub – Decentralized marketplace for jobs, digital goods, and freelance services. Built on open‑source blockchain tools.">
+    <meta name="description" content="Horizon Hub – Decentralized marketplace for jobs, digital goods, and freelance services. Powered by open‑source blockchain tools.">
     <title>Horizon Hub · Decentralized Marketplace</title>
     <style>
         * {
@@ -89,8 +89,8 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
             margin-bottom: 1.5rem;
         }
 
@@ -111,6 +111,7 @@
             font-weight: 700;
             font-size: 1rem;
             margin-bottom: 0.3rem;
+            color: #f0f0ff;
         }
 
         .meta {
@@ -122,9 +123,17 @@
         .price-tag {
             color: #c084fc;
             font-weight: bold;
+            margin: 0.5rem 0;
         }
 
-        button {
+        .description {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        button, .post-btn {
             background: #2b3550;
             border: none;
             padding: 0.5rem 1rem;
@@ -134,28 +143,28 @@
             margin-top: 0.5rem;
             width: 100%;
             transition: background 0.2s;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.8rem;
         }
 
-        button:hover {
+        button:hover, .post-btn:hover {
             background: #4f9eff;
         }
 
-        .post-form {
+        .post-btn {
+            background: #4f9eff;
+            color: #0a0f1e;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .info-box {
             background: #1e293b;
             border-radius: 1rem;
             padding: 1rem;
             margin-top: 1rem;
-        }
-
-        .post-form input,
-        .post-form select {
-            width: 100%;
-            background: #0f172a;
-            border: 1px solid #334155;
-            padding: 0.5rem;
-            border-radius: 1rem;
-            margin: 0.3rem 0;
-            color: white;
         }
 
         .footer {
@@ -187,127 +196,150 @@
     </div>
 
     <div class="dashboard">
+        <!-- Main content: job & product listings -->
         <div class="main-panel">
             <div class="section-title">💼 Latest Job Opportunities</div>
             <div id="jobsList" class="grid"></div>
             <div class="section-title" style="margin-top: 1rem;">📦 Digital Goods & Services</div>
             <div id="productsList" class="grid"></div>
         </div>
+
+        <!-- Sidebar: submit ad link + earning info -->
         <div class="side-panel">
-            <div class="section-title">➕ Post a Free Ad</div>
-            <div class="post-form">
-                <input type="text" id="adTitle" placeholder="Ad title (e.g., Senior React Developer)">
-                <select id="adType">
-                    <option value="job">Jobs / Hiring</option>
-                    <option value="product">Digital Goods / Services</option>
-                </select>
-                <input type="text" id="adPrice" placeholder="Price (USD / ETH / negotiable)">
-                <button id="submitAdBtn">📢 Submit Ad</button>
-                <div style="font-size: 0.7rem; margin-top: 0.5rem;">✅ Your ad appears instantly and is saved in your browser.</div>
+            <div class="section-title">➕ Post Your Ad</div>
+            <a href="https://github.com/beaconchain-horizon/hub/issues/new?template=ad-submission.yml" target="_blank" class="post-btn">
+                📢 Submit New Listing
+            </a>
+            <div class="info-box">
+                <div class="section-title" style="margin-bottom: 0.5rem;">💰 How to earn</div>
+                <p style="font-size: 0.8rem;">• List your products / services for free.<br>
+                • Buyers pay directly to your wallet (ETH / USDC).<br>
+                • 2% commission on successful sales (paid by seller).<br>
+                • Premium placement: 0.01 ETH/month.</p>
+                <button id="monetizeInfoBtn">More details</button>
             </div>
-            <div class="post-form" style="margin-top: 1rem; background: #111827;">
-                <div class="section-title" style="margin-bottom: 0.5rem;">💰 Earn With Horizon Hub</div>
-                <p style="font-size: 0.8rem;">• Sell digital goods (e-books, templates, software)<br>
-                • 2% commission on successful sales<br>
-                • Premium listings: 0.01 ETH/month</p>
-                <button id="monetizeInfoBtn" style="background: #4f9eff;">More info</button>
+            <div class="info-box" style="margin-top: 1rem;">
+                <div class="section-title" style="margin-bottom: 0.5rem;">📌 How it works</div>
+                <p style="font-size: 0.8rem;">1. Submit an ad using the button above (GitHub issue).<br>
+                2. After approval, your ad appears here.<br>
+                3. Buyers contact you via the info you provided.<br>
+                4. Payment is sent directly to your wallet (peer‑to‑peer).<br>
+                5. Delivery is handled between seller and buyer.</p>
             </div>
         </div>
     </div>
     <div class="footer">
-        <i class="fas fa-database"></i> Horizon Hub – decentralized, offline‑first marketplace with built‑in monetization.<br>
-        Prices are simulated for demo – data is cached locally in your browser.
+        <i class="fas fa-database"></i> Horizon Hub – decentralized, peer‑to‑peer marketplace. Ads are stored on GitHub and loaded via ads.json.<br>
+        Prices are simulated for demo – data is cached locally.
     </div>
 </div>
 
 <script>
-    // ----- Default sample data (if localStorage is empty) -----
-    let jobs = [
-        { title: "Go Backend Developer", company: "Horizon Tech", salary: "$3,000 - $5,000", location: "Remote", type: "job" },
-        { title: "Digital Marketing Manager", company: "Beaconchain", salary: "Negotiable", location: "Tehran", type: "job" },
-        { title: "UI/UX Designer", company: "Horizon", salary: "$2,000 - $3,000", location: "Mashhad", type: "job" },
-        { title: "Network Security Specialist", company: "Beaconchain-us", salary: "$4,000 - $6,000", location: "Remote", type: "job" }
-    ];
+    // ----- Load ads from ads.json (generated by GitHub Actions) -----
+    let allAds = [];
 
-    let products = [
-        { title: "Horizon React Template", price: "$25", seller: "MahdiDev", type: "product" },
-        { title: "Ethereum & Smart Contracts Book", price: "$15", seller: "BlockchainPub", type: "product" },
-        { title: "Premium API License (100k requests)", price: "0.05 ETH", seller: "Horizon Store", type: "product" }
-    ];
+    async function loadAds() {
+        try {
+            const response = await fetch('ads.json?v=' + Date.now());
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+            allAds = await response.json();
+            renderJobs();
+            renderProducts();
+        } catch (err) {
+            console.error('Failed to load ads.json', err);
+            // Fallback to empty state
+            allAds = [];
+            renderJobs();
+            renderProducts();
+        }
+    }
 
-    // ----- Load saved data from localStorage -----
-    const savedJobs = localStorage.getItem('horizon_hub_jobs');
-    const savedProducts = localStorage.getItem('horizon_hub_products');
-    if (savedJobs) jobs = JSON.parse(savedJobs);
-    if (savedProducts) products = JSON.parse(savedProducts);
-
-    // ----- Render functions -----
+    // ----- Render job listings (category "Job / Hiring") -----
     function renderJobs() {
         const container = document.getElementById('jobsList');
         if (!container) return;
+        const jobs = allAds.filter(ad => ad.category === 'Job / Hiring');
         if (jobs.length === 0) {
-            container.innerHTML = '<div class="card" style="text-align:center;">No job ads yet. Be the first to post one!</div>';
+            container.innerHTML = '<div class="card" style="text-align:center;">No job ads yet. Be the first to <a href="https://github.com/beaconchain-horizon/hub/issues/new?template=ad-submission.yml" target="_blank" style="color:#4f9eff;">post a job</a>.</div>';
             return;
         }
         container.innerHTML = jobs.map(job => `
             <div class="card">
                 <div class="title">📌 ${escapeHtml(job.title)}</div>
-                <div class="meta">${escapeHtml(job.company)} | ${escapeHtml(job.location)}</div>
-                <div class="price-tag">💰 ${escapeHtml(job.salary)}</div>
-                <button class="applyBtn" data-title="${escapeHtml(job.title)}">Apply / Contact</button>
+                <div class="meta">💰 ${escapeHtml(job.price)}</div>
+                <div class="description">${escapeHtml(job.description.substring(0, 140))}${job.description.length > 140 ? '…' : ''}</div>
+                <button class="contactBtn" data-contact="${escapeHtml(job.contact)}" data-wallet="${escapeHtml(job.seller_wallet)}" data-title="${escapeHtml(job.title)}">
+                    📩 Contact / Apply
+                </button>
             </div>
         `).join('');
-        document.querySelectorAll('.applyBtn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                alert(`✅ Your application for "${btn.dataset.title}" has been submitted. The employer will contact you.`);
-            });
-        });
+        attachContactButtons();
     }
 
+    // ----- Render product listings (everything except jobs) -----
     function renderProducts() {
         const container = document.getElementById('productsList');
         if (!container) return;
+        const products = allAds.filter(ad => ad.category !== 'Job / Hiring');
         if (products.length === 0) {
-            container.innerHTML = '<div class="card" style="text-align:center;">No products or services yet. Be the first to list!</div>';
+            container.innerHTML = '<div class="card" style="text-align:center;">No products yet. Be the first to <a href="https://github.com/beaconchain-horizon/hub/issues/new?template=ad-submission.yml" target="_blank" style="color:#4f9eff;">list an item</a>.</div>';
             return;
         }
         container.innerHTML = products.map(prod => `
             <div class="card">
                 <div class="title">📦 ${escapeHtml(prod.title)}</div>
-                <div class="meta">Seller: ${escapeHtml(prod.seller)}</div>
-                <div class="price-tag">${escapeHtml(prod.price)}</div>
-                <button class="buyBtn" data-title="${escapeHtml(prod.title)}" data-price="${escapeHtml(prod.price)}">Buy / Details</button>
+                <div class="meta">💰 ${escapeHtml(prod.price)}</div>
+                <div class="description">${escapeHtml(prod.description.substring(0, 140))}${prod.description.length > 140 ? '…' : ''}</div>
+                <button class="buyBtn" data-wallet="${escapeHtml(prod.seller_wallet)}" data-title="${escapeHtml(prod.title)}" data-price="${escapeHtml(prod.price)}" data-contact="${escapeHtml(prod.contact)}">
+                    🛒 Buy / Details
+                </button>
             </div>
         `).join('');
-        document.querySelectorAll('.buyBtn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                alert(`🛒 Purchase of "${btn.dataset.title}" for ${btn.dataset.price} initiated. Download link / delivery will be sent to your email.`);
-            });
+        attachBuyButtons();
+    }
+
+    // ----- Attach event listeners for contact buttons (jobs) -----
+    function attachContactButtons() {
+        document.querySelectorAll('.contactBtn').forEach(btn => {
+            btn.onclick = () => {
+                const wallet = btn.dataset.wallet;
+                const contact = btn.dataset.contact;
+                const title = btn.dataset.title;
+                let message = `📌 Job: ${title}\n\n`;
+                if (contact && contact.trim() !== '') {
+                    message += `Contact: ${contact}\n`;
+                } else {
+                    message += `No contact info provided. Please check the ad details on GitHub.\n`;
+                }
+                if (wallet && wallet.trim() !== '') {
+                    message += `\n💳 Seller wallet (for payments if required): ${wallet}`;
+                }
+                alert(message);
+            };
         });
     }
 
-    // ----- Add new ad -----
-    function addAd(title, type, price) {
-        if (type === 'job') {
-            jobs.unshift({
-                title: title,
-                company: "Horizon Hub User",
-                salary: price || "Negotiable",
-                location: "Global",
-                type: "job"
-            });
-            renderJobs();
-        } else {
-            products.unshift({
-                title: title,
-                price: price || "Contact for price",
-                seller: "Horizon Hub User",
-                type: "product"
-            });
-            renderProducts();
-        }
-        localStorage.setItem('horizon_hub_jobs', JSON.stringify(jobs));
-        localStorage.setItem('horizon_hub_products', JSON.stringify(products));
+    // ----- Attach event listeners for buy buttons (products) -----
+    function attachBuyButtons() {
+        document.querySelectorAll('.buyBtn').forEach(btn => {
+            btn.onclick = () => {
+                const wallet = btn.dataset.wallet;
+                const title = btn.dataset.title;
+                const price = btn.dataset.price;
+                const contact = btn.dataset.contact;
+                let message = `🛒 Product: ${title}\n💰 Price: ${price}\n\n`;
+                if (wallet && wallet.trim() !== '') {
+                    message += `💳 Send payment to:\n${wallet}\n\n`;
+                } else {
+                    message += `⚠️ No wallet address provided. Contact seller manually.\n\n`;
+                }
+                if (contact && contact.trim() !== '') {
+                    message += `📞 Seller contact: ${contact}\n`;
+                }
+                message += `\nAfter payment, please contact the seller to arrange delivery.`;
+                alert(message);
+            };
+        });
     }
 
     // ----- Helper: escape HTML to prevent XSS -----
@@ -321,22 +353,7 @@
         });
     }
 
-    // ----- Submit ad event -----
-    document.getElementById('submitAdBtn')?.addEventListener('click', () => {
-        const title = document.getElementById('adTitle').value.trim();
-        const type = document.getElementById('adType').value;
-        const price = document.getElementById('adPrice').value.trim();
-        if (!title) {
-            alert("Please enter an ad title.");
-            return;
-        }
-        addAd(title, type, price);
-        document.getElementById('adTitle').value = '';
-        document.getElementById('adPrice').value = '';
-        alert("✅ Your ad has been posted successfully and appears immediately.");
-    });
-
-    // ----- Simulated price ticker (demo) -----
+    // ----- Simulated price ticker (demo – can be replaced with static JSON later) -----
     let prices = { btc: 59800, eth: 1820, gold: 1950, usd: 62500 };
     function updatePriceDisplay() {
         document.getElementById('btcPrice').innerText = Math.round(prices.btc);
@@ -360,21 +377,22 @@
 
     // ----- Monetization info button -----
     document.getElementById('monetizeInfoBtn')?.addEventListener('click', () => {
-        alert(`💰 Ways to earn with Horizon Hub:\n
-1- Sell digital goods (no intermediary) – 2% commission per sale.\n
-2- Premium subscription: 0.01 ETH/month for featured ads.\n
-3- Earn affiliate commission: 5% for each referred paying user.\n
-Payment wallet: 0x4E94F10F0a34a0DF229e68d5902644046258D678`);
+        alert(`💰 Horizon Hub Monetization\n\n1. Free listings – no upfront cost.\n2. 2% commission on each successful sale (deducted from seller).\n3. Premium spotlight: 0.01 ETH/month – appears at top of category.\n4. Affiliate program: earn 5% of fees from referred sellers.\n\nPayment wallet for commissions: 0x4E94F10F0a34a0DF229e68d5902644046258D678`);
     });
 
-    // ----- Initial render -----
-    renderJobs();
-    renderProducts();
+    // ----- Initial load -----
+    loadAds();
 
-    // ----- Auto‑save before unload -----
-    window.addEventListener('beforeunload', () => {
-        localStorage.setItem('horizon_hub_jobs', JSON.stringify(jobs));
-        localStorage.setItem('horizon_hub_products', JSON.stringify(products));
+    // Optional: cache ads.json in localStorage for offline fallback
+    window.addEventListener('load', () => {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW not registered', err));
+        }
+        // Pre-fetch ads.json and store in localStorage for offline use
+        fetch('ads.json')
+            .then(res => res.json())
+            .then(data => localStorage.setItem('horizon_hub_offline_ads', JSON.stringify(data)))
+            .catch(() => {});
     });
 </script>
 </body>
