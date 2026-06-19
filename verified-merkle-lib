@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Verified Merkle Library + Horizon Store – Merkle proofs, SHA‑256, prepaid API licenses, offline verification">
+  <title>Verified Merkle Library · Horizon Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle at 10% 20%, #0a0f1e, #03050a);
+      font-family: 'Inter', system-ui, 'Segoe UI', sans-serif;
+      color: #eef2ff;
+      padding: 1.5rem;
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+
+    /* shared components */
+    .glass-card {
+      background: rgba(12, 18, 28, 0.75);
+      backdrop-filter: blur(12px);
+      border-radius: 1.8rem;
+      border: 1px solid rgba(79,158,255,0.25);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff, #4f9eff, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .badge {
+      background: rgba(79,158,255,0.15);
+      border: 1px solid #4f9eff55;
+      padding: 0.3rem 1rem;
+      border-radius: 60px;
+      font-size: 0.75rem;
+    }
+    button {
+      background: #2b3550;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+      margin: 0.2rem;
+    }
+    button:hover { background: #4f9eff; transform: translateY(-2px); }
+    .wallet-btn { background: #4f9eff; color: #0a0f1e; }
+    .buy-btn, .demo-btn { background: #2b3550; }
+    .output {
+      background: #0f172a;
+      border-radius: 1rem;
+      padding: 0.8rem;
+      font-family: monospace;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .product-card {
+      background: rgba(20,24,36,0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 1.5rem;
+      padding: 1.2rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.2s;
+    }
+    .product-card:hover { border-color: #4f9eff; transform: translateY(-4px); }
+    .price { font-size: 1.4rem; font-weight: 800; color: #c084fc; margin: 0.5rem 0; }
+    .wallet-box {
+      background: #0b0e1a;
+      border-radius: 1rem;
+      padding: 0.8rem;
+      word-break: break-all;
+      font-family: monospace;
+      border: 1px solid #4f9eff;
+      margin: 1rem 0;
+    }
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #8fa2dc;
+    }
+    hr { margin: 1rem 0; border-color: #2d3a5e; }
+    pre {
+      background: #0f172a;
+      padding: 0.8rem;
+      border-radius: 1rem;
+      font-size: 0.7rem;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Hero section (combined) -->
+  <div class="glass-card" style="text-align: center;">
+    <h1 class="section-title">🔐 Verified Merkle Library + Horizon Store</h1>
+    <div class="badge-group">
+      <div class="badge"><i class="fas fa-tree"></i> Incremental Merkle Tree</div>
+      <div class="badge"><i class="fas fa-fingerprint"></i> SHA‑256 verified</div>
+      <div class="badge"><i class="fas fa-coins"></i> Prepaid Merkle licenses</div>
+      <div class="badge"><i class="fas fa-database"></i> Offline‑first</div>
+    </div>
+    <p>Formally verified cryptography – fully client‑side, no tracking, open source (GPL‑3.0).<br>
+    <strong>Powered by beaconchain‑us/verified‑merkle-lib</strong></p>
+    <button id="installPwaBtn" class="wallet-btn"><i class="fas fa-download"></i> Install PWA</button>
+  </div>
+
+  <!-- ========== SECTION 1: LIVE DEMO (VerifiedWebLib) ========== -->
+  <div class="glass-card">
+    <h2><i class="fas fa-flask"></i> Live demo – Verified Web Library</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+      <button id="demoMerkle" class="demo-btn">🌲 Incremental Merkle Tree</button>
+      <button id="demoSha256" class="demo-btn">🔐 SHA‑256</button>
+      <button id="demoEndian" class="demo-btn">🔁 toLittleEndian64</button>
+    </div>
+    <div id="demoOutput" class="output">— click a button —</div>
+  </div>
+
+  <!-- ========== SECTION 2: PREPAID API PACKAGES (Store) ========== -->
+  <div class="glass-card">
+    <h2><i class="fas fa-ticket-alt"></i> Prepaid API licenses (Merkle‑based)</h2>
+    <p>Buy volume packages – get a license file with Merkle tree root & leaves. Each request consumes a one‑time proof. No central DB required.</p>
+    <div class="products-grid" id="productsContainer"></div>
+    <div class="wallet-box">
+      <span>📡 Wallet (ETH / USDC / BNB):</span><br>
+      <code>0x4E94F10F0a34a0DF229e68d5902644046258D678</code>
+    </div>
+    <button id="generateLicenseBtn" class="buy-btn" style="width: auto;"><i class="fas fa-file-certificate"></i> Generate .license (simulate purchase)</button>
+    <div id="licenseStatus" class="output" style="margin-top: 1rem;">—</div>
+  </div>
+
+  <!-- ========== SECTION 3: OFFLINE FILE VERIFICATION ========== -->
+  <div class="glass-card">
+    <h2><i class="fas fa-fingerprint"></i> Offline verification – SHA‑256 integrity</h2>
+    <p>Upload any file (APK, binary, zip). The library computes its hash – compare with catalog to verify authenticity.</p>
+    <input type="file" id="fileInput" style="background:#1e293b; border:1px solid #4f9eff; padding:0.5rem; border-radius:1rem; width:100%;">
+    <button id="verifyFileBtn" class="demo-btn" style="margin-top:0.5rem;">🔍 Compute SHA‑256</button>
+    <div id="hashResult" class="output">—</div>
+  </div>
+
+  <div class="footer">
+    © 2026 Mahdi Amolimoghaddam · beaconchain‑us · <a href="https://github.com/beaconchain-us/verified-merkle-lib" target="_blank" style="color:#4f9eff;">GitHub</a> · <a href="https://beaconchain.us" target="_blank" style="color:#4f9eff;">Horizon Dashboard</a>
+  </div>
+</div>
+
+<script>
+  // ----------------------------------------------
+  // 1. VerifiedWebLib core classes (IncrementalMerkleTree, sha256, etc.)
+  // ----------------------------------------------
+  async function sha256(input) {
+    const hash = await crypto.subtle.digest('SHA-256', input);
+    return new Uint8Array(hash);
+  }
+
+  function toLittleEndian64(value) {
+    const arr = new Uint8Array(8);
+    for (let i = 0; i < 8; i++) arr[i] = (value >> (i * 8)) & 0xff;
+    return arr;
+  }
+
+  class IncrementalMerkleTree {
+    constructor(height = 32) {
+      this.height = height;
+      this.depositCount = 0;
+      this.zeroHashes = [new Uint8Array(32)];
+      this.branch = [];
+      this.ready = false;
+    }
+    async init() {
+      for (let i = 0; i < this.height - 1; i++) {
+        const last = this.zeroHashes[i];
+        const concat = new Uint8Array(last.length + last.length);
+        concat.set(last, 0);
+        concat.set(last, last.length);
+        const next = await sha256(concat);
+        this.zeroHashes.push(next);
+      }
+      this.branch = this.zeroHashes.map(() => new Uint8Array(32));
+      this.ready = true;
+    }
+    async deposit(leaf) {
+      if (!this.ready) throw new Error('init first');
+      if (this.depositCount >= (1 << this.height) - 1) throw new Error('too many deposits');
+      let size = this.depositCount + 1;
+      let value = leaf;
+      for (let i = 0; i < this.height; i++) {
+        if (size % 2 === 1) break;
+        const branchVal = this.branch[i];
+        const concat = new Uint8Array(branchVal.length + value.length);
+        concat.set(branchVal, 0);
+        concat.set(value, branchVal.length);
+        value = await sha256(concat);
+        size >>= 1;
+      }
+      const index = (size % 2 === 0) ? size : size >> 1;
+      this.branch[index] = value;
+      this.depositCount++;
+    }
+    async getRoot() {
+      if (!this.ready) throw new Error('init first');
+      let root = new Uint8Array(32);
+      let size = this.depositCount;
+      for (let i = 0; i < this.height; i++) {
+        let concat;
+        if (size % 2 === 1) {
+          concat = new Uint8Array(this.branch[i].length + root.length);
+          concat.set(this.branch[i], 0);
+          concat.set(root, this.branch[i].length);
+        } else {
+          concat = new Uint8Array(root.length + this.zeroHashes[i].length);
+          concat.set(root, 0);
+          concat.set(this.zeroHashes[i], root.length);
+        }
+        root = await sha256(concat);
+        size >>= 1;
+      }
+      return root;
+    }
+  }
+
+  // PrepaidPackage (simplified for demo)
+  class PrepaidPackage {
+    constructor(volume, seed = crypto.getRandomValues(new Uint8Array(32))) {
+      this.volume = volume;
+      this.seed = seed;
+      this.leaves = null;
+      this.root = null;
+    }
+    async _sha256(data) { return sha256(data); }
+    async generate() {
+      const leaves = [];
+      for (let i = 0; i < this.volume; i++) {
+        const indexBuf = new Uint8Array(4);
+        new DataView(indexBuf.buffer).setUint32(0, i, true);
+        const concat = new Uint8Array(this.seed.length + indexBuf.length);
+        concat.set(this.seed, 0);
+        concat.set(indexBuf, this.seed.length);
+        leaves.push(await this._sha256(concat));
+      }
+      this.leaves = leaves;
+      let level = leaves;
+      while (level.length > 1) {
+        const next = [];
+        for (let i = 0; i < level.length; i += 2) {
+          const left = level[i];
+          const right = (i+1 < level.length) ? level[i+1] : left;
+          const concat = new Uint8Array(left.length + right.length);
+          concat.set(left, 0);
+          concat.set(right, left.length);
+          next.push(await this._sha256(concat));
+        }
+        level = next;
+      }
+      this.root = level[0] || new Uint8Array(32);
+      return this.root;
+    }
+    async getProof(index) {
+      if (!this.leaves) throw new Error('generate first');
+      let proof = [];
+      let level = this.leaves.slice();
+      let idx = index;
+      while (level.length > 1) {
+        const siblingIdx = (idx % 2 === 0) ? idx + 1 : idx - 1;
+        if (siblingIdx < level.length) proof.push(level[siblingIdx]);
+        else proof.push(level[idx]);
+        const next = [];
+        for (let i = 0; i < level.length; i += 2) {
+          const left = level[i];
+          const right = (i+1 < level.length) ? level[i+1] : left;
+          const concat = new Uint8Array(left.length + right.length);
+          concat.set(left, 0);
+          concat.set(right, left.length);
+          next.push(await this._sha256(concat));
+        }
+        level = next;
+        idx = Math.floor(idx / 2);
+      }
+      return { leaf: this.leaves[index], proof, index };
+    }
+  }
+
+  // ----------------------------------------------
+  // 2. Render products and event handlers
+  // ----------------------------------------------
+  const products = [
+    { name: "Basic API Pack", volume: 100, priceEth: 0.002, icon: "fa-bolt" },
+    { name: "Pro API Pack", volume: 1000, priceEth: 0.015, icon: "fa-rocket" },
+    { name: "Enterprise Pack", volume: 10000, priceEth: 0.1, icon: "fa-crown" }
+  ];
+
+  function renderProducts() {
+    const container = document.getElementById('productsContainer');
+    if (!container) return;
+    container.innerHTML = products.map(p => `
+      <div class="product-card">
+        <i class="fas ${p.icon}" style="font-size:2rem; color:#4f9eff;"></i>
+        <h3>${p.name}</h3>
+        <p>${p.volume.toLocaleString()} requests</p>
+        <div class="price">${p.priceEth} ETH</div>
+        <button class="buy-product-btn" data-volume="${p.volume}" data-price="${p.priceEth}">Purchase package</button>
+      </div>
+    `).join('');
+    document.querySelectorAll('.buy-product-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const volume = parseInt(btn.dataset.volume);
+        const price = parseFloat(btn.dataset.price);
+        await generateLicensePackage(volume);
+      });
+    });
+  }
+
+  async function generateLicensePackage(volume) {
+    const statusDiv = document.getElementById('licenseStatus');
+    statusDiv.innerHTML = '🔄 Generating Merkle tree...';
+    try {
+      const pkg = new PrepaidPackage(volume);
+      await pkg.generate();
+      const rootHex = Array.from(pkg.root).map(b => b.toString(16).padStart(2,'0')).join('');
+      const licenseData = { version: 1, volume, root: rootHex, timestamp: Date.now() };
+      const blob = new Blob([JSON.stringify(licenseData, null, 2)], {type: 'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `license_${volume}_${Date.now()}.license`;
+      a.click();
+      URL.revokeObjectURL(url);
+      statusDiv.innerHTML = `✅ License generated (${volume} requests). Root: ${rootHex.slice(0,32)}…`;
+    } catch(e) { statusDiv.innerHTML = `❌ Error: ${e.message}`; }
+  }
+
+  // File hash verification
+  async function computeFileHash(file) {
+    const buffer = await file.arrayBuffer();
+    const hash = await sha256(new Uint8Array(buffer));
+    return Array.from(hash).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  document.getElementById('verifyFileBtn')?.addEventListener('click', async () => {
+    const input = document.getElementById('fileInput');
+    const file = input.files[0];
+    const out = document.getElementById('hashResult');
+    if (!file) { out.innerHTML = '⚠️ No file selected.'; return; }
+    out.innerHTML = '⏳ Computing SHA‑256...';
+    const hash = await computeFileHash(file);
+    out.innerHTML = `📄 SHA‑256: ${hash}<br>🔐 Compare with catalog to verify authenticity.`;
+  });
+
+  // Demo buttons
+  document.getElementById('demoMerkle')?.addEventListener('click', async () => {
+    const out = document.getElementById('demoOutput');
+    out.innerText = '⏳ Building incremental Merkle tree...';
+    try {
+      const tree = new IncrementalMerkleTree(4);
+      await tree.init();
+      await tree.deposit(await sha256(new TextEncoder().encode("first leaf")));
+      await tree.deposit(await sha256(new TextEncoder().encode("second leaf")));
+      const root = await tree.getRoot();
+      out.innerText = `✅ Merkle root (hex): ${Buffer.from(root).toString('hex')}\nDeposit count: ${tree.depositCount}`;
+    } catch(e) { out.innerText = `❌ Error: ${e.message}`; }
+  });
+  document.getElementById('demoSha256')?.addEventListener('click', async () => {
+    const out = document.getElementById('demoOutput');
+    const test = "beaconchain-us";
+    const hash = await sha256(new TextEncoder().encode(test));
+    out.innerText = `🔐 SHA-256("${test}") = ${Buffer.from(hash).toString('hex')}`;
+  });
+  document.getElementById('demoEndian')?.addEventListener('click', () => {
+    const out = document.getElementById('demoOutput');
+    const val = 123456789;
+    const le = toLittleEndian64(val);
+    out.innerText = `🔁 toLittleEndian64(${val}) = [${Array.from(le).join(', ')}]`;
+  });
+  document.getElementById('generateLicenseBtn')?.addEventListener('click', async () => {
+    const volume = prompt('Enter number of requests (e.g., 500):', '500');
+    if (volume && !isNaN(parseInt(volume))) await generateLicensePackage(parseInt(volume));
+  });
+  document.getElementById('installPwaBtn')?.addEventListener('click', () => {
+    alert('Horizon Store is PWA ready.\nUse browser menu → "Add to Home Screen".');
+  });
+
+  renderProducts();
+</script>
+</body>
+</html>
