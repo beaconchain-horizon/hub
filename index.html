@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Horizon Store – خرید لایسنس، آگهی، و خدمات با ارز دیجیتال. پرداخت برای کاربران ایرانی و خارجی.">
-    <title>Horizon Store – فروشگاه رسمی Beaconchain</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizon Store · Changelog 2025</title>
+
+    <!-- ===== Google Font ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+
+    <!-- ===== Font Awesome 6 (free) ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
     <style>
-        /* ============================================================
-                   RESET & BASE
-                ============================================================ */
+        /* ---------- reset & base ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -19,635 +22,428 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: radial-gradient(ellipse at 20% 20%, #0b1424, #020408);
-            color: #eef2ff;
-            min-height: 100vh;
-            padding: 1.5rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            padding: 2rem 1.5rem;
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1440px;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
-        /* ============================================================
-                   GLASS CARD
-                ============================================================ */
-        .glass {
-            background: rgba(10, 18, 34, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 2.5rem;
-            border: 1px solid rgba(79, 158, 255, 0.15);
-            padding: 2rem 2.5rem;
-            margin-bottom: 2rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        .glass:hover {
-            border-color: rgba(79, 158, 255, 0.35);
-            box-shadow: 0 0 60px rgba(79, 158, 255, 0.06);
+        /* ---------- header (Changelog style) ---------- */
+        .changelog-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #21262d;
         }
 
-        /* ============================================================
-                   TYPOGRAPHY
-                ============================================================ */
-        .gradient-text {
-            background: linear-gradient(135deg, #ffffff 0%, #4f9eff 40%, #c084fc 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        h1 {
-            font-size: 3.2rem;
-            font-weight: 900;
-            line-height: 1.1;
-        }
-        h2 {
+        .changelog-header h1 {
             font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #f0f4ff;
-        }
-        h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #c8d6f0;
-        }
-        .subtitle {
-            color: #8fa4d0;
-            font-size: 1.05rem;
-            margin-top: 0.5rem;
-        }
-
-        /* ============================================================
-                   BADGES
-                ============================================================ */
-        .badge-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin: 1rem 0;
-        }
-        .badge {
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            background: rgba(79, 158, 255, 0.1);
-            border: 1px solid rgba(79, 158, 255, 0.2);
-            color: #bfd6ff;
-        }
-        .badge-gold {
-            background: rgba(250, 204, 21, 0.12);
-            border-color: #facc1555;
-            color: #fde047;
-        }
-        .badge-green {
-            background: rgba(74, 222, 128, 0.12);
-            border-color: #4ade8055;
-            color: #86efac;
-        }
-        .badge-purple {
-            background: rgba(192, 132, 252, 0.12);
-            border-color: #c084fc55;
-            color: #c084fc;
-        }
-        .badge-pink {
-            background: rgba(244, 114, 182, 0.12);
-            border-color: #f472b655;
-            color: #f9a8d4;
-        }
-
-        /* ============================================================
-                   PRODUCT GRID
-                ============================================================ */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.8rem;
-            margin: 1.5rem 0;
-        }
-
-        .product-card {
-            background: rgba(16, 26, 46, 0.7);
-            backdrop-filter: blur(8px);
-            border-radius: 2rem;
-            padding: 1.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 20%, rgba(79, 158, 255, 0.05), transparent 70%);
-            pointer-events: none;
-            transition: 0.5s;
-        }
-        .product-card:hover {
-            border-color: rgba(79, 158, 255, 0.4);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-        .product-card:hover::before {
-            top: 0;
-            right: 0;
-        }
-
-        .product-icon {
-            font-size: 2.8rem;
-            color: #4f9eff;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        .product-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-            position: relative;
-            z-index: 1;
-        }
-        .product-card .source {
-            font-size: 0.75rem;
-            color: #6a82b0;
-            margin-bottom: 0.6rem;
-            position: relative;
-            z-index: 1;
-        }
-        .product-card .desc {
-            font-size: 0.9rem;
-            color: #b0c4e8;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            flex: 1;
-            position: relative;
-            z-index: 1;
-        }
-        .product-card .price-row {
-            display: flex;
-            align-items: baseline;
-            gap: 0.8rem;
-            margin: 0.5rem 0 1rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-        .product-card .price-usd {
-            font-size: 1.8rem;
             font-weight: 800;
-            color: #c084fc;
-        }
-        .product-card .price-eth {
-            font-size: 0.9rem;
-            color: #8fa4d0;
-        }
-        .product-card .price-eth small {
-            font-size: 0.7rem;
-            color: #5a7a9a;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .product-card .meta-tags {
+        .changelog-header h1 .badge-year {
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: #1f6feb;
+            color: #fff;
+            padding: 0.1rem 0.9rem;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+        }
+
+        .changelog-header .meta-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
+
+        .changelog-header .meta-links a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .changelog-header .meta-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- filter bar (tag / month) ---------- */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem 1.5rem;
+            margin-bottom: 2.5rem;
+            padding: 0.75rem 1.25rem;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #21262d;
+        }
+
+        .filter-bar .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .filter-bar .tag-group {
             display: flex;
             flex-wrap: wrap;
             gap: 0.4rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        .product-card .meta-tags span {
-            background: rgba(79, 158, 255, 0.07);
-            padding: 0.15rem 0.7rem;
-            border-radius: 40px;
-            font-size: 0.65rem;
-            color: #8fa4d0;
-            border: 1px solid rgba(79, 158, 255, 0.08);
         }
 
-        .btn {
+        .filter-bar .tag {
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            cursor: default;
+            transition: 0.2s;
+        }
+
+        .filter-bar .tag.active {
+            background: #1f6feb;
+            color: #fff;
+            border-color: #1f6feb;
+        }
+
+        .filter-bar .tag i {
+            margin-left: 0.3rem;
+            font-size: 0.65rem;
+            opacity: 0.7;
+        }
+
+        /* ---------- entry list (Changelog style) ---------- */
+        .entry-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .entry-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 1.5rem 2rem;
+            padding: 1.25rem 1.5rem;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #21262d;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .entry-item:hover {
+            border-color: #30363d;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .entry-item .date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8b949e;
+            white-space: nowrap;
+            padding-top: 0.1rem;
+        }
+
+        .entry-item .date i {
+            margin-left: 0.4rem;
+            font-size: 0.75rem;
+            color: #58a6ff;
+        }
+
+        .entry-item .content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .entry-item .content .title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f0f6fc;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .entry-item .content .title .product-badge {
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            background: #1f6feb22;
+            color: #58a6ff;
+            border: 1px solid #1f6feb44;
+        }
+
+        .entry-item .content .title .product-badge.gold {
+            background: #d2992233;
+            color: #e3b341;
+            border-color: #d2992255;
+        }
+
+        .entry-item .content .title .product-badge.pink {
+            background: #da363344;
+            color: #f0888e;
+            border-color: #da363355;
+        }
+
+        .entry-item .content .title .product-badge.purple {
+            background: #8957e533;
+            color: #b387f0;
+            border-color: #8957e555;
+        }
+
+        .entry-item .content .description {
+            font-size: 0.92rem;
+            color: #b1bac4;
+            max-width: 680px;
+        }
+
+        .entry-item .content .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem 1.2rem;
+            margin-top: 0.2rem;
+            font-size: 0.8rem;
+            color: #8b949e;
+        }
+
+        .entry-item .content .meta-row .price {
+            font-weight: 700;
+            color: #f0f6fc;
+            font-size: 0.95rem;
+        }
+
+        .entry-item .content .meta-row .price span {
+            color: #8b949e;
+            font-weight: 400;
+            font-size: 0.8rem;
+        }
+
+        .entry-item .content .meta-row .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .entry-item .content .meta-row .tags span {
+            background: #21262d;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            color: #8b949e;
+            border: 1px solid #30363d;
+        }
+
+        .entry-item .content .action-btn {
+            margin-top: 0.5rem;
+            align-self: flex-start;
+            background: #1f6feb;
+            color: #fff;
+            border: none;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 0.8rem 1.8rem;
-            border-radius: 3rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.25s;
-            text-decoration: none;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #4f9eff, #7c6bff);
-            color: #fff;
-        }
-        .btn-primary:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(79, 158, 255, 0.35);
-        }
-        .btn-secondary {
-            background: rgba(79, 158, 255, 0.1);
-            border: 1px solid rgba(79, 158, 255, 0.25);
-            color: #bfd6ff;
-        }
-        .btn-secondary:hover {
-            background: rgba(79, 158, 255, 0.2);
-        }
-        .btn-success {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: #fff;
-        }
-        .btn-success:hover {
-            box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
-            transform: scale(1.02);
-        }
-        .btn-gold {
-            background: linear-gradient(135deg, #facc15, #eab308);
-            color: #0a0f1e;
-        }
-        .btn-gold:hover {
-            box-shadow: 0 0 30px rgba(250, 204, 21, 0.3);
-            transform: scale(1.02);
+            gap: 0.5rem;
         }
 
-        /* ============================================================
-                   PAYMENT SECTION
-                ============================================================ */
-        .payment-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 1.5rem 0;
-        }
-        .payment-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 1.8rem;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: 0.3s;
-        }
-        .payment-box:hover {
-            border-color: rgba(79, 158, 255, 0.2);
-        }
-        .payment-box h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-        .payment-box .flag {
-            font-size: 2.2rem;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-        .wallet-display {
-            background: #0a0f1a;
-            border-radius: 1rem;
-            padding: 0.8rem 1.2rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            word-break: break-all;
-            border: 1px solid #4f9eff44;
-            margin: 1rem 0;
-            color: #a5b4fc;
-            direction: ltr;
-            text-align: left;
-        }
-        .payment-instructions {
-            font-size: 0.85rem;
-            color: #b0c4e8;
-            line-height: 1.8;
-            margin: 0.5rem 0;
-        }
-        .payment-instructions li {
-            margin-bottom: 0.3rem;
+        .entry-item .content .action-btn:hover {
+            background: #388bfd;
         }
 
-        /* ============================================================
-                   LICENSE OUTPUT
-                ============================================================ */
-        .output-box {
-            background: #0a0f1a;
-            border-radius: 1.2rem;
-            padding: 1.2rem 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
+        .entry-item .content .action-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* ---------- license output (like a terminal block) ---------- */
+        .license-output {
+            margin-top: 2.5rem;
+            background: #0d1117;
+            border: 1px solid #21262d;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
             font-size: 0.8rem;
+            color: #b1bac4;
             white-space: pre-wrap;
-            border: 1px solid #1e293b;
-            margin-top: 1rem;
-            color: #a5b4fc;
+            word-break: break-all;
             min-height: 80px;
             direction: ltr;
             text-align: left;
         }
 
-        /* ============================================================
-                   RESPONSIVE
-                ============================================================ */
-        @media (max-width: 900px) {
-            .payment-grid {
-                grid-template-columns: 1fr;
-            }
+        .license-output .prompt {
+            color: #58a6ff;
         }
+
+        /* ---------- footer ---------- */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #21262d;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #484f58;
+        }
+
+        .footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- responsive ---------- */
         @media (max-width: 700px) {
-            body {
-                padding: 0.8rem;
+            .entry-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
             }
-            .glass {
-                padding: 1.2rem;
+
+            .entry-item .date {
+                font-size: 0.75rem;
             }
-            h1 {
-                font-size: 2.2rem;
+
+            .changelog-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            h2 {
+
+            .changelog-header h1 {
                 font-size: 1.6rem;
             }
-            .product-grid {
-                grid-template-columns: 1fr;
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
             }
-            .product-card .price-usd {
-                font-size: 1.5rem;
+
+            body {
+                padding: 1rem 0.8rem;
             }
-            .wallet-display {
+        }
+
+        @media (max-width: 480px) {
+            .entry-item .content .title {
+                font-size: 1rem;
+            }
+
+            .entry-item .content .meta-row {
                 font-size: 0.7rem;
             }
-        }
-        @media (max-width: 480px) {
-            .badge-group {
-                gap: 0.3rem;
-            }
-            .badge {
-                font-size: 0.6rem;
-                padding: 0.2rem 0.6rem;
-            }
-            .btn {
-                font-size: 0.85rem;
-                padding: 0.7rem 1.2rem;
-            }
-        }
 
-        /* ============================================================
-                   SCROLLBAR
-                ============================================================ */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0f1a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4f9eff55;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4f9eff99;
-        }
-
-        /* ============================================================
-                   ANIMATIONS
-                ============================================================ */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .product-card {
-            animation: fadeUp 0.5s ease forwards;
-        }
-        .product-card:nth-child(2) {
-            animation-delay: 0.05s;
-        }
-        .product-card:nth-child(3) {
-            animation-delay: 0.1s;
-        }
-        .product-card:nth-child(4) {
-            animation-delay: 0.15s;
-        }
-        .product-card:nth-child(5) {
-            animation-delay: 0.2s;
-        }
-        .product-card:nth-child(6) {
-            animation-delay: 0.25s;
-        }
-        .product-card:nth-child(7) {
-            animation-delay: 0.3s;
-        }
-        .product-card:nth-child(8) {
-            animation-delay: 0.35s;
-        }
-        .product-card:nth-child(9) {
-            animation-delay: 0.4s;
-        }
-
-        /* pulse for live indicator */
-        .live-dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #4ade80;
-            border-radius: 50%;
-            margin-left: 0.5rem;
-            animation: pulse 1.8s infinite;
-        }
-        @keyframes pulse {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.4;
-                transform: scale(0.8);
+            .filter-bar .tag {
+                font-size: 0.65rem;
+                padding: 0.1rem 0.7rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <!-- ============================================================
-        HEADER
-        ============================================================ -->
-        <div class="glass" style="text-align:center; position:relative; overflow:hidden;">
-            <div style="position:absolute; top:-30%; right:-20%; width:60%; height:80%; background:radial-gradient(circle, rgba(79,158,255,0.05), transparent 70%); pointer-events:none;"></div>
-            <div style="position:relative; z-index:1;">
-                <h1 class="gradient-text" style="font-size:3.5rem;">🏪 Horizon Store</h1>
-                <p style="font-size:1.2rem; color:#b0c4e8; margin-top:0.3rem;">
-                    Official Store of <strong style="color:#4f9eff;">Beaconchain</strong> · Merkle‑Verified Licenses
-                    <span class="live-dot"></span>
-                </p>
-                <div class="badge-group" style="justify-content:center; margin-top:1rem;">
-                    <span class="badge badge-gold"><i class="fas fa-crown"></i> #3 Global</span>
-                    <span class="badge badge-green"><i class="fas fa-shield-alt"></i> 10/10 Security</span>
-                    <span class="badge badge-purple"><i class="fas fa-tree"></i> Merkle Proof</span>
-                    <span class="badge"><i class="fas fa-mobile-alt"></i> PWA Ready</span>
-                    <span class="badge badge-pink"><i class="fas fa-globe-americas"></i> IR / International</span>
-                </div>
-                <button id="installPwaBtn" class="btn btn-secondary" style="width:auto; margin-top:0.8rem; padding:0.5rem 2rem;">
-                    <i class="fas fa-download"></i> نصب اپلیکیشن (PWA)
-                </button>
-            </div>
+    <!-- ===== HEADER ===== -->
+    <header class="changelog-header">
+        <h1>
+            <i class="fas fa-store" style="color:#58a6ff;"></i>
+            Horizon Store
+            <span class="badge-year">2025</span>
+        </h1>
+        <div class="meta-links">
+            <span><i class="far fa-calendar-alt"></i> 2025 · Q1–Q4</span>
+            <a href="#"><i class="fas fa-tag"></i> collaboration-tools</a>
+            <a href="#"><i class="fab fa-github"></i> beaconchain-horizon</a>
         </div>
+    </header>
 
-        <!-- ============================================================
-        PAYMENT WALLET (Global)
-        ============================================================ -->
-        <div class="glass">
-            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem;">
-                <div style="flex:1; min-width:200px;">
-                    <h3 style="color:#c084fc;"><i class="fas fa-wallet"></i> آدرس کیف پول رسمی</h3>
-                    <div class="wallet-display">
-                        0x4E94F10F0a34a0DF229e68d5902644046258D678
-                    </div>
-                    <p style="font-size:0.8rem; color:#6a82b0;">
-                        <i class="fas fa-info-circle"></i> شبکه: <strong style="color:#a5b4fc;">Ethereum (ERC-20)</strong> ·
-                        پشتیبانی: ETH / USDC / BNB
-                    </p>
-                </div>
-                <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
-                    <span class="badge badge-green"><i class="fas fa-check-circle"></i> Verified</span>
-                    <span class="badge badge-purple"><i class="fas fa-lock"></i> Multi‑Sig</span>
-                    <span class="badge"><i class="fas fa-clock"></i> 24/7 Active</span>
-                </div>
-            </div>
+    <!-- ===== FILTER BAR (inspired by GitHub Changelog) ===== -->
+    <div class="filter-bar">
+        <span class="label"><i class="fas fa-filter"></i> فیلتر</span>
+        <div class="tag-group">
+            <span class="tag active"><i class="fas fa-check-circle"></i> همه</span>
+            <span class="tag"><i class="fas fa-bolt"></i> API</span>
+            <span class="tag"><i class="fas fa-briefcase"></i> آگهی</span>
+            <span class="tag"><i class="fas fa-chart-line"></i> پایش</span>
+            <span class="tag"><i class="fas fa-shield-alt"></i> Zcash</span>
         </div>
-
-        <!-- ============================================================
-        PRODUCTS
-        ============================================================ -->
-        <div class="glass">
-            <h2><i class="fas fa-cubes"></i> محصولات و لایسنس‌ها</h2>
-            <p class="subtitle">همه قیمت‌ها به <strong>دلار آمریکا (USD)</strong> بروز شده‌اند. پرداخت با ارز دیجیتال معادل.</p>
-            <div class="product-grid" id="productGrid"></div>
-        </div>
-
-        <!-- ============================================================
-        PAYMENT SECTION – IRAN / INTERNATIONAL
-        ============================================================ -->
-        <div class="glass">
-            <h2><i class="fas fa-credit-card"></i> صفحه پرداخت</h2>
-            <p class="subtitle">راهنمای پرداخت برای کاربران داخل ایران و خارج از کشور</p>
-
-            <div class="payment-grid">
-                <!-- Iran -->
-                <div class="payment-box">
-                    <span class="flag">🇮🇷</span>
-                    <h3>پرداخت برای کاربران ایرانی</h3>
-                    <p style="color:#b0c4e8; font-size:0.9rem;">
-                        به دلیل تحریم‌ها، کاربران ایرانی می‌توانند از روش‌های زیر استفاده کنند:
-                    </p>
-                    <ul class="payment-instructions" style="list-style:disc; padding-right:1.5rem;">
-                        <li><strong>ارز دیجیتال:</strong> ارسال تتر (USDT) یا اتریوم (ETH) به آدرس کیف پول بالا.</li>
-                        <li><strong>صرافی‌های ایرانی:</strong> خرید از طریق نوبیتکس، والکس یا رمزینکس و ارسال به ولت.</li>
-                        <li><strong>پشتیبانی:</strong> در صورت مشکل، با پشتیبانی تلگرام تماس بگیرید.</li>
-                    </ul>
-                    <div style="background:#0a0f1a; border-radius:1rem; padding:0.8rem; margin-top:0.8rem; border:1px solid #facc1555;">
-                        <p style="font-size:0.8rem; color:#fde047;">
-                            <i class="fas fa-exclamation-triangle"></i> توجه: حتماً مبلغ دقیق را ارسال کنید. پس از پرداخت، دکمه <strong>"تولید لایسنس"</strong> را بزنید.
-                        </p>
-                    </div>
-                    <button class="btn btn-gold" style="margin-top:1rem; width:100%;" onclick="alert('📩 برای راهنمایی پرداخت، به پشتیبانی در تلگرام پیام دهید: @BeaconchainSupport')">
-                        <i class="fas fa-headset"></i> راهنمای پرداخت ایران
-                    </button>
-                </div>
-
-                <!-- International -->
-                <div class="payment-box">
-                    <span class="flag">🌍</span>
-                    <h3>International Payment</h3>
-                    <p style="color:#b0c4e8; font-size:0.9rem;">
-                        For users outside Iran – send crypto directly to the wallet address.
-                    </p>
-                    <ul class="payment-instructions" style="list-style:disc; padding-right:1.5rem;">
-                        <li><strong>ETH / USDC / BNB:</strong> Send exact amount to the wallet above.</li>
-                        <li><strong>Network:</strong> Ethereum Mainnet (ERC-20).</li>
-                        <li><strong>After payment:</strong> Click "Generate License" and attach the transaction hash.</li>
-                    </ul>
-                    <div style="background:#0a0f1a; border-radius:1rem; padding:0.8rem; margin-top:0.8rem; border:1px solid #4f9eff55;">
-                        <p style="font-size:0.8rem; color:#a5b4fc;">
-                            <i class="fas fa-info-circle"></i> For bulk purchases or enterprise plans, contact us at <strong>sales@beaconchain.us</strong>
-                        </p>
-                    </div>
-                    <button class="btn btn-primary" style="margin-top:1rem; width:100%;" onclick="alert('📤 Send payment to:\n0x4E94F10F0a34a0DF229e68d5902644046258D678\n\nAfter sending, click "Generate License" below.')">
-                        <i class="fas fa-paper-plane"></i> International Payment Guide
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ============================================================
-        LICENSE GENERATOR
-        ============================================================ -->
-        <div class="glass">
-            <h2><i class="fas fa-file-certificate"></i> تولید لایسنس مبتنی بر Merkle Tree</h2>
-            <p class="subtitle">پس از پرداخت، حجم درخواست مورد نظر را انتخاب کنید تا لایسنس دیجیتال برای شما تولید شود.</p>
-
-            <div style="display:flex; flex-wrap:wrap; gap:0.6rem; margin:1rem 0;">
-                <button class="btn btn-primary" style="width:auto;" id="genBasic"><i class="fas fa-bolt"></i> Basic (100)</button>
-                <button class="btn btn-primary" style="width:auto;" id="genPro"><i class="fas fa-rocket"></i> Pro (1K)</button>
-                <button class="btn btn-primary" style="width:auto;" id="genEnterprise"><i class="fas fa-crown"></i> Enterprise (10K)</button>
-                <button class="btn btn-secondary" style="width:auto;" id="genCustom"><i class="fas fa-pen"></i> سفارشی</button>
-                <button class="btn btn-secondary" style="width:auto;" id="genValidatorMonth"><i class="fas fa-calendar-alt"></i> Validator 1m</button>
-                <button class="btn btn-secondary" style="width:auto;" id="genZcash"><i class="fas fa-shield-alt"></i> Zcash Tx</button>
-            </div>
-
-            <div id="licenseOutput" class="output-box">— برای تولید لایسنس، یکی از دکمه‌های بالا را انتخاب کنید —</div>
-
-            <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
-                <span style="font-size:0.8rem; color:#6a82b0;">
-                    <i class="fas fa-info-circle"></i> لایسنس شامل: Merkle Root، حجم درخواست، و زمان صدور است.
-                </span>
-                <button class="btn btn-secondary" style="width:auto;" onclick="document.getElementById('licenseOutput').innerHTML = '—'">
-                    <i class="fas fa-undo"></i> پاک کردن
-                </button>
-            </div>
-        </div>
-
-        <!-- ============================================================
-        FOOTER
-        ============================================================ -->
-        <div style="text-align:center; padding:2rem 0 1rem; border-top:1px solid #1e293b; margin-top:1.5rem;">
-            <p style="font-size:0.75rem; color:#5a7a9a;">
-                © 2026 <strong style="color:#8fa4d0;">Mahdi Amolimoghaddam</strong> · Horizon Ecosystem ·
-                <a href="https://github.com/beaconchain-horizon" style="color:#4f9eff; text-decoration:none;">GitHub</a> ·
-                <a href="https://beaconchain.us" style="color:#4f9eff; text-decoration:none;">Beaconchain</a> ·
-                <a href="https://github.com/beaconchain-horizon/hub" style="color:#4f9eff; text-decoration:none;">Horizon Hub</a>
-                <br>
-                <span style="font-size:0.7rem; color:#3a5a7a;">
-                    <i class="fas fa-shield-alt"></i> Merkle‑Verified · Offline‑First · Sovereign by Design
-                </span>
-            </p>
-        </div>
-
+        <span style="margin-right:auto; font-size:0.75rem; color:#484f58;">
+            <i class="far fa-clock"></i> آخرین‌ها
+        </span>
     </div>
 
-    <!-- ============================================================
-    JAVASCRIPT – FULL LOGIC
-    ============================================================ -->
-    <script>
-        // ============================================================
-        // 1. PRODUCT CATALOG (با جزئیات کامل، عکس، قیمت به دلار)
-        // ============================================================
+    <!-- ===== ENTRY LIST (products as changelog entries) ===== -->
+    <div class="entry-list" id="productList">
+        <!-- products will be rendered by JavaScript -->
+    </div>
+
+    <!-- ===== LICENSE OUTPUT ===== -->
+    <div class="license-output" id="licenseOutput">
+        <span class="prompt">$</span> — برای تولید لایسنس، روی دکمه‌ی <span style="color:#f0f6fc;">«تولید لایسنس»</span> هر محصول کلیک کنید.
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <span>
+            © 2026 <strong style="color:#8b949e;">Mahdi Amolimoghaddam</strong> ·
+            Horizon Ecosystem
+        </span>
+        <span>
+            <a href="https://github.com/beaconchain-horizon"><i class="fab fa-github"></i> GitHub</a>
+            ·
+            <a href="https://beaconchain.us">Beaconchain</a>
+            ·
+            <a href="#"><i class="fas fa-shield-alt"></i> Merkle‑Verified</a>
+        </span>
+    </footer>
+
+</div>
+
+<!-- ============================================================
+JAVASCRIPT – product data + license generator
+============================================================ -->
+<script>
+    (function() {
+        'use strict';
+
+        // ---------- product catalog (same as before) ----------
         const products = [{
             id: 'basic-api',
             name: 'Basic API Pack',
@@ -658,7 +454,7 @@
             priceUsd: 5.20,
             priceEth: 0.002,
             badge: 'لایسنس',
-            badgeColor: 'badge-green',
+            badgeColor: '',
             tags: ['Merkle', 'API', 'Starter']
         }, {
             id: 'pro-api',
@@ -670,7 +466,7 @@
             priceUsd: 39.00,
             priceEth: 0.015,
             badge: 'لایسنس',
-            badgeColor: 'badge-green',
+            badgeColor: '',
             tags: ['Merkle', 'API', 'Production']
         }, {
             id: 'enterprise-api',
@@ -682,7 +478,7 @@
             priceUsd: 260.00,
             priceEth: 0.1,
             badge: 'لایسنس',
-            badgeColor: 'badge-gold',
+            badgeColor: 'gold',
             tags: ['Merkle', 'API', 'Enterprise']
         }, {
             id: 'hub-job',
@@ -694,7 +490,7 @@
             priceUsd: 13.00,
             priceEth: 0.005,
             badge: 'آگهی',
-            badgeColor: 'badge-pink',
+            badgeColor: 'pink',
             tags: ['Job', 'Hiring', '30 Days']
         }, {
             id: 'hub-product',
@@ -706,7 +502,7 @@
             priceUsd: 20.80,
             priceEth: 0.008,
             badge: 'آگهی',
-            badgeColor: 'badge-pink',
+            badgeColor: 'pink',
             tags: ['Digital', 'Product', 'Marketplace']
         }, {
             id: 'hub-service',
@@ -718,7 +514,7 @@
             priceUsd: 7.80,
             priceEth: 0.003,
             badge: 'آگهی',
-            badgeColor: 'badge-pink',
+            badgeColor: 'pink',
             tags: ['Freelance', 'Service', 'Remote']
         }, {
             id: 'validator-month',
@@ -730,7 +526,7 @@
             priceUsd: 26.00,
             priceEth: 0.01,
             badge: 'اشتراک',
-            badgeColor: 'badge-purple',
+            badgeColor: 'purple',
             tags: ['Validator', 'Monitoring', '30 Days']
         }, {
             id: 'validator-year',
@@ -742,7 +538,7 @@
             priceUsd: 260.00,
             priceEth: 0.1,
             badge: 'اشتراک',
-            badgeColor: 'badge-gold',
+            badgeColor: 'gold',
             tags: ['Validator', 'Monitoring', '1 Year']
         }, {
             id: 'zcash-tx',
@@ -754,76 +550,78 @@
             priceUsd: 2.60,
             priceEth: 0.001,
             badge: 'سرویس',
-            badgeColor: 'badge-green',
+            badgeColor: '',
             tags: ['Zcash', 'Privacy', 'ZK-Proof']
         }];
 
-        // ============================================================
-        // 2. RENDER PRODUCTS
-        // ============================================================
+        // ---------- render products as changelog entries ----------
         function renderProducts() {
-            const grid = document.getElementById('productGrid');
-            if (!grid) return;
+            const container = document.getElementById('productList');
+            if (!container) return;
 
-            grid.innerHTML = products.map(p => `
-                        <div class="product-card" data-id="${p.id}">
-                            <div class="product-icon"><i class="fas ${p.icon}"></i></div>
-                            <h3>${p.name}</h3>
-                            <div class="source"><i class="fas fa-code-branch"></i> ${p.source}</div>
-                            <div class="desc">${p.description}</div>
-                            <div class="meta-tags">
-                                ${p.tags.map(t => `<span>#${t}</span>`).join('')}
+            // sort by price (low to high) to mimic a logical changelog order
+            const sorted = [...products].sort((a, b) => a.priceUsd - b.priceUsd);
+
+            container.innerHTML = sorted.map((p, index) => {
+                // fake date – based on index to give a "changelog" feel
+                const month = String(1 + (index % 12)).padStart(2, '0');
+                const day = String(10 + (index * 3) % 20).padStart(2, '0');
+                const dateLabel = `۲۰۲۵-${month}-${day}`;
+
+                const badgeClass = p.badgeColor ? `product-badge ${p.badgeColor}` : 'product-badge';
+
+                return `
+                    <div class="entry-item" data-id="${p.id}">
+                        <div class="date">
+                            <i class="far fa-calendar-alt"></i> ${dateLabel}
+                        </div>
+                        <div class="content">
+                            <div class="title">
+                                <i class="fas ${p.icon}" style="color:#58a6ff; font-size:1rem;"></i>
+                                ${p.name}
+                                <span class="${badgeClass}">${p.badge}</span>
+                            </div>
+                            <div class="description">${p.description}</div>
+                            <div class="meta-row">
+                                <span class="price">
+                                    $${p.priceUsd.toFixed(2)} USD
+                                    <span>(${p.priceEth} ETH)</span>
+                                </span>
+                                <span style="color:#484f58;">|</span>
                                 <span>${p.volume.toLocaleString()} req</span>
+                                <span style="color:#484f58;">|</span>
+                                <span class="tags">
+                                    ${p.tags.map(t => `<span>#${t}</span>`).join('')}
+                                </span>
                             </div>
-                            <div class="price-row">
-                                <span class="price-usd">$${p.priceUsd.toFixed(2)} USD</span>
-                                <span class="price-eth">${p.priceEth} ETH <small>≈ $${p.priceUsd.toFixed(2)}</small></span>
-                            </div>
-                            <span class="badge ${p.badgeColor}" style="margin-bottom:0.8rem; align-self:flex-start;">${p.badge}</span>
-                            <button class="btn btn-primary buy-btn" 
+                            <button class="action-btn generate-btn"
                                     data-id="${p.id}"
                                     data-name="${p.name}"
-                                    data-eth="${p.priceEth}"
-                                    data-usd="${p.priceUsd}"
                                     data-volume="${p.volume}">
-                                <i class="fas fa-shopping-cart"></i> خرید / تولید لایسنس
+                                <i class="fas fa-file-certificate"></i> تولید لایسنس
                             </button>
                         </div>
-                    `).join('');
+                    </div>
+                `;
+            }).join('');
 
-            // Event listeners for buy buttons
-            document.querySelectorAll('.buy-btn').forEach(btn => {
+            // attach click events to all generate buttons
+            document.querySelectorAll('.generate-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
+                    const id = this.dataset.id;
                     const name = this.dataset.name;
-                    const usd = this.dataset.usd;
-                    const eth = this.dataset.eth;
-                    const volume = this.dataset.volume;
-                    showPaymentPrompt(name, usd, eth, volume);
+                    const volume = parseInt(this.dataset.volume, 10);
+                    const product = products.find(p => p.id === id);
+                    if (product) {
+                        generateLicense(product, name);
+                    } else {
+                        generateLicense({ volume, priceUsd: 0, priceEth: 0 }, name);
+                    }
                 });
             });
         }
 
-        // ============================================================
-        // 3. PAYMENT PROMPT (جزئیات کامل)
-        // ============================================================
-        function showPaymentPrompt(name, usd, eth, volume) {
-            const wallet = '0x4E94F10F0a34a0DF229e68d5902644046258D678';
-            const msg =
-                `🔐 خرید: ${name}\n` +
-                `💰 قیمت: $${usd} USD (${eth} ETH)\n` +
-                `📦 حجم: ${volume.toLocaleString()} درخواست\n\n` +
-                `📤 ارسال مبلغ دقیق به آدرس زیر:\n${wallet}\n\n` +
-                `🌐 شبکه: Ethereum (ERC-20)\n` +
-                `✅ پس از پرداخت، دکمه "تولید لایسنس" را بزنید.\n\n` +
-                `🇮🇷 کاربران ایرانی: از طریق صرافی‌های داخلی ارسال کنید.\n` +
-                `🌍 International: Send via MetaMask or any wallet.`;
-
-            alert(msg);
-        }
-
-        // ============================================================
-        // 4. MERKLE LICENSE GENERATOR (واقعی با Web Crypto API)
-        // ============================================================
+        // ---------- Merkle license generator (simplified, async) ----------
         async function sha256(input) {
             const hash = await crypto.subtle.digest('SHA-256', input);
             return new Uint8Array(hash);
@@ -838,7 +636,6 @@
                 this.volume = volume;
                 this.seed = seed;
                 this.root = null;
-                this.leaves = null;
             }
 
             async generate() {
@@ -851,8 +648,6 @@
                     concat.set(indexBuf, this.seed.length);
                     leaves.push(await sha256(concat));
                 }
-                this.leaves = leaves;
-
                 let level = leaves;
                 while (level.length > 1) {
                     const next = [];
@@ -871,10 +666,12 @@
             }
         }
 
-        async function generateLicense(volume, productName = '') {
+        async function generateLicense(product, productName) {
             const output = document.getElementById('licenseOutput');
             if (!output) return;
-            output.innerHTML = '⏳ در حال تولید درخت مرکل... لطفاً صبر کنید...';
+
+            const volume = product.volume || 100;
+            output.innerHTML = `<span class="prompt">$</span> ⏳ در حال تولید درخت مرکل برای ${volume.toLocaleString()} درخواست...`;
 
             try {
                 const lic = new MerkleLicense(volume);
@@ -894,7 +691,7 @@
                     wallet: '0x4E94F10F0a34a0DF229e68d5902644046258D678'
                 };
 
-                // دانلود فایل لایسنس
+                // download JSON
                 const blob = new Blob([JSON.stringify(licenseData, null, 2)], { type: 'application/json' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -907,71 +704,27 @@
 
                 const dateStr = new Date(timestamp).toLocaleString('fa-IR');
                 output.innerHTML =
-                    `✅ لایسنس با موفقیت تولید شد!\n` +
-                    `📄 حجم: ${volume.toLocaleString()} درخواست\n` +
-                    `🌳 Merkle Root: ${rootHex.slice(0, 48)}…\n` +
-                    `⏱️ زمان: ${dateStr}\n` +
-                    `📥 فایل دانلود شد.\n` +
-                    `🔐 برای تأیید، Merkle Root را در سیستم خود مقایسه کنید.`;
+                    `<span class="prompt">$</span> ✅ لایسنس تولید شد!\n` +
+                    `   📄 حجم: ${volume.toLocaleString()} درخواست\n` +
+                    `   🌳 Merkle Root: ${rootHex.slice(0, 48)}…\n` +
+                    `   ⏱️ زمان: ${dateStr}\n` +
+                    `   📥 فایل دانلود شد.`;
 
             } catch (err) {
-                output.innerHTML = `❌ خطا: ${err.message}`;
+                output.innerHTML = `<span class="prompt">$</span> ❌ خطا: ${err.message}`;
             }
         }
 
-        // ============================================================
-        // 5. LICENSE BUTTONS
-        // ============================================================
-        document.getElementById('genBasic')?.addEventListener('click', () => {
-            const p = products.find(x => x.id === 'basic-api');
-            generateLicense(p.volume, p.name);
-        });
-        document.getElementById('genPro')?.addEventListener('click', () => {
-            const p = products.find(x => x.id === 'pro-api');
-            generateLicense(p.volume, p.name);
-        });
-        document.getElementById('genEnterprise')?.addEventListener('click', () => {
-            const p = products.find(x => x.id === 'enterprise-api');
-            generateLicense(p.volume, p.name);
-        });
-        document.getElementById('genValidatorMonth')?.addEventListener('click', () => {
-            const p = products.find(x => x.id === 'validator-month');
-            generateLicense(p.volume, p.name);
-        });
-        document.getElementById('genZcash')?.addEventListener('click', () => {
-            const p = products.find(x => x.id === 'zcash-tx');
-            generateLicense(p.volume, p.name);
-        });
-        document.getElementById('genCustom')?.addEventListener('click', () => {
-            const input = prompt('تعداد درخواست مورد نظر را وارد کنید (مثلاً ۵۰۰):', '500');
-            if (input && !isNaN(parseInt(input))) {
-                generateLicense(parseInt(input), 'Custom License');
-            }
-        });
-
-        // ============================================================
-        // 6. PWA INSTALL
-        // ============================================================
-        document.getElementById('installPwaBtn')?.addEventListener('click', () => {
-            alert('📱 Horizon Store قابلیت نصب به‌عنوان PWA را دارد.\n' +
-                '🔹 در مرورگر کروم: منوی ⋮ → Add to Home Screen\n' +
-                '🔹 در سافاری: دکمه اشتراک → Add to Home Screen');
-        });
-
-        // ============================================================
-        // 7. INIT
-        // ============================================================
+        // ---------- init ----------
         renderProducts();
 
-        // Service Worker registration (if sw.js exists)
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js').catch(() => {});
-        }
+        // expose generateLicense for console debugging
+        window.generateLicense = generateLicense;
 
-        console.log('🚀 Horizon Store loaded successfully.');
+        console.log('🚀 Horizon Store · Changelog 2025 style loaded.');
         console.log(`📦 ${products.length} products available.`);
-        console.log('🛒 Powered by Beaconchain Horizon.');
-    </script>
+    })();
+</script>
 
 </body>
 </html>
