@@ -1,392 +1,1048 @@
 <!DOCTYPE html>
-<html lang=“fa” dir=“rtl”>
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset=“UTF-8”>
-    <meta name=“viewport” content=“width=device-width, initial-scale=1.0”>
-    <title>Horizon Store | فروشگاه رسمی Beaconchain</title>
-    <link rel=“stylesheet” href=“https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css”>
-    <link href=“https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap” rel=“stylesheet”>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizon Hub | Pricing &amp; Licensing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:’Inter’,sans-serif; background:#f1f5f9; color:#0f172a; direction:rtl; }
-        .container { max-width:1440px; margin:0 auto; padding:0 1.5rem; }
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            direction: rtl;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
 
-        /* header */
-        .header { background:#fff; border-bottom:1px solid #e2e8f0; padding:0.6rem 0; position:sticky; top:0; z-index:100; }
-        .header-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.8rem; }
-        .logo { font-size:1.5rem; font-weight:900; background:linear-gradient(135deg,#0f172a,#2563eb); -webkit-background-clip:text; background-clip:text; color:transparent; display:flex; align-items:center; gap:0.5rem; }
-        .logo i { color:#2563eb; font-size:1.8rem; }
-        .search-bar { flex:1; min-width:200px; display:flex; gap:0.5rem; }
-        .search-bar input { flex:1; padding:0.5rem 1rem; border:1px solid #e2e8f0; border-radius:2rem; font-size:0.8rem; }
-        .search-bar button { background:#2563eb; border:none; padding:0.5rem 1.2rem; border-radius:2rem; color:#fff; cursor:pointer; }
-        .ticker { display:flex; gap:0.8rem; font-size:0.7rem; background:#f1f5f9; padding:0.3rem 1rem; border-radius:2rem; flex-wrap:wrap; }
-        .ticker span { font-weight:700; }
+        /* ===== HEADER ===== */
+        .header {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .logo i {
+            color: #2563eb;
+            margin-left: 0.5rem;
+        }
+        .logo span {
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-right: 0.5rem;
+        }
+        .header-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .header-actions a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            transition: 0.2s;
+        }
+        .header-actions a:hover {
+            background: #f1f5f9;
+        }
+        .header-actions .btn-primary-sm {
+            background: #2563eb;
+            color: #fff;
+        }
+        .header-actions .btn-primary-sm:hover {
+            background: #1d4ed8;
+        }
 
-        /* hero banner */
-        .hero { background:linear-gradient(135deg,#0f172a,#1e293b); border-radius:1.5rem; margin:1.5rem 0; padding:2.5rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
-        .hero-text { color:#fff; flex:1; }
-        .hero-text h1 { font-size:2.2rem; font-weight:900; background:linear-gradient(135deg,#facc15,#38bdf8); -webkit-background-clip:text; background-clip:text; color:transparent; }
-        .hero-text p { color:#94a3b8; margin:0.5rem 0; }
-        .hero-img { flex:0 0 200px; text-align:center; font-size:4rem; }
+        /* ===== TICKER ===== */
+        .ticker-bar {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 0.6rem 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-track {
+            display: flex;
+            gap: 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1e293b;
+            animation: ticker-scroll 35s linear infinite;
+        }
+        .ticker-track span .val {
+            color: #2563eb;
+            font-weight: 700;
+        }
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
-        /* product grid - amazon style */
-        .section-title { font-size:1.4rem; font-weight:800; margin:2rem 0 1rem; display:flex; align-items:center; gap:0.5rem; border-right:4px solid #2563eb; padding-right:0.8rem; }
-        .product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1.5rem; }
-        .product-card { background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:0.25s; border:1px solid #e2e8f0; }
-        .product-card:hover { transform:translateY(-6px); box-shadow:0 12px 30px rgba(0,0,0,0.1); border-color:#2563eb; }
-        .product-img { background:#f8fafc; padding:1.5rem; text-align:center; font-size:3rem; border-bottom:1px solid #e2e8f0; }
-        .product-body { padding:1rem; }
-        .product-body h4 { font-size:1rem; font-weight:700; }
-        .product-body .desc { font-size:0.75rem; color:#64748b; margin:0.3rem 0; }
-        .product-body .price { font-size:1.3rem; font-weight:800; color:#b45309; }
-        .product-body .price small { font-size:0.7rem; color:#64748b; font-weight:400; }
-        .product-body .badge { display:inline-block; background:#dbeafe; color:#1d4ed8; font-size:0.6rem; padding:0.1rem 0.6rem; border-radius:40px; font-weight:600; }
-        .product-body .badge.gold { background:#fef3c7; color:#b45309; }
-        .btn-buy { width:100%; margin-top:0.6rem; padding:0.5rem; background:linear-gradient(135deg,#2563eb,#7c6bff); color:#fff; border:none; border-radius:2rem; font-weight:600; cursor:pointer; transition:0.2s; }
-        .btn-buy:hover { transform:scale(1.02); box-shadow:0 4px 16px rgba(37,99,235,0.3); }
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 1.5rem;
+            padding: 2.5rem 3rem;
+            margin-bottom: 2rem;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .hero-content h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+        .hero-content h1 i {
+            color: #fbbf24;
+        }
+        .hero-content p {
+            color: #94a3b8;
+            font-size: 1.05rem;
+            margin-top: 0.3rem;
+        }
+        .hero-content .badge-row {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .hero-content .badge-row span {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.3rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+        .hero-content .badge-row span i {
+            color: #fbbf24;
+            margin-left: 0.3rem;
+        }
+        .hero-emoji {
+            font-size: 4rem;
+            line-height: 1;
+        }
 
-        /* blockchain networks */
-        .network-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:1rem; }
-        .network-card { background:#fff; border:1px solid #e2e8f0; border-radius:1rem; padding:1rem; text-align:center; transition:0.2s; }
-        .network-card:hover { border-color:#2563eb; transform:translateY(-3px); }
-        .network-card .icon { font-size:2.5rem; }
-        .network-card h5 { font-weight:700; margin:0.3rem 0; }
-        .network-card p { font-size:0.65rem; color:#64748b; }
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 2.5rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .section-title i {
+            color: #2563eb;
+        }
+        .section-title .badge {
+            font-size: 0.65rem;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 0.15rem 0.9rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
 
-        /* validator dashboard */
-        .validator-dash { background:#fff; border-radius:1.2rem; padding:1.2rem; border:1px solid #e2e8f0; margin:1.5rem 0; }
-        .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:1rem; text-align:center; margin:1rem 0; }
-        .stats .num { font-size:2rem; font-weight:900; color:#2563eb; }
-        .stats .label { font-size:0.65rem; color:#64748b; }
-        .search-box { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem; }
-        .search-box input { flex:1; padding:0.5rem 1rem; border:1px solid #e2e8f0; border-radius:2rem; font-size:0.8rem; }
-        .search-box button { background:#2563eb; border:none; padding:0.5rem 1.2rem; border-radius:2rem; color:#fff; cursor:pointer; }
-        .validator-list { height:350px; overflow-y:auto; background:#f8fafc; border-radius:1rem; border:1px solid #e2e8f0; }
-        .validator-item { display:flex; justify-content:space-between; padding:0.5rem 0.8rem; border-bottom:1px solid #f1f5f9; font-size:0.75rem; flex-wrap:wrap; }
-        .validator-item:hover { background:#f1f5f9; }
-        .v-index { font-weight:700; background:#e2e8f0; padding:0.1rem 0.6rem; border-radius:20px; font-family:monospace; font-size:0.7rem; }
-        .v-balance { background:#e2e8f0; padding:0.1rem 0.5rem; border-radius:20px; font-size:0.7rem; }
+        /* ===== PRICING CARDS ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .pricing-card {
+            background: #ffffff;
+            border-radius: 1.25rem;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid #eef2f6;
+            transition: 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+            border-color: #bfdbfe;
+        }
+        .pricing-card.featured {
+            border-color: #2563eb;
+            background: #f8faff;
+        }
+        .pricing-card .plan-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .pricing-card .plan-name i {
+            color: #2563eb;
+            margin-left: 0.4rem;
+        }
+        .pricing-card .plan-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #0f172a;
+            margin: 0.5rem 0 0.2rem 0;
+        }
+        .pricing-card .plan-price small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #64748b;
+        }
+        .pricing-card .plan-desc {
+            color: #475569;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+        .pricing-card .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.2rem 0;
+        }
+        .pricing-card .plan-features li {
+            font-size: 0.85rem;
+            color: #334155;
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .pricing-card .plan-features li i {
+            color: #22c55e;
+            font-size: 0.75rem;
+            width: 1.2rem;
+        }
+        .pricing-card .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .pricing-card .btn-primary {
+            background: #2563eb;
+            color: #fff;
+        }
+        .pricing-card .btn-primary:hover {
+            background: #1d4ed8;
+        }
+        .pricing-card .btn-outline {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+        .pricing-card .btn-outline:hover {
+            background: #2563eb;
+            color: #fff;
+        }
+        .pricing-card .badge-featured {
+            background: #2563eb;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 0.9rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            align-self: flex-start;
+        }
 
-        /* license generator */
-        .license-box { background:#fff; border-radius:1.2rem; padding:1.2rem; border:1px solid #e2e8f0; margin:1.5rem 0; }
-        .btn-group { display:flex; flex-wrap:wrap; gap:0.5rem; margin:0.5rem 0; }
-        .btn { padding:0.5rem 1.2rem; border:none; border-radius:2rem; font-weight:600; font-size:0.8rem; cursor:pointer; }
-        .btn-primary { background:linear-gradient(135deg,#2563eb,#7c6bff); color:#fff; }
-        .btn-secondary { background:#e2e8f0; color:#1e293b; }
-        .output { background:#f1f5f9; border-radius:1rem; padding:0.8rem; font-family:monospace; font-size:0.75rem; margin-top:0.8rem; border:1px solid #e2e8f0; white-space:pre-wrap; min-height:50px; }
+        /* ===== PRODUCT GRID (legacy) ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .product-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.2rem 1.2rem 1.5rem;
+            border: 1px solid #eef2f6;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .product-card:hover {
+            border-color: #bfdbfe;
+            transform: translateY(-2px);
+        }
+        .product-card .price {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #0f172a;
+        }
+        .product-card .label {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        .product-card .btn-sm {
+            margin-top: 0.6rem;
+            padding: 0.3rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: none;
+            background: #2563eb;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .product-card .btn-sm:hover {
+            background: #1d4ed8;
+        }
 
-        /* footer */
-        .footer { background:#0f172a; color:#94a3b8; padding:2rem 0 1rem; margin-top:2rem; border-radius:1.5rem 1.5rem 0 0; }
-        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1.5rem; margin-bottom:1.5rem; }
-        .footer-col h4 { color:#facc15; font-size:0.9rem; font-weight:700; margin-bottom:0.6rem; }
-        .footer-col ul { list-style:none; }
-        .footer-col li { margin-bottom:0.3rem; }
-        .footer-col a { color:#cbd5e1; text-decoration:none; transition:0.2s; }
-        .footer-col a:hover { color:#60a5fa; }
-        .social { display:flex; gap:0.5rem; flex-wrap:wrap; }
-        .social a { background:#1e293b; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; transition:0.2s; }
-        .social a:hover { background:#2563eb; transform:translateY(-2px); }
-        .copyright { text-align:center; border-top:1px solid #1e293b; padding-top:1rem; font-size:0.65rem; }
-        .founder { color:#facc15; font-weight:600; }
+        /* ===== VALIDATOR DASHBOARD ===== */
+        .validator-dash {
+            background: #ffffff;
+            border-radius: 1.25rem;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eef2f6;
+            margin: 1.5rem 0;
+        }
+        .validator-dash h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .validator-dash h3 i {
+            color: #2563eb;
+            margin-left: 0.5rem;
+        }
+        .stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+        .stats div .num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .stats div .label {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .search-box input {
+            flex: 1;
+            min-width: 180px;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            border: 1px solid #e2e8f0;
+            font-family: inherit;
+            font-size: 0.85rem;
+            background: #f8fafc;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        .search-box button {
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            border: none;
+            background: #2563eb;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .search-box button:hover {
+            background: #1d4ed8;
+        }
+        .validator-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #f1f5f9;
+            border-radius: 0.75rem;
+            padding: 0.3rem;
+            background: #fafbfc;
+        }
+        .validator-list .v-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #f1f5f9;
+            color: #1e293b;
+        }
+        .validator-list .v-row:last-child {
+            border-bottom: none;
+        }
+        .validator-list .v-row .idx {
+            font-weight: 600;
+            color: #64748b;
+        }
+        .validator-list .v-row .bal {
+            font-weight: 600;
+            color: #0f172a;
+        }
+        .validator-list .v-row .status-online {
+            color: #22c55e;
+        }
+        .validator-list .v-row .status-offline {
+            color: #ef4444;
+        }
 
-        @media (max-width:768px) { .hero { flex-direction:column; text-align:center; } .hero-img { font-size:3rem; } .product-grid { grid-template-columns:1fr 1fr; } }
-        @media (max-width:480px) { .product-grid { grid-template-columns:1fr; } .ticker { font-size:0.6rem; } }
+        /* ===== LICENSE GENERATOR ===== */
+        .license-box {
+            background: #ffffff;
+            border-radius: 1.25rem;
+            padding: 1.8rem 2rem;
+            border: 1px solid #eef2f6;
+            margin: 1.5rem 0;
+        }
+        .license-box h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .license-box h3 i {
+            color: #2563eb;
+            margin-left: 0.5rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .btn-group .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            border: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+        .btn-group .btn:hover {
+            background: #e2e8f0;
+        }
+        .btn-group .btn-primary {
+            background: #2563eb;
+            color: #fff;
+        }
+        .btn-group .btn-primary:hover {
+            background: #1d4ed8;
+        }
+        .btn-group .btn-outline {
+            background: transparent;
+            border: 2px solid #2563eb;
+            color: #2563eb;
+        }
+        .btn-group .btn-outline:hover {
+            background: #2563eb;
+            color: #fff;
+        }
+        .output {
+            background: #f8fafc;
+            border-radius: 0.75rem;
+            padding: 1rem 1.2rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #1e293b;
+            border: 1px dashed #cbd5e1;
+            min-height: 3rem;
+            word-break: break-all;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2rem 2rem 1.5rem;
+            margin-top: 2.5rem;
+            border: 1px solid #eef2f6;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-grid h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.6rem;
+        }
+        .footer-grid ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-grid ul li {
+            margin-bottom: 0.3rem;
+        }
+        .footer-grid ul li a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .footer-grid ul li a:hover {
+            color: #2563eb;
+        }
+        .social {
+            display: flex;
+            gap: 0.8rem;
+        }
+        .social a {
+            color: #475569;
+            font-size: 1.4rem;
+            transition: 0.2s;
+        }
+        .social a:hover {
+            color: #2563eb;
+        }
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 1.2rem;
+        }
+        .copyright .founder {
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .hero {
+                padding: 1.8rem 1.5rem;
+                text-align: center;
+                justify-content: center;
+            }
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+            .hero-emoji {
+                font-size: 3rem;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                gap: 1rem;
+            }
+            .ticker-track {
+                animation-duration: 50s;
+            }
+            .section-title {
+                font-size: 1.2rem;
+            }
+        }
+        @media print {
+            .ticker-bar {
+                display: none;
+            }
+            .header-actions {
+                display: none;
+            }
+            .hero {
+                background: #f1f5f9 !important;
+                color: #0f172a !important;
+            }
+            .hero-content p {
+                color: #475569 !important;
+            }
+            .hero-content .badge-row span {
+                background: #e2e8f0 !important;
+                color: #1e293b !important;
+            }
+            .pricing-card {
+                break-inside: avoid;
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+            }
+            .pricing-card.featured {
+                border-color: #2563eb !important;
+            }
+        }
     </style>
 </head>
 <body>
 
-<!— HEADER —>
-<header class=“header”>
-    <div class=“container header-inner”>
-        <div class=“logo”><i class=“fas fa-store”></i> Horizon Store</div>
-        <div class=“search-bar”>
-            <input type=“text” placeholder=“جستجو در فروشگاه...” id=“searchStore”>
-            <button><i class=“fas fa-search”></i></button>
-        </div>
-        <div class=“ticker” id=“ticker”>
-            <div><span>BTC:</span> <span id=“btc”>—</span>$</div>
-            <div><span>ETH:</span> <span id=“eth”>—</span>$</div>
-            <div><span>طلا:</span> <span id=“gold”>—</span> ت</div>
-            <div><span>دلار:</span> <span id=“usd”>—</span> ت</div>
-        </div>
-    </div>
-</header>
+    <div class="container">
 
-<div class=“container”>
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-store"></i> Horizon Hub
+                <span>Official Beaconchain Hub</span>
+            </div>
+            <div class="header-actions">
+                <a href="https://beaconchain-horizon.github.io/Beaconchain.us/">← فروشگاه</a>
+                <a href="#" class="btn-primary-sm">تماس با ما</a>
+            </div>
+        </header>
 
-    <!— HERO BANNER —>
-    <div class=“hero”>
-        <div class=“hero-text”>
-            <h1>🔗 Horizon Store — Merkle‑Verified Licenses</h1>
-            <p>خرید لایسنس، آگهی و خدمات با ارز دیجیتال · امنیت ۱۰/۱۰ · رتبه ۳ جهانی</p>
-            <button class=“btn btn-primary” style=“margin-top:1rem;” onclick=“document.getElementById(‘products’).scrollIntoView({behavior:’smooth’})”>مشاهده محصولات</button>
-        </div>
-        <div class=“hero-img”>⚡</div>
-    </div>
-
-    <!— PRODUCTS SECTION —>
-    <h2 class=“section-title” id=“products”><i class=“fas fa-cubes”></i> محصولات ویژه</h2>
-    <div class=“product-grid” id=“productGrid”></div>
-
-    <!— BLOCKCHAIN NETWORKS (شبکه مارکتینگ) —>
-    <h2 class=“section-title”><i class=“fas fa-link”></i> شبکه‌های بلاک‌چین – تبلیغات شرکتی</h2>
-    <div class=“network-grid” id=“networkGrid”></div>
-
-    <!— VALIDATOR DASHBOARD —>
-    <div class=“validator-dash”>
-        <h3 style=“display:flex;align-items:center;gap:0.5rem;”><i class=“fas fa-chart-line” style=“color:#2563eb;”></i> Validator Dashboard</h3>
-        <div class=“stats” id=“statsRow”>
-            <div><span class=“num” id=“totalValidators”>0</span><div class=“label”>Total</div></div>
-            <div><span class=“num” id=“onlineCount”>0</span><div class=“label”>🟢 Online</div></div>
-            <div><span class=“num” id=“offlineCount”>0</span><div class=“label”>🔴 Offline</div></div>
-            <div><span class=“num” id=“avgBalance”>0 ETH</span><div class=“label”>Avg Balance</div></div>
-        </div>
-        <div class=“search-box”>
-            <input type=“text” id=“searchInput” placeholder=“جستجوی شماره اعتبارسنج...”>
-            <button id=“resetBtn”><i class=“fas fa-sync-alt”></i> Reset</button>
-        </div>
-        <div class=“validator-list” id=“validatorContainer”><div id=“validatorList”></div></div>
-    </div>
-
-    <!— LICENSE GENERATOR —>
-    <div class=“license-box”>
-        <h3 style=“display:flex;align-items:center;gap:0.5rem;”><i class=“fas fa-file-certificate” style=“color:#2563eb;”></i> تولید لایسنس Merkle</h3>
-        <div class=“btn-group”>
-            <button class=“btn btn-primary” data-volume=“100”>Basic (100)</button>
-            <button class=“btn btn-primary” data-volume=“1000”>Pro (1K)</button>
-            <button class=“btn btn-primary” data-volume=“10000”>Enterprise (10K)</button>
-            <button class=“btn btn-secondary” id=“customLicenseBtn”>سفارشی</button>
-        </div>
-        <div id=“licenseOutput” class=“output”>— برای تولید لایسنس، یکی از دکمه‌ها را انتخاب کنید —</div>
-    </div>
-
-</div>
-
-<!— FOOTER با لینک‌های فعال —>
-<footer class=“footer”>
-    <div class=“container”>
-        <div class=“footer-grid”>
-            <div class=“footer-col”><h4>جامعه</h4><ul><li><a href=“#”>مستندات API</a></li><li><a href=“#”>وضعیت شبکه</a></li><li><a href=“#”>خبرنامه</a></li><li><a href=“#”>دانشنامه</a></li><li><a href=“#”>درخواست پشتیبانی</a></li></ul></div>
-            <div class=“footer-col”><h4>محصولات</h4><ul><li><a href=“#”>Horizon Premium</a></li><li><a href=“#”>تبلیغات در Horizon</a></li><li><a href=“#”>Explorer as a Service</a></li><li><a href=“#”>پلن‌های API</a></li><li><a href=“#”>پشتیبانی اولویت‌دار</a></li></ul></div>
-            <div class=“footer-col”><h4>شبکه‌های اجتماعی</h4><div class=“social”><a href=“#”><i class=“fab fa-discord”></i></a><a href=“#”><i class=“fab fa-github”></i></a><a href=“#”><i class=“fab fa-telegram”></i></a><a href=“#”><i class=“fab fa-whatsapp”></i></a><a href=“#”><i class=“fab fa-instagram”></i></a><a href=“#”><i class=“fab fa-twitter”></i></a><a href=“#”><i class=“fab fa-facebook-f”></i></a></div></div>
-        </div>
-        <div class=“copyright”>© ۱۴۰۵ Horizon Store – فروشگاه رسمی Beaconchain | رتبه ۳ جهانی<br><span class=“founder”>✨ بنیان‌گذار: مهدی آملی مقدم ✨</span></div>
-    </div>
-</footer>
-
-<script>
-// ============================================================
-// PRODUCTS (با توضیحات کامل)
-// ============================================================
-const PRODUCTS = [
-    { id:’basic’, name:’پکیج پایه API’, icon:’⚡’, desc:’۱۰۰ درخواست تاییدشده با Merkle Proof – مناسب تست’, price:’۵.۲۰ $’, eth:’۰.۰۰۲ ETH’, badge:’لایسنس’, badgeClass:’’ },
-    { id:’pro’, name:’پکیج حرفه‌ای API’, icon:’🚀’, desc:’۱,۰۰۰ درخواست اولویت‌دار – ایده‌آل برای تولید’, price:’۳۹.۰۰ $’, eth:’۰.۰۱۵ ETH’, badge:’لایسنس’, badgeClass:’gold’ },
-    { id:’enterprise’, name:’پکیج سازمانی’, icon:’👑’, desc:’۱۰,۰۰۰ درخواست عمده – مناسب تیم‌های بزرگ’, price:’۲۶۰.۰۰ $’, eth:’۰.۱۰ ETH’, badge:’لایسنس’, badgeClass:’gold’ },
-    { id:’job’, name:’آگهی استخدام’, icon:’💼’, desc:’ثبت آگهی استخدام در Horizon Hub به مدت ۳۰ روز’, price:’۱۳.۰۰ $’, eth:’۰.۰۰۵ ETH’, badge:’آگهی’, badgeClass:’’ },
-    { id:’digital’, name:’آگهی محصول دیجیتال’, icon:’📦’, desc:’فروش محصول دیجیتال خود در بازارچه Horizon’, price:’۲۰.۸۰ $’, eth:’۰.۰۰۸ ETH’, badge:’آگهی’, badgeClass:’’ },
-    { id:’service’, name:’آگهی خدمات آزاد’, icon:’🤝’, desc:’ارائه خدمات فریلنسری به جامعه Horizon’, price:’۷.۸۰ $’, eth:’۰.۰۰۳ ETH’, badge:’آگهی’, badgeClass:’’ }
-];
-
-function renderProducts() {
-    const grid = document.getElementById(‘productGrid’);
-    grid.innerHTML = PRODUCTS.map(p => `
-        <div class=“product-card”>
-            <div class=“product-img”>${p.icon}</div>
-            <div class=“product-body”>
-                <h4>${p.name}</h4>
-                <div class=“desc”>${p.desc}</div>
-                <div><span class=“badge ${p.badgeClass}”>${p.badge}</span></div>
-                <div class=“price”>${p.price} <small>(${p.eth})</small></div>
-                <button class=“btn-buy” data-name=“${p.name}” data-price=“${p.price}” data-eth=“${p.eth}”>خرید / تولید لایسنس</button>
+        <!-- ===== TICKER ===== -->
+        <div class="ticker-bar">
+            <div class="ticker-track" id="tickerTrack">
+                <span>BTC: <span class="val" id="btc">--</span>$</span>
+                <span>ETH: <span class="val" id="eth">--</span>$</span>
+                <span>طلا: <span class="val" id="gold">--</span> ت</span>
+                <span>دلار: <span class="val" id="usd">--</span> ت</span>
+                <span>BNB: <span class="val">585</span>$</span>
+                <span>SOL: <span class="val">143</span>$</span>
+                <span>XRP: <span class="val">0.52</span>$</span>
+                <span>ADA: <span class="val">0.38</span>$</span>
+                <span>DOT: <span class="val">6.2</span>$</span>
+                <span>AVAX: <span class="val">28.5</span>$</span>
+                <span>MATIC: <span class="val">0.52</span>$</span>
+                <span>LINK: <span class="val">11.8</span>$</span>
+                <span>BTC: <span class="val">64,200</span>$</span>
+                <span>ETH: <span class="val">3,480</span>$</span>
+                <span>طلا: <span class="val">3,530,000</span> ت</span>
+                <span>دلار: <span class="val">62,500</span> ت</span>
+                <span>کل بازار $2.27T ▲ 0.78%</span>
+                <span>حجم ۲۴h $51.42B ▲ 12.4%</span>
+                <span>BTC Dominance 51.2% ▲ 0.3%</span>
+                <span>ETH Dominance 17.8% ▼ 0.1%</span>
+                <span>Fear &amp; Greed 62 طمع</span>
+                <span>DeFi TVL $94.2B ▲ 2.1%</span>
             </div>
         </div>
-    `).join(‘’);
-    document.querySelectorAll(‘.btn-buy’).forEach(btn => {
-        btn.onclick = function() {
-            alert(`خرید ${this.dataset.name}\nقیمت: ${this.dataset.price} (${this.dataset.eth})\nکیف پول: 0x4E94F10F0a34a0DF229e68d5902644046258D678`);
-        };
-    });
-}
 
-// ============================================================
-// NETWORKS (بلاک‌چین‌ها)
-// ============================================================
-const NETWORKS = [
-    { name:’Ethereum’, icon:’🔷’, desc:’پلتفرم قراردادهای هوشمند – بزرگترین اکوسیستم DeFi’ },
-    { name:’Bitcoin’, icon:’₿’, desc:’ارز دیجیتال پیشرو – ذخیره ارزش دیجیتال’ },
-    { name:’BNB Chain’, icon:’🟡’, desc:’شبکه سریع و کم‌کارمزد برای اپلیکیشن‌های غیرمتمرکز’ },
-    { name:’Solana’, icon:’⚡’, desc:’سرعت بالا و کارمزد پایین – مقیاس‌پذیری نسل جدید’ },
-    { name:’Polygon’, icon:’🟣’, desc:’راه‌حل لایه ۲ اتریوم – مقیاس‌پذیری و کارمزد پایین’ },
-    { name:’Avalanche’, icon:’❄️’, desc:’شبکه با قابلیت هم‌کناری و سازگاری با EVM’ },
-    { name:’Chainlink’, icon:’🔗’, desc:’اراکل‌های غیرمتمرکز – اتصال داده‌های واقعی به بلاک‌چین’ },
-    { name:’Arbitrum’, icon:’🔵’, desc:’راه‌حل لایه ۲ با امنیت اتریوم و کارمزد پایین’ }
-];
-
-function renderNetworks() {
-    const grid = document.getElementById(‘networkGrid’);
-    grid.innerHTML = NETWORKS.map(n => `
-        <div class=“network-card”>
-            <div class=“icon”>${n.icon}</div>
-            <h5>${n.name}</h5>
-            <p>${n.desc}</p>
+        <!-- ===== HERO ===== -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-crown"></i> Horizon Hub</h1>
+                <p>راهنمای جامع قیمت‌گذاری · لایسنس‌ها و خدمات Merkle‑Verified</p>
+                <div class="badge-row">
+                    <span><i class="fas fa-shield-alt"></i> امنیت ۱۰/۱۰</span>
+                    <span><i class="fas fa-trophy"></i> رتبه ۳ جهانی</span>
+                    <span><i class="fas fa-bolt"></i> ۷۲ms پاسخ‌گویی</span>
+                </div>
+            </div>
+            <div class="hero-emoji">⚡</div>
         </div>
-    `).join(‘’);
-}
 
-// ============================================================
-// PRICE TICKER
-// ============================================================
-async function fetchPrices() {
-    try {
-        const r = await fetch(‘https://api.exchangerate.host/latest?base=USD&symbols=IRR’);
-        if (r.ok) { const d = await r.json(); const usd = Math.round(d.rates.IRR); document.getElementById(‘usd’).innerText = usd.toLocaleString(); document.getElementById(‘gold’).innerText = Math.round(usd * 0.025).toLocaleString(); }
-    } catch(e) {}
-    try {
-        const btc = await fetch(‘https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd’);
-        const eth = await fetch(‘https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd’);
-        if (btc.ok) { const d = await btc.json(); document.getElementById(‘btc’).innerText = Math.round(d.bitcoin.usd).toLocaleString(); }
-        if (eth.ok) { const d = await eth.json(); document.getElementById(‘eth’).innerText = Math.round(d.ethereum.usd).toLocaleString(); }
-    } catch(e) {}
-}
-fetchPrices(); setInterval(fetchPrices, 120000);
+        <!-- ============================================================
+        PRICING SECTION – مدل‌های واگذاری
+        ============================================================ -->
+        <h2 class="section-title">
+            <i class="fas fa-tags"></i> قیمت‌گذاری رسمی
+            <span class="badge">Pricing 2026</span>
+        </h2>
 
-// ============================================================
-// VALIDATORS (100K با کش)
-// ============================================================
-let allValidators = [], filtered = [], start = 0;
-const VISIBLE = 200, TOTAL = 100000, KEY = ‘horizon_validators_v2’;
+        <div class="pricing-grid">
 
-function genValidator(i) {
-    const r = Math.random();
-    let status = ‘online’;
-    if (r < 0.08) status = ‘offline’;
-    else if (r < 0.12) status = ‘pending’;
-    return { index: i, status, balance: parseFloat((32 + Math.random() * 8).toFixed(2)) };
-}
+            <!-- 1. لایسنس مدت‌دار – Basic -->
+            <div class="pricing-card">
+                <div class="plan-name"><i class="fas fa-user"></i> لایسنس Basic</div>
+                <div class="plan-price">۵۰,۰۰۰ <small>$ / سال</small></div>
+                <div class="plan-desc">دسترسی به کد · بدون حق تغییر یا فروش مجدد</div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> دسترسی کامل به کد منبع</li>
+                    <li><i class="fas fa-check-circle"></i> به‌روزرسانی‌های امنیتی</li>
+                    <li><i class="fas fa-check-circle"></i> پشتیبانی ایمیل</li>
+                    <li><i class="fas fa-times-circle" style="color:#ef4444;"></i> بدون حق تغییر کد</li>
+                </ul>
+                <a href="#" class="btn btn-primary">درخواست لایسنس</a>
+            </div>
 
-function loadValidators() {
-    const cached = localStorage.getItem(KEY);
-    if (cached) { try { allValidators = JSON.parse(cached); return; } catch(e) {} }
-    allValidators = [];
-    for (let i = 1; i <= TOTAL; i++) allValidators.push(genValidator(i));
-    localStorage.setItem(KEY, JSON.stringify(allValidators));
-}
+            <!-- 2. لایسنس مدت‌دار – Pro -->
+            <div class="pricing-card">
+                <div class="plan-name"><i class="fas fa-users"></i> لایسنس Pro</div>
+                <div class="plan-price">۱۵۰,۰۰۰ <small>$ / سال</small></div>
+                <div class="plan-desc">دسترسی به کد + حق تغییر برای نیازهای داخلی</div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> دسترسی کامل به کد منبع</li>
+                    <li><i class="fas fa-check-circle"></i> حق تغییر کد برای استفاده‌ی داخلی</li>
+                    <li><i class="fas fa-check-circle"></i> پشتیبانی اولویت‌دار</li>
+                    <li><i class="fas fa-times-circle" style="color:#ef4444;"></i> بدون حق فروش مجدد</li>
+                </ul>
+                <a href="#" class="btn btn-primary">درخواست لایسنس</a>
+            </div>
 
-function updateStats(vals) {
-    const total = vals.length, online = vals.filter(v=>v.status===‘online’).length, offline = vals.filter(v=>v.status===‘offline’).length;
-    const avg = total ? (vals.reduce((s,v)=>s+v.balance,0)/total).toFixed(2) : ‘0.00’;
-    document.getElementById(‘totalValidators’).innerText = total.toLocaleString();
-    document.getElementById(‘onlineCount’).innerText = online.toLocaleString();
-    document.getElementById(‘offlineCount’).innerText = offline.toLocaleString();
-    document.getElementById(‘avgBalance’).innerText = avg + ‘ ETH’;
-}
+            <!-- 3. لایسنس مدت‌دار – Enterprise -->
+            <div class="pricing-card featured">
+                <span class="badge-featured">★ پیشنهاد ویژه</span>
+                <div class="plan-name"><i class="fas fa-building"></i> لایسنس Enterprise</div>
+                <div class="plan-price">۵۰۰,۰۰۰ <small>$ / سال</small></div>
+                <div class="plan-desc">تمام قابلیت‌های Pro + پشتیبانی اولویت‌دار و به‌روزرسانی‌های ماهانه</div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> تمام امکانات Pro</li>
+                    <li><i class="fas fa-check-circle"></i> پشتیبانی ۲۴/۷ اولویت‌دار</li>
+                    <li><i class="fas fa-check-circle"></i> به‌روزرسانی‌های ماهانه</li>
+                    <li><i class="fas fa-check-circle"></i> مشاوره‌ی معماری اختصاصی</li>
+                </ul>
+                <a href="#" class="btn btn-primary">درخواست لایسنس</a>
+            </div>
 
-function renderList() {
-    const container = document.getElementById(‘validatorList’);
-    if (!filtered.length) { container.innerHTML = ‘<div style=“text-align:center;padding:2rem;”>هیچ اعتبارسنجی یافت نشد</div>’; return; }
-    const end = Math.min(start + VISIBLE, filtered.length);
-    let html = ‘’;
-    for (let i = start; i < end; i++) {
-        const v = filtered[i];
-        const color = v.status===‘online’ ? ‘#22c55e’ : v.status===‘offline’ ? ‘#ef4444’ : ‘#eab308’;
-        html += `<div class=“validator-item”><span class=“v-index”>#${v.index.toLocaleString()}</span><span style=“color:${color}”>${v.status===‘online’?’🟢’:v.status===‘offline’?’🔴’:’🟡’} ${v.status}</span><span class=“v-balance”>${v.balance} ETH</span></div>`;
-    }
-    container.innerHTML = html;
-    container.onscroll = function() {
-        if (this.scrollTop + this.clientHeight >= this.scrollHeight - 200 && start + VISIBLE < filtered.length) {
-            start += VISIBLE;
-            renderList();
-        }
-        if (this.scrollTop <= 200 && start > 0) { start = Math.max(0, start - VISIBLE); renderList(); }
-    };
-}
+            <!-- 4. واگذاری کامل – Core -->
+            <div class="pricing-card">
+                <div class="plan-name"><i class="fas fa-box"></i> واگذاری Core</div>
+                <div class="plan-price">۳ – ۵ <small>میلیون $</small></div>
+                <div class="plan-desc">کد کامل، برند Horizon، مستندات فنی</div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> مالکیت کامل کد و برند</li>
+                    <li><i class="fas fa-check-circle"></i> مستندات فنی کامل</li>
+                    <li><i class="fas fa-check-circle"></i> انتقال ریپازیتوری</li>
+                    <li><i class="fas fa-times-circle" style="color:#ef4444;"></i> بدون پشتیبانی بلندمدت</li>
+                </ul>
+                <a href="#" class="btn btn-outline">مذاکره</a>
+            </div>
 
-function applySearch() {
-    const term = document.getElementById(‘searchInput’).value.trim();
-    const num = parseInt(term);
-    filtered = term === ‘’ ? [...allValidators] : (isNaN(num) ? [...allValidators] : allValidators.filter(v => v.index === num));
-    start = 0;
-    updateStats(filtered);
-    renderList();
-}
+            <!-- 5. واگذاری کامل – Standard -->
+            <div class="pricing-card featured">
+                <span class="badge-featured">★ پیشنهاد اصلی</span>
+                <div class="plan-name"><i class="fas fa-gem"></i> واگذاری Standard</div>
+                <div class="plan-price">۵ – ۱۰ <small>میلیون $</small></div>
+                <div class="plan-desc">Core Package + ۶ ماه پشتیبانی و آموزش تیم جدید</div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> تمام امکانات Core</li>
+                    <li><i class="fas fa-check-circle"></i> ۶ ماه پشتیبانی کامل</li>
+                    <li><i class="fas fa-check-circle"></i> آموزش تیم جدید</li>
+                    <li><i class="fas fa-check-circle"></i> انتقال دانش فنی</li>
+                </ul>
+                <a href="#" class="btn btn-primary">مذاکره</a>
+            </div>
 
-loadValidators();
-filtered = [...allValidators];
-updateStats(filtered);
-renderList();
+            <!-- 6. واگذاری کامل – Enterprise -->
+            <div class="pricing-card">
+                <div class="plan-name"><i class="fas fa-rocket"></i> واگذاری Enterprise</div>
+                <div class="plan-price">۱۰ – ۱۵ <small>میلیون $</small></div>
+                <div class="plan-desc">Standard + همکاری در مقیاس‌سازی به ۱ میلیون تراکنش</div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> تمام امکانات Standard</li>
+                    <li><i class="fas fa-check-circle"></i> مقیاس‌سازی تا ۱M تراکنش</li>
+                    <li><i class="fas fa-check-circle"></i> انتقال کامل دانش فنی</li>
+                    <li><i class="fas fa-check-circle"></i> همکاری در توسعه‌ی آتی</li>
+                </ul>
+                <a href="#" class="btn btn-outline">مذاکره</a>
+            </div>
 
-document.getElementById(‘searchInput’).addEventListener(‘input’, applySearch);
-document.getElementById(‘resetBtn’).addEventListener(‘click’, () => { document.getElementById(‘searchInput’).value = ‘’; applySearch(); });
+        </div>
 
-// ============================================================
-// LICENSE GENERATOR
-// ============================================================
-async function sha256(input) {
-    const hash = await crypto.subtle.digest(‘SHA-256’, input);
-    return new Uint8Array(hash);
-}
-function toHex(arr) { return Array.from(arr).map(b=>b.toString(16).padStart(2,’0’)).join(‘’); }
+        <!-- ============================================================
+        محصولات ویژه (همانند فروشگاه اصلی)
+        ============================================================ -->
+        <h2 class="section-title">
+            <i class="fas fa-cubes"></i> محصولات ویژه
+            <span class="badge">Store</span>
+        </h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="price">$5.20</div>
+                <div class="label">پکیج پایه API · ۱۰۰ درخواست</div>
+                <button class="btn-sm">خرید</button>
+            </div>
+            <div class="product-card">
+                <div class="price">$39.00</div>
+                <div class="label">پکیج حرفه‌ای · ۱,۰۰۰ درخواست</div>
+                <button class="btn-sm">خرید</button>
+            </div>
+            <div class="product-card">
+                <div class="price">$260.00</div>
+                <div class="label">پکیج سازمانی · ۱۰,۰۰۰ درخواست</div>
+                <button class="btn-sm">خرید</button>
+            </div>
+            <div class="product-card">
+                <div class="price">$13.00</div>
+                <div class="label">آگهی استخدام · ۳۰ روز</div>
+                <button class="btn-sm">ثبت</button>
+            </div>
+            <div class="product-card">
+                <div class="price">$20.80</div>
+                <div class="label">آگهی محصول دیجیتال</div>
+                <button class="btn-sm">ثبت</button>
+            </div>
+            <div class="product-card">
+                <div class="price">$7.80</div>
+                <div class="label">آگهی خدمات آزاد</div>
+                <button class="btn-sm">ثبت</button>
+            </div>
+        </div>
 
-class MerkleLicense {
-    constructor(volume, seed = crypto.getRandomValues(new Uint8Array(32))) {
-        this.volume = volume; this.seed = seed; this.root = null;
-    }
-    async generate() {
-        let leaves = [];
-        for (let i = 0; i < this.volume; i++) {
-            const idx = new Uint8Array(4);
-            new DataView(idx.buffer).setUint32(0, i, true);
-            const concat = new Uint8Array(this.seed.length + idx.length);
-            concat.set(this.seed, 0); concat.set(idx, this.seed.length);
-            leaves.push(await sha256(concat));
-        }
-        let level = leaves;
-        while (level.length > 1) {
-            const next = [];
-            for (let i = 0; i < level.length; i += 2) {
-                const left = level[i], right = (i+1 < level.length) ? level[i+1] : left;
-                const concat = new Uint8Array(left.length + right.length);
-                concat.set(left, 0); concat.set(right, left.length);
-                next.push(await sha256(concat));
+        <!-- ============================================================
+        شبکه‌های بلاکچین
+        ============================================================ -->
+        <h2 class="section-title">
+            <i class="fas fa-link"></i> شبکه‌های بلاک‌چین
+            <span class="badge">Networks</span>
+        </h2>
+        <div class="product-grid">
+            <div class="product-card"><strong>Ethereum</strong><div class="label">قراردادهای هوشمند</div></div>
+            <div class="product-card"><strong>Bitcoin</strong><div class="label">ارز دیجیتال پیشرو</div></div>
+            <div class="product-card"><strong>BNB Chain</strong><div class="label">سریع و کم‌کارمزد</div></div>
+            <div class="product-card"><strong>Solana</strong><div class="label">سرعت بالا و مقیاس‌پذیر</div></div>
+            <div class="product-card"><strong>Polygon</strong><div class="label">لایه ۲ اتریوم</div></div>
+            <div class="product-card"><strong>Avalanche</strong><div class="label">همکناری با EVM</div></div>
+        </div>
+
+        <!-- ============================================================
+        VALIDATOR DASHBOARD
+        ============================================================ -->
+        <div class="validator-dash">
+            <h3><i class="fas fa-chart-line"></i> Validator Dashboard</h3>
+            <div class="stats" id="statsRow">
+                <div><span class="num" id="totalValidators">100,000</span><div class="label">Total</div></div>
+                <div><span class="num" id="onlineCount">88,046</span><div class="label">🟢 Online</div></div>
+                <div><span class="num" id="offlineCount">7,953</span><div class="label">🔴 Offline</div></div>
+                <div><span class="num" id="avgBalance">36.00 ETH</span><div class="label">Avg Balance</div></div>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="جستجوی شماره اعتبارسنج..." />
+                <button id="resetBtn">Reset</button>
+            </div>
+            <div class="validator-list" id="validatorContainer">
+                <div id="validatorList"></div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        MERKLE LICENSE GENERATOR
+        ============================================================ -->
+        <div class="license-box">
+            <h3><i class="fas fa-file-certificate"></i> تولید لایسنس Merkle</h3>
+            <div class="btn-group">
+                <button class="btn btn-primary" data-volume="100">Basic (100)</button>
+                <button class="btn btn-primary" data-volume="1000">Pro (1K)</button>
+                <button class="btn btn-primary" data-volume="10000">Enterprise (10K)</button>
+                <button class="btn btn-outline" id="customLicenseBtn">سفارشی</button>
+            </div>
+            <div id="licenseOutput" class="output">— برای تولید لایسنس، یکی از دکمه‌ها را انتخاب کنید —</div>
+        </div>
+
+        <!-- ============================================================
+        FOOTER
+        ============================================================ -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>جامعه</h4>
+                    <ul>
+                        <li><a href="#">API Docs</a></li>
+                        <li><a href="#">Network Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>محصولات</h4>
+                    <ul>
+                        <li><a href="#">Horizon Premium</a></li>
+                        <li><a href="#">API Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>شبکه‌های اجتماعی</h4>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © ۱۴۰۵ Horizon Hub – رتبه ۳ جهانی<br />
+                <span class="founder">✨ مهدی آملی مقدم ✨</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ============================================================
+    SCRIPTS
+    ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ============================================================
+            // 1. VALIDATOR DATA (mock 100K)
+            // ============================================================
+            const VALIDATOR_COUNT = 100000;
+            const validators = [];
+            for (let i = 1; i <= VALIDATOR_COUNT; i++) {
+                const balance = (32 + Math.random() * 8).toFixed(2);
+                const status = Math.random() < 0.88 ? 'online' : (Math.random() < 0.5 ? 'offline' : 'pending');
+                validators.push({ index: i, balance: parseFloat(balance), status: status });
             }
-            level = next;
-        }
-        this.root = level[0] || new Uint8Array(32);
-        return this.root;
-    }
-}
 
-async function generateLicense(volume, name) {
-    const out = document.getElementById(‘licenseOutput’);
-    out.innerText = ‘⏳ در حال تولید درخت مرکل...’;
-    try {
-        const lic = new MerkleLicense(volume);
-        const root = await lic.generate();
-        const rootHex = toHex(root);
-        const ts = Date.now();
-        const data = { version: 3, product: name || ‘Horizon License’, volume, root: rootHex, timestamp: ts, createdBy: ‘Beaconchain Horizon’, seedPreview: toHex(lic.seed).slice(0,16)+’…’, wallet: ‘0x4E94F10F0a34a0DF229e68d5902644046258D678’ };
-        const blob = new Blob([JSON.stringify(data, null, 2)], {type:’application/json’});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement(‘a’); a.href = url; a.download = `license_${volume}_${ts}.license`;
-        document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
-        out.innerText = `✅ لایسنس تولید شد!\nحجم: ${volume.toLocaleString()} درخواست\nریشه: ${rootHex.slice(0,48)}…\nزمان: ${new Date(ts).toLocaleString(‘fa-IR’)}\nفایل دانلود شد.`;
-    } catch(e) { out.innerText = ‘❌ خطا: ‘ + e.message; }
-}
+            // ============================================================
+            // 2. RENDER VALIDATORS
+            // ============================================================
+            const listEl = document.getElementById('validatorList');
+            const searchInput = document.getElementById('searchInput');
+            const resetBtn = document.getElementById('resetBtn');
+            const totalEl = document.getElementById('totalValidators');
+            const onlineEl = document.getElementById('onlineCount');
+            const offlineEl = document.getElementById('offlineCount');
+            const avgEl = document.getElementById('avgBalance');
 
-document.querySelectorAll(‘[data-volume]’).forEach(btn => {
-    btn.onclick = function() { generateLicense(parseInt(this.dataset.volume), this.innerText.trim()); };
-});
-document.getElementById(‘customLicenseBtn’).onclick = function() {
-    const v = prompt(‘تعداد درخواست (مثلاً ۵۰۰):’, ‘500’);
-    if (v && !isNaN(parseInt(v))) generateLicense(parseInt(v), ‘سفارشی’);
-};
+            function renderValidators(filter = '') {
+                const query = filter.trim().toLowerCase();
+                let filtered = validators;
+                if (query) {
+                    filtered = validators.filter(v => v.index.toString().includes(query));
+                }
+                // update stats
+                const total = validators.length;
+                const online = validators.filter(v => v.status === 'online').length;
+                const offline = validators.filter(v => v.status === 'offline').length;
+                const avg = (validators.reduce((sum, v) => sum + v.balance, 0) / total);
+                totalEl.textContent = total.toLocaleString();
+                onlineEl.textContent = online.toLocaleString();
+                offlineEl.textContent = offline.toLocaleString();
+                avgEl.textContent = avg.toFixed(2) + ' ETH';
 
-// ============================================================
-// INIT
-// ============================================================
-renderProducts();
-renderNetworks();
-console.log(‘Horizon Store loaded successfully.’);
-</script>
+                // render list (first 200)
+                const show = filtered.slice(0, 200);
+                let html = '';
+                show.forEach(v => {
+                    const statusClass = v.status === 'online' ? 'status-online' : (v.status === 'offline' ?
+                        'status-offline' : '');
+                    const statusLabel = v.status === 'online' ? '🟢' : (v.status === 'offline' ? '🔴' : '⏳');
+                    html += `<div class="v-row">
+                                <span class="idx">#${v.index}</span>
+                                <span class="${statusClass}">${statusLabel} ${v.balance} ETH</span>
+                            </div>`;
+                });
+                if (filtered.length > 200) {
+                    html +=
+                    `<div class="v-row" style="color:#94a3b8;font-style:italic;">+ ${filtered.length - 200} validator lebih ...</div>`;
+                }
+                listEl.innerHTML = html || '<div class="v-row" style="color:#94a3b8;">هیچ اعتبارسنجی یافت نشد</div>';
+            }
+
+            searchInput.addEventListener('input', function() {
+                renderValidators(this.value);
+            });
+            resetBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                renderValidators('');
+            });
+
+            // ============================================================
+            // 3. MERKLE LICENSE GENERATOR
+            // ============================================================
+            const licenseOutput = document.getElementById('licenseOutput');
+            document.querySelectorAll('.btn-group .btn[data-volume]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const volume = this.getAttribute('data-volume');
+                    const timestamp = Date.now();
+                    const raw = `Horizon-${volume}-${timestamp}`;
+                    // simple SHA-256 mock via subtle crypto
+                    crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw))
+                        .then(hash => {
+                            const hex = Array.from(new Uint8Array(hash))
+                                .map(b => b.toString(16).padStart(2, '0'))
+                                .join('');
+                            licenseOutput.textContent =
+                                `✅ لایسنس ${volume} درخواستی | Merkle Root: ${hex.substring(0, 32)}... | زمان: ${new Date(timestamp).toLocaleString()}`;
+                        })
+                        .catch(() => {
+                            // fallback
+                            licenseOutput.textContent =
+                                `✅ لایسنس ${volume} درخواستی | ID: ${raw.substring(0, 20)} (fallback)`;
+                        });
+                });
+            });
+
+            document.getElementById('customLicenseBtn').addEventListener('click', function() {
+                const vol = prompt('تعداد درخواست‌های سفارشی را وارد کنید:', '500');
+                if (vol && !isNaN(vol) && parseInt(vol) > 0) {
+                    const timestamp = Date.now();
+                    const raw = `Horizon-custom-${vol}-${timestamp}`;
+                    crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw))
+                        .then(hash => {
+                            const hex = Array.from(new Uint8Array(hash))
+                                .map(b => b.toString(16).padStart(2, '0'))
+                                .join('');
+                            licenseOutput.textContent =
+                                `✅ لایسنس سفارشی ${vol} درخواستی | Merkle Root: ${hex.substring(0, 32)}... | زمان: ${new Date(timestamp).toLocaleString()}`;
+                        })
+                        .catch(() => {
+                            licenseOutput.textContent =
+                                `✅ لایسنس سفارشی ${vol} درخواستی | ID: ${raw.substring(0, 20)} (fallback)`;
+                        });
+                } else if (vol !== null) {
+                    alert('لطفاً یک عدد معتبر وارد کنید.');
+                }
+            });
+
+            // ============================================================
+            // 4. TICKER (mock update)
+            // ============================================================
+            function updateTicker() {
+                const btc = (64000 + Math.random() * 400).toFixed(0);
+                const eth = (3480 + Math.random() * 40).toFixed(0);
+                const gold = (3530000 + Math.random() * 10000).toFixed(0);
+                const usd = (62500 + Math.random() * 200).toFixed(0);
+                document.getElementById('btc').textContent = btc;
+                document.getElementById('eth').textContent = eth;
+                document.getElementById('gold').textContent = gold;
+                document.getElementById('usd').textContent = usd;
+            }
+            updateTicker();
+            setInterval(updateTicker, 8000);
+
+            // ============================================================
+            // 5. INIT
+            // ============================================================
+            renderValidators('');
+            console.log('✅ Horizon Hub loaded successfully.');
+            console.log('📁 Repo: https://github.com/beaconchain-horizon/horizon-core-engine');
+
+        })();
+    </script>
+
 </body>
 </html>
