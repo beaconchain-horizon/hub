@@ -1,730 +1,182 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang=“fa” dir=“rtl”>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Horizon Store · Changelog 2025</title>
+    <meta charset=“UTF-8”>
+    <meta name=“viewport” content=“width=device-width, initial-scale=1.0, viewport-fit=cover”>
+    <meta name=“description” content=“Horizon Store – فروش لایسنس، آگهی و خدمات با ارز دیجیتال | Official Beaconchain Store”>
+    <meta name=“theme-color” content=“#0a0f1e”>
+    <meta name=“author” content=“Mahdi Amolimoghaddam”>
+    <title>Horizon Store | فروشگاه رسمی Beaconchain</title>
 
-    <!-- ===== Google Font ===== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <!— ============================================================
+    FONTS & ICONS
+    ============================================================ —>
+    <link rel=“stylesheet” href=“https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css”>
+    <link href=“https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap” rel=“stylesheet”>
 
-    <!-- ===== Font Awesome 6 (free) ===== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!— ============================================================
+    PWA MANIFEST
+    ============================================================ —>
+    <link rel=“manifest” href=“/manifest.json”>
 
-    <style>
-        /* ---------- reset & base ---------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0d1117;
-            color: #e6edf3;
-            padding: 2rem 1.5rem;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        /* ---------- header (Changelog style) ---------- */
-        .changelog-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #21262d;
-        }
-
-        .changelog-header h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .changelog-header h1 .badge-year {
-            font-size: 0.9rem;
-            font-weight: 600;
-            background: #1f6feb;
-            color: #fff;
-            padding: 0.1rem 0.9rem;
-            border-radius: 40px;
-            letter-spacing: 0.3px;
-        }
-
-        .changelog-header .meta-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            font-size: 0.9rem;
-            color: #8b949e;
-        }
-
-        .changelog-header .meta-links a {
-            color: #58a6ff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .changelog-header .meta-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* ---------- filter bar (tag / month) ---------- */
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.75rem 1.5rem;
-            margin-bottom: 2.5rem;
-            padding: 0.75rem 1.25rem;
-            background: #161b22;
-            border-radius: 12px;
-            border: 1px solid #21262d;
-        }
-
-        .filter-bar .label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #8b949e;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .filter-bar .tag-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-
-        .filter-bar .tag {
-            display: inline-block;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            background: #21262d;
-            color: #c9d1d9;
-            border: 1px solid #30363d;
-            cursor: default;
-            transition: 0.2s;
-        }
-
-        .filter-bar .tag.active {
-            background: #1f6feb;
-            color: #fff;
-            border-color: #1f6feb;
-        }
-
-        .filter-bar .tag i {
-            margin-left: 0.3rem;
-            font-size: 0.65rem;
-            opacity: 0.7;
-        }
-
-        /* ---------- entry list (Changelog style) ---------- */
-        .entry-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.75rem;
-        }
-
-        .entry-item {
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 1.5rem 2rem;
-            padding: 1.25rem 1.5rem;
-            background: #161b22;
-            border-radius: 12px;
-            border: 1px solid #21262d;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .entry-item:hover {
-            border-color: #30363d;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .entry-item .date {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #8b949e;
-            white-space: nowrap;
-            padding-top: 0.1rem;
-        }
-
-        .entry-item .date i {
-            margin-left: 0.4rem;
-            font-size: 0.75rem;
-            color: #58a6ff;
-        }
-
-        .entry-item .content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .entry-item .content .title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #f0f6fc;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .entry-item .content .title .product-badge {
-            font-size: 0.6rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            padding: 0.1rem 0.7rem;
-            border-radius: 30px;
-            background: #1f6feb22;
-            color: #58a6ff;
-            border: 1px solid #1f6feb44;
-        }
-
-        .entry-item .content .title .product-badge.gold {
-            background: #d2992233;
-            color: #e3b341;
-            border-color: #d2992255;
-        }
-
-        .entry-item .content .title .product-badge.pink {
-            background: #da363344;
-            color: #f0888e;
-            border-color: #da363355;
-        }
-
-        .entry-item .content .title .product-badge.purple {
-            background: #8957e533;
-            color: #b387f0;
-            border-color: #8957e555;
-        }
-
-        .entry-item .content .description {
-            font-size: 0.92rem;
-            color: #b1bac4;
-            max-width: 680px;
-        }
-
-        .entry-item .content .meta-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.6rem 1.2rem;
-            margin-top: 0.2rem;
-            font-size: 0.8rem;
-            color: #8b949e;
-        }
-
-        .entry-item .content .meta-row .price {
-            font-weight: 700;
-            color: #f0f6fc;
-            font-size: 0.95rem;
-        }
-
-        .entry-item .content .meta-row .price span {
-            color: #8b949e;
-            font-weight: 400;
-            font-size: 0.8rem;
-        }
-
-        .entry-item .content .meta-row .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-        }
-
-        .entry-item .content .meta-row .tags span {
-            background: #21262d;
-            padding: 0.1rem 0.7rem;
-            border-radius: 30px;
-            font-size: 0.65rem;
-            color: #8b949e;
-            border: 1px solid #30363d;
-        }
-
-        .entry-item .content .action-btn {
-            margin-top: 0.5rem;
-            align-self: flex-start;
-            background: #1f6feb;
-            color: #fff;
-            border: none;
-            padding: 0.4rem 1.4rem;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .entry-item .content .action-btn:hover {
-            background: #388bfd;
-        }
-
-        .entry-item .content .action-btn:active {
-            transform: scale(0.97);
-        }
-
-        /* ---------- license output (like a terminal block) ---------- */
-        .license-output {
-            margin-top: 2.5rem;
-            background: #0d1117;
-            border: 1px solid #21262d;
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 0.8rem;
-            color: #b1bac4;
-            white-space: pre-wrap;
-            word-break: break-all;
-            min-height: 80px;
-            direction: ltr;
-            text-align: left;
-        }
-
-        .license-output .prompt {
-            color: #58a6ff;
-        }
-
-        /* ---------- footer ---------- */
-        .footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #21262d;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.8rem;
-            color: #484f58;
-        }
-
-        .footer a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* ---------- responsive ---------- */
-        @media (max-width: 700px) {
-            .entry-item {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-            }
-
-            .entry-item .date {
-                font-size: 0.75rem;
-            }
-
-            .changelog-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .changelog-header h1 {
-                font-size: 1.6rem;
-            }
-
-            .filter-bar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.5rem;
-            }
-
-            body {
-                padding: 1rem 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .entry-item .content .title {
-                font-size: 1rem;
-            }
-
-            .entry-item .content .meta-row {
-                font-size: 0.7rem;
-            }
-
-            .filter-bar .tag {
-                font-size: 0.65rem;
-                padding: 0.1rem 0.7rem;
-            }
-        }
-    </style>
+    <!— ============================================================
+    CUSTOM CSS
+    ============================================================ —>
+    <link rel=“stylesheet” href=“/src/css/style.css”>
 </head>
 <body>
+    <div class=“container” id=“app”>
 
-<div class="container">
+        <!— ============================================================
+        HEADER
+        ============================================================ —>
+        <header class=“app-header”>
+            <div class=“logo-text”>
+                <h1>🏪 Horizon Store</h1>
+                <p>Official Store of <strong>Beaconchain</strong> · Merkle‑Verified Licenses</p>
+            </div>
+            <div class=“badge-group”>
+                <span class=“badge”><i class=“fas fa-trophy”></i> #3 Global</span>
+                <span class=“badge”><i class=“fas fa-shield-alt”></i> 10/10 Security</span>
+                <span class=“badge”><i class=“fas fa-tree”></i> Merkle Proof</span>
+                <span class=“badge”><i class=“fas fa-mobile-alt”></i> PWA Ready</span>
+            </div>
+        </header>
 
-    <!-- ===== HEADER ===== -->
-    <header class="changelog-header">
-        <h1>
-            <i class="fas fa-store" style="color:#58a6ff;"></i>
-            Horizon Store
-            <span class="badge-year">2025</span>
-        </h1>
-        <div class="meta-links">
-            <span><i class="far fa-calendar-alt"></i> 2025 · Q1–Q4</span>
-            <a href="#"><i class="fas fa-tag"></i> collaboration-tools</a>
-            <a href="#"><i class="fab fa-github"></i> beaconchain-horizon</a>
-        </div>
-    </header>
+        <!— ============================================================
+        WALLET ADDRESS
+        ============================================================ —>
+        <section class=“card wallet-card”>
+            <h3><i class=“fas fa-wallet”></i> آدرس کیف پول رسمی</h3>
+            <div class=“wallet-box”>
+                <code>0x4E94F10F0a34a0DF229e68d5902644046258D678</code>
+            </div>
+            <p style=“font-size:0.8rem; color:#8fa2dc;”>شبکه: Ethereum (ERC-20) · پشتیبانی: ETH / USDC / BNB</p>
+        </section>
 
-    <!-- ===== FILTER BAR (inspired by GitHub Changelog) ===== -->
-    <div class="filter-bar">
-        <span class="label"><i class="fas fa-filter"></i> فیلتر</span>
-        <div class="tag-group">
-            <span class="tag active"><i class="fas fa-check-circle"></i> همه</span>
-            <span class="tag"><i class="fas fa-bolt"></i> API</span>
-            <span class="tag"><i class="fas fa-briefcase"></i> آگهی</span>
-            <span class="tag"><i class="fas fa-chart-line"></i> پایش</span>
-            <span class="tag"><i class="fas fa-shield-alt"></i> Zcash</span>
-        </div>
-        <span style="margin-right:auto; font-size:0.75rem; color:#484f58;">
-            <i class="far fa-clock"></i> آخرین‌ها
-        </span>
-    </div>
+        <!— ============================================================
+        PRODUCTS
+        ============================================================ —>
+        <section class=“card”>
+            <h3><i class=“fas fa-cubes”></i> محصولات و لایسنس‌ها</h3>
+            <div class=“products-grid” id=“productList”>
+                <!— Products rendered by JavaScript (store.js) —>
+            </div>
+        </section>
 
-    <!-- ===== ENTRY LIST (products as changelog entries) ===== -->
-    <div class="entry-list" id="productList">
-        <!-- products will be rendered by JavaScript -->
-    </div>
+        <!— ============================================================
+        VALIDATOR DASHBOARD
+        ============================================================ —>
+        <section class=“card”>
+            <h3><i class=“fas fa-chart-line”></i> Validator Dashboard</h3>
+            <div class=“stats-row” id=“statsRow”>
+                <div><span class=“stat-number” id=“totalValidators”>0</span><br><span class=“stat-label”>Total Validators</span></div>
+                <div><span class=“stat-number” id=“onlineCount”>0</span><br><span class=“stat-label”>🟢 Online</span></div>
+                <div><span class=“stat-number” id=“offlineCount”>0</span><br><span class=“stat-label”>🔴 Offline</span></div>
+                <div><span class=“stat-number” id=“avgBalance”>0 ETH</span><br><span class=“stat-label”>Avg Balance</span></div>
+            </div>
+            <div class=“search-box”>
+                <input type=“text” id=“searchInput” placeholder=“جستجوی شماره اعتبارسنج ...”>
+                <button id=“resetBtn”><i class=“fas fa-sync-alt”></i> Reset</button>
+                <button id=“refreshCacheBtn”><i class=“fas fa-redo-alt”></i> Refresh Cache</button>
+            </div>
+            <div class=“validator-list-container” id=“validatorContainer”>
+                <div id=“validatorList”></div>
+            </div>
+        </section>
 
-    <!-- ===== LICENSE OUTPUT ===== -->
-    <div class="license-output" id="licenseOutput">
-        <span class="prompt">$</span> — برای تولید لایسنس، روی دکمه‌ی <span style="color:#f0f6fc;">«تولید لایسنس»</span> هر محصول کلیک کنید.
-    </div>
+        <!— ============================================================
+        LICENSE GENERATOR
+        ============================================================ —>
+        <section class=“card”>
+            <h3><i class=“fas fa-file-certificate”></i> تولید لایسنس Merkle</h3>
+            <div class=“btn-group”>
+                <button class=“btn btn-primary” data-volume=“100”>Basic (100)</button>
+                <button class=“btn btn-primary” data-volume=“1000”>Pro (1K)</button>
+                <button class=“btn btn-primary” data-volume=“10000”>Enterprise (10K)</button>
+                <button class=“btn btn-secondary” id=“customLicenseBtn”>سفارشی</button>
+            </div>
+            <div id=“licenseOutput” class=“output-box”>— برای تولید لایسنس، یکی از دکمه‌ها را انتخاب کنید —</div>
+        </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <span>
-            © 2026 <strong style="color:#8b949e;">Mahdi Amolimoghaddam</strong> ·
-            Horizon Ecosystem
-        </span>
-        <span>
-            <a href="https://github.com/beaconchain-horizon"><i class="fab fa-github"></i> GitHub</a>
-            ·
-            <a href="https://beaconchain.us">Beaconchain</a>
-            ·
-            <a href="#"><i class="fas fa-shield-alt"></i> Merkle‑Verified</a>
-        </span>
-    </footer>
+        <!— ============================================================
+        SUPPORT / FUNDING
+        ============================================================ —>
+        <section class=“card”>
+            <h3><i class=“fas fa-heart”></i> حمایت از Horizon</h3>
+            <div class=“support-links”>
+                <a href=“https://etherscan.io/address/0x4E94F10F0a34a0DF229e68d5902644046258D678” target=“_blank” class=“badge” style=“font-size:1rem; padding:0.5rem 1.2rem;”>
+                    <i class=“fas fa-coins”></i> Donate ETH / USDC
+                </a>
+                <a href=“https://beaconchain.us” target=“_blank” class=“badge” style=“font-size:1rem; padding:0.5rem 1.2rem;”>
+                    <i class=“fas fa-globe”></i> Visit Horizon
+                </a>
+            </div>
+        </section>
 
-</div>
+        <!— ============================================================
+        FOOTER
+        ============================================================ —>
+        <footer class=“footer-big”>
+            <!— Column 1: Code Repositories —>
+            <div class=“footer-section”>
+                <h4><i class=“fas fa-code-branch”></i> Code Repositories</h4>
+                <a href=“https://github.com/beaconchain-us/Beaconchain.us” target=“_blank”>Horizon Web App</a><br>
+                <a href=“https://github.com/beaconchain-us/eth2-beaconchain-explorer” target=“_blank”>Backend Explorer (Go)</a><br>
+                <a href=“https://github.com/beaconchain-us/verified-merkle-lib” target=“_blank”>Verified Merkle Lib</a>
+            </div>
 
-<!-- ============================================================
-JAVASCRIPT – product data + license generator
-============================================================ -->
-<script>
-    (function() {
-        'use strict';
+            <!— Column 2: GitHub Resources —>
+            <div class=“footer-section”>
+                <h4><i class=“fas fa-link”></i> Resources & Ecosystem</h4>
+                <a href=“https://github.blog” target=“_blank”>GitHub Blog</a><br>
+                <a href=“https://github.blog/changelog” target=“_blank”>Changelog</a><br>
+                <a href=“https://docs.github.com” target=“_blank”>Docs</a><br>
+                <a href=“https://github.com/customer-stories” target=“_blank”>Customer Stories</a><br>
+                <a href=“https://githubuniverse.com” target=“_blank”>GitHub Universe</a><br>
+                <a href=“https://github.com/github-copilot/cli” target=“_blank”>Try GitHub Copilot CLI</a>
+            </div>
 
-        // ---------- product catalog (same as before) ----------
-        const products = [{
-            id: 'basic-api',
-            name: 'Basic API Pack',
-            icon: 'fa-bolt',
-            description: '۱۰۰ درخواست تأییدشده با Merkle Proof. مناسب برای تست و پروژه‌های کوچک.',
-            source: 'Verified Merkle Library',
-            volume: 100,
-            priceUsd: 5.20,
-            priceEth: 0.002,
-            badge: 'لایسنس',
-            badgeColor: '',
-            tags: ['Merkle', 'API', 'Starter']
-        }, {
-            id: 'pro-api',
-            name: 'Pro API Pack',
-            icon: 'fa-rocket',
-            description: '۱٬۰۰۰ درخواست با اولویت بالا. ایده‌آل برای محیط تولید و اپلیکیشن‌های واقعی.',
-            source: 'Verified Merkle Library',
-            volume: 1000,
-            priceUsd: 39.00,
-            priceEth: 0.015,
-            badge: 'لایسنس',
-            badgeColor: '',
-            tags: ['Merkle', 'API', 'Production']
-        }, {
-            id: 'enterprise-api',
-            name: 'Enterprise API Pack',
-            icon: 'fa-crown',
-            description: '۱۰٬۰۰۰ درخواست با قیمت عمده. مناسب برای سازمان‌ها و تیم‌های بزرگ.',
-            source: 'Verified Merkle Library',
-            volume: 10000,
-            priceUsd: 260.00,
-            priceEth: 0.1,
-            badge: 'لایسنس',
-            badgeColor: 'gold',
-            tags: ['Merkle', 'API', 'Enterprise']
-        }, {
-            id: 'hub-job',
-            name: 'آگهی استخدام',
-            icon: 'fa-briefcase',
-            description: 'ثبت آگهی استخدام در Horizon Hub به مدت ۳۰ روز. دیده شدن توسط هزاران کاربر.',
-            source: 'Horizon Hub',
-            volume: 1,
-            priceUsd: 13.00,
-            priceEth: 0.005,
-            badge: 'آگهی',
-            badgeColor: 'pink',
-            tags: ['Job', 'Hiring', '30 Days']
-        }, {
-            id: 'hub-product',
-            name: 'آگهی محصول دیجیتال',
-            icon: 'fa-cube',
-            description: 'فروش محصول دیجیتال خود در Horizon Hub. شامل تصویر، توضیحات و لینک دانلود.',
-            source: 'Horizon Hub',
-            volume: 1,
-            priceUsd: 20.80,
-            priceEth: 0.008,
-            badge: 'آگهی',
-            badgeColor: 'pink',
-            tags: ['Digital', 'Product', 'Marketplace']
-        }, {
-            id: 'hub-service',
-            name: 'آگهی خدمات آزاد',
-            icon: 'fa-handshake',
-            description: 'ارائه خدمات فریلنسری به جامعه Horizon. مناسب برای برنامه‌نویسان، طراحان و مشاوران.',
-            source: 'Horizon Hub',
-            volume: 1,
-            priceUsd: 7.80,
-            priceEth: 0.003,
-            badge: 'آگهی',
-            badgeColor: 'pink',
-            tags: ['Freelance', 'Service', 'Remote']
-        }, {
-            id: 'validator-month',
-            name: 'پایش اعتبارسنج (۱ ماه)',
-            icon: 'fa-chart-line',
-            description: 'پایش لحظه‌ای تا ۲۸۰ اعتبارسنج به مدت ۳۰ روز. شامل هشدارها و آمار عملکرد.',
-            source: 'Beaconchain Core',
-            volume: 1,
-            priceUsd: 26.00,
-            priceEth: 0.01,
-            badge: 'اشتراک',
-            badgeColor: 'purple',
-            tags: ['Validator', 'Monitoring', '30 Days']
-        }, {
-            id: 'validator-year',
-            name: 'پایش اعتبارسنج (۱ سال)',
-            icon: 'fa-calendar-alt',
-            description: 'پایش کامل یک‌ساله با تخفیف ۱۷٪ نسبت به خرید ماهانه. مناسب برای سرمایه‌گذاران.',
-            source: 'Beaconchain Core',
-            volume: 12,
-            priceUsd: 260.00,
-            priceEth: 0.1,
-            badge: 'اشتراک',
-            badgeColor: 'gold',
-            tags: ['Validator', 'Monitoring', '1 Year']
-        }, {
-            id: 'zcash-tx',
-            name: 'تراکنش خصوصی Zcash',
-            icon: 'fa-shield-alt',
-            description: 'یک تراکنش کاملاً ناشناس با استفاده از اثبات دانش‌صفر (Zero-Knowledge). حریم خصوصی کامل.',
-            source: 'horizon-zcash',
-            volume: 1,
-            priceUsd: 2.60,
-            priceEth: 0.001,
-            badge: 'سرویس',
-            badgeColor: '',
-            tags: ['Zcash', 'Privacy', 'ZK-Proof']
-        }];
+            <!— Column 3: Horizon Ecosystem —>
+            <div class=“footer-section”>
+                <h4><i class=“fas fa-users”></i> Horizon Ecosystem</h4>
+                <a href=“https://github.com/beaconchain-horizon” target=“_blank”>GitHub Organization</a><br>
+                <a href=“https://github.com/beaconchain-horizon/horizon-core-engine” target=“_blank”>Core Engine (Go)</a><br>
+                <a href=“https://github.com/beaconchain-horizon/gobitfly” target=“_blank”>Other Projects</a>
+            </div>
 
-        // ---------- render products as changelog entries ----------
-        function renderProducts() {
-            const container = document.getElementById('productList');
-            if (!container) return;
+            <!— Column 4: Contact & Legal —>
+            <div class=“footer-section”>
+                <h4><i class=“fas fa-envelope”></i> Contact & Legal</h4>
+                <a href=“mailto:beaconchain@beaconchain.us”>beaconchain@beaconchain.us</a><br>
+                <a href=“mailto:gamma.mahdii@gmail.com”>gamma.mahdii@gmail.com</a>
+                <div class=“ownership-note”>
+                    © 2025–2026 Mahdi Amolimoghaddam · GPL-3.0<br>
+                    <span style=“font-size:0.7rem;”>SHA‑256 Page Fingerprint: <span id=“pageHash”>—</span></span>
+                </div>
+            </div>
+        </footer>
 
-            // sort by price (low to high) to mimic a logical changelog order
-            const sorted = [...products].sort((a, b) => a.priceUsd - b.priceUsd);
+    </div> <!— end container —>
 
-            container.innerHTML = sorted.map((p, index) => {
-                // fake date – based on index to give a "changelog" feel
-                const month = String(1 + (index % 12)).padStart(2, '0');
-                const day = String(10 + (index * 3) % 20).padStart(2, '0');
-                const dateLabel = `۲۰۲۵-${month}-${day}`;
-
-                const badgeClass = p.badgeColor ? `product-badge ${p.badgeColor}` : 'product-badge';
-
-                return `
-                    <div class="entry-item" data-id="${p.id}">
-                        <div class="date">
-                            <i class="far fa-calendar-alt"></i> ${dateLabel}
-                        </div>
-                        <div class="content">
-                            <div class="title">
-                                <i class="fas ${p.icon}" style="color:#58a6ff; font-size:1rem;"></i>
-                                ${p.name}
-                                <span class="${badgeClass}">${p.badge}</span>
-                            </div>
-                            <div class="description">${p.description}</div>
-                            <div class="meta-row">
-                                <span class="price">
-                                    $${p.priceUsd.toFixed(2)} USD
-                                    <span>(${p.priceEth} ETH)</span>
-                                </span>
-                                <span style="color:#484f58;">|</span>
-                                <span>${p.volume.toLocaleString()} req</span>
-                                <span style="color:#484f58;">|</span>
-                                <span class="tags">
-                                    ${p.tags.map(t => `<span>#${t}</span>`).join('')}
-                                </span>
-                            </div>
-                            <button class="action-btn generate-btn"
-                                    data-id="${p.id}"
-                                    data-name="${p.name}"
-                                    data-volume="${p.volume}">
-                                <i class="fas fa-file-certificate"></i> تولید لایسنس
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            // attach click events to all generate buttons
-            document.querySelectorAll('.generate-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const id = this.dataset.id;
-                    const name = this.dataset.name;
-                    const volume = parseInt(this.dataset.volume, 10);
-                    const product = products.find(p => p.id === id);
-                    if (product) {
-                        generateLicense(product, name);
-                    } else {
-                        generateLicense({ volume, priceUsd: 0, priceEth: 0 }, name);
-                    }
-                });
+    <!— ============================================================
+    SERVICE WORKER REGISTRATION
+    ============================================================ —>
+    <script>
+        if (‘serviceWorker’ in navigator) {
+            window.addEventListener(‘load’, () => {
+                navigator.serviceWorker.register(‘/sw.js’)
+                    .then(reg => console.log(‘[SW] Registered:’, reg))
+                    .catch(err => console.warn(‘[SW] Registration failed:’, err));
             });
         }
+    </script>
 
-        // ---------- Merkle license generator (simplified, async) ----------
-        async function sha256(input) {
-            const hash = await crypto.subtle.digest('SHA-256', input);
-            return new Uint8Array(hash);
-        }
-
-        function toHex(arr) {
-            return Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        class MerkleLicense {
-            constructor(volume, seed = crypto.getRandomValues(new Uint8Array(32))) {
-                this.volume = volume;
-                this.seed = seed;
-                this.root = null;
-            }
-
-            async generate() {
-                const leaves = [];
-                for (let i = 0; i < this.volume; i++) {
-                    const indexBuf = new Uint8Array(4);
-                    new DataView(indexBuf.buffer).setUint32(0, i, true);
-                    const concat = new Uint8Array(this.seed.length + indexBuf.length);
-                    concat.set(this.seed, 0);
-                    concat.set(indexBuf, this.seed.length);
-                    leaves.push(await sha256(concat));
-                }
-                let level = leaves;
-                while (level.length > 1) {
-                    const next = [];
-                    for (let i = 0; i < level.length; i += 2) {
-                        const left = level[i];
-                        const right = (i + 1 < level.length) ? level[i + 1] : left;
-                        const concat = new Uint8Array(left.length + right.length);
-                        concat.set(left, 0);
-                        concat.set(right, left.length);
-                        next.push(await sha256(concat));
-                    }
-                    level = next;
-                }
-                this.root = level[0] || new Uint8Array(32);
-                return this.root;
-            }
-        }
-
-        async function generateLicense(product, productName) {
-            const output = document.getElementById('licenseOutput');
-            if (!output) return;
-
-            const volume = product.volume || 100;
-            output.innerHTML = `<span class="prompt">$</span> ⏳ در حال تولید درخت مرکل برای ${volume.toLocaleString()} درخواست...`;
-
-            try {
-                const lic = new MerkleLicense(volume);
-                const root = await lic.generate();
-                const rootHex = toHex(root);
-                const timestamp = Date.now();
-
-                const licenseData = {
-                    version: 3,
-                    product: productName || 'Horizon License',
-                    volume: volume,
-                    root: rootHex,
-                    timestamp: timestamp,
-                    createdBy: 'Beaconchain Horizon',
-                    seedPreview: toHex(lic.seed).slice(0, 16) + '…',
-                    network: 'Ethereum',
-                    wallet: '0x4E94F10F0a34a0DF229e68d5902644046258D678'
-                };
-
-                // download JSON
-                const blob = new Blob([JSON.stringify(licenseData, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `license_${volume}_${timestamp}.license`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-
-                const dateStr = new Date(timestamp).toLocaleString('fa-IR');
-                output.innerHTML =
-                    `<span class="prompt">$</span> ✅ لایسنس تولید شد!\n` +
-                    `   📄 حجم: ${volume.toLocaleString()} درخواست\n` +
-                    `   🌳 Merkle Root: ${rootHex.slice(0, 48)}…\n` +
-                    `   ⏱️ زمان: ${dateStr}\n` +
-                    `   📥 فایل دانلود شد.`;
-
-            } catch (err) {
-                output.innerHTML = `<span class="prompt">$</span> ❌ خطا: ${err.message}`;
-            }
-        }
-
-        // ---------- init ----------
-        renderProducts();
-
-        // expose generateLicense for console debugging
-        window.generateLicense = generateLicense;
-
-        console.log('🚀 Horizon Store · Changelog 2025 style loaded.');
-        console.log(`📦 ${products.length} products available.`);
-    })();
-</script>
-
+    <!— ============================================================
+    JAVASCRIPT MODULES
+    ============================================================ —>
+    <script src=“/src/js/validators.js”></script>
+    <script src=“/src/js/store.js”></script>
+    <script src=“/src/js/app.js”></script>
 </body>
 </html>
